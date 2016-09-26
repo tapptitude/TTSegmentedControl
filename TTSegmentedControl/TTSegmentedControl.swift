@@ -38,24 +38,6 @@ public class TTSegmentedControl: UIView {
     public var itemTitles: [String] = ["Item1", "Item2", "Item3"]
     var attributedDefaultTitles: [NSAttributedString]!
     var attributedSelectedTitles: [NSAttributedString]!
-    
-//    public var options = Options() {
-//        didSet {
-//            if !isConfigurated {
-//                return
-//            }
-//            
-//            configureViewBounds()
-//            if let colors = thumbGradientColors {
-//                gradientLayer.colors = colors.map({$0.CGColor})
-//            }
-//            configureContainerView()
-//            
-//            configureSelectedView()
-//            updateSelectedViewFrame()
-//        }
-//    }
-    
     /*
      Gets called when an item is selected
      */

@@ -8,71 +8,70 @@
 
 import UIKit
 
-//TEST VERSION 3//
 
 @IBDesignable
-public class TTSegmentedControl: UIView {
+open class TTSegmentedControl: UIView {
     
     //Configure the options to for a custom design
-    @IBInspectable public var defaultTextFont: UIFont = UIFont.helveticaNeueLight(12)
-    @IBInspectable public var selectedTextFont: UIFont = UIFont.helveticaNeueLight(12)
-    @IBInspectable public var defaultTextColor: UIColor = UIColor.blackColor()
-    @IBInspectable public var selectedTextColor: UIColor = UIColor.whiteColor()
-    @IBInspectable public var useGradient: Bool = true
+    @IBInspectable open var defaultTextFont: UIFont = UIFont.helveticaNeueLight(12)
+    @IBInspectable open var selectedTextFont: UIFont = UIFont.helveticaNeueLight(12)
+    @IBInspectable open var defaultTextColor: UIColor = UIColor.black
+    @IBInspectable open var selectedTextColor: UIColor = UIColor.white
+    @IBInspectable open var useGradient: Bool = true
     
-    @IBInspectable public var containerBackgroundColor: UIColor = TTSegmentedControl.UIColorFromRGB(0xF4F4F4)
-    @IBInspectable public var thumbColor: UIColor = UIColor.clearColor()
-    @IBInspectable public var thumbGradientColors: [UIColor]? = [TTSegmentedControl.UIColorFromRGB(0xFFE900),TTSegmentedControl.UIColorFromRGB(0xFFB400)]
-    @IBInspectable public var thumbShadowColor: UIColor = TTSegmentedControl.UIColorFromRGB(0x9B9B9B)
-    @IBInspectable public var useShadow:Bool = true
+    @IBInspectable open var containerBackgroundColor: UIColor = TTSegmentedControl.UIColorFromRGB(0xF4F4F4)
+    @IBInspectable open var thumbColor: UIColor = UIColor.clear
+    @IBInspectable open var thumbGradientColors: [UIColor]? = [TTSegmentedControl.UIColorFromRGB(0xFFE900),TTSegmentedControl.UIColorFromRGB(0xFFB400)]
+    @IBInspectable open var thumbShadowColor: UIColor = TTSegmentedControl.UIColorFromRGB(0x9B9B9B)
+    @IBInspectable open var useShadow:Bool = true
     
     //left and right space between items
-    @IBInspectable public var padding: CGSize = CGSize(width: 30, height: 10)
-    @IBInspectable public var cornerRadius: CGFloat = -1 // for rounded corner radius use negative value, 0 to disable
+    @IBInspectable open var padding: CGSize = CGSize(width: 30, height: 10)
+    @IBInspectable open var cornerRadius: CGFloat = -1 // for rounded corner radius use negative value, 0 to disable
     
     public enum DraggingState: Int {
-        case None
-        case Dragging
-        case Cancel
+        case none
+        case dragging
+        case cancel
     }
     
-    public var itemTitles: [String] = ["Item1", "Item2", "Item3"]
+    open var itemTitles: [String] = ["Item1", "Item2", "Item3"]
     var attributedDefaultTitles: [NSAttributedString]!
     var attributedSelectedTitles: [NSAttributedString]!
     /*
      Gets called when an item is selected
      */
-    public var didSelectItemWith:((index: Int, title: String?) -> ())?
+    open var didSelectItemWith:((_ index: Int, _ title: String?) -> ())?
     /*
      Gets called when the dragging state is changed
      */
-    public var didChangeDraggingState: ((DraggingState) -> ())?
+    open var didChangeDraggingState: ((DraggingState) -> ())?
     
-    private(set) var isDragging = false
-    public var allowDrag = true
-    public var allowChangeThumbWidth = true
+    fileprivate(set) var isDragging = false
+    open var allowDrag = true
+    open var allowChangeThumbWidth = true
     
-    private var containerView = UIView()
-    private var thumbContainerView = UIView()
-    private var thumbView = UIView()
-    private var selectedLabelsView = UIView()
+    fileprivate var containerView = UIView()
+    fileprivate var thumbContainerView = UIView()
+    fileprivate var thumbView = UIView()
+    fileprivate var selectedLabelsView = UIView()
     
-    private var isConfigurated = false
-    private var lastPointX: CGFloat = 0
-    private var originalCenter = CGPointZero
-    private var lastSelectedViewWidth: CGFloat = 0
+    fileprivate var isConfigurated = false
+    fileprivate var lastPointX: CGFloat = 0
+    fileprivate var originalCenter = CGPoint.zero
+    fileprivate var lastSelectedViewWidth: CGFloat = 0
     
     
-    private let thumbPadding: CGFloat = 2
+    fileprivate let thumbPadding: CGFloat = 2
     
-    private let shadowLayer = CAShapeLayer()
-    private var gradientLayer = CAGradientLayer()
+    fileprivate let shadowLayer = CAShapeLayer()
+    fileprivate var gradientLayer = CAGradientLayer()
     
-    private var allowToChangeThumb = false
-    private var allowMove = true
-    private var selectInitialItem = 0
+    fileprivate var allowToChangeThumb = false
+    fileprivate var allowMove = true
+    fileprivate var selectInitialItem = 0
     
-    public override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
     }
     
@@ -84,7 +83,7 @@ public class TTSegmentedControl: UIView {
         super.init(coder: aDecoder)
     }
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         
         if isConfigurated {
@@ -111,36 +110,36 @@ public class TTSegmentedControl: UIView {
         updateSelectedViewFrame()
         
         selectItemAt(index:selectInitialItem)
-        _ = self.subviews.map({$0.exclusiveTouch = true})
+        _ = self.subviews.map({$0.isExclusiveTouch = true})
         
     }
     
     //MARK: - Getters
-    private var allItemLabels: [UILabel] = []
-    private var allSelectedItemLabels: [UILabel] = []
+    fileprivate var allItemLabels: [UILabel] = []
+    fileprivate var allSelectedItemLabels: [UILabel] = []
     
-    private var sectionWidth: CGFloat {
+    fileprivate var sectionWidth: CGFloat {
         return self.frame.size.width / CGFloat(allItemLabels.count)
     }
     
-    private var minPoint: CGPoint {
+    fileprivate var minPoint: CGPoint {
         return allItemLabels[0].center
     }
     
-    private var maxPoint: CGPoint {
+    fileprivate var maxPoint: CGPoint {
         return allSelectedItemLabels[allSelectedItemLabels.count - 1].center
     }
     
-    private var minContainerWidth: Int {
+    fileprivate var minContainerWidth: Int {
         return 100
     }
     
-    private var isSwitch: Bool {
+    fileprivate var isSwitch: Bool {
         return attributedDefaultTitles.count == 2
     }
     
     //MARK: - Helpers
-    static func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+    static func UIColorFromRGB(_ rgbValue: UInt) -> UIColor {
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
@@ -150,11 +149,11 @@ public class TTSegmentedControl: UIView {
     }
     
     
-    private func labelForPoint(point: CGPoint) -> UILabel {
+    fileprivate func labelForPoint(_ point: CGPoint) -> UILabel {
         var pointX = max(point.x, thumbPadding)
         pointX = min(pointX , containerView.frame.size.width - thumbPadding)
         
-        let newPoint = CGPointMake(pointX, point.y)
+        let newPoint = CGPoint(x: pointX, y: point.y)
         let allLabels = allItemLabels
         var selectedLabel = UILabel()
         let sectionWidth = self.sectionWidth
@@ -170,7 +169,7 @@ public class TTSegmentedControl: UIView {
         return selectedLabel
     }
     
-    private func selectedLabelForPoint(point: CGPoint) -> UILabel {
+    fileprivate func selectedLabelForPoint(_ point: CGPoint) -> UILabel {
         let allLabels = allSelectedItemLabels
         var selectedLabel = UILabel()
         let sectionWidth = self.sectionWidth
@@ -191,50 +190,50 @@ public class TTSegmentedControl: UIView {
 
 extension TTSegmentedControl {
     
-    private func configureSelectedView() {
+    fileprivate func configureSelectedView() {
         containerView.addSubview(thumbContainerView)
         thumbContainerView.addSubview(thumbView)
         
-        thumbContainerView.backgroundColor = UIColor.clearColor()
+        thumbContainerView.backgroundColor = UIColor.clear
         thumbView.backgroundColor = thumbColor
         
-        thumbView.autoresizingMask = [ .FlexibleWidth, .FlexibleHeight]
+        thumbView.autoresizingMask = [ .flexibleWidth, .flexibleHeight]
         
         if useShadow {
-            shadowLayer.shadowColor = thumbShadowColor.CGColor
-            shadowLayer.backgroundColor = thumbColor.CGColor
-            shadowLayer.shadowOffset = CGSizeMake(0, 1);
+            shadowLayer.shadowColor = thumbShadowColor.cgColor
+            shadowLayer.backgroundColor = thumbColor.cgColor
+            shadowLayer.shadowOffset = CGSize(width: 0, height: 1);
             shadowLayer.shadowOpacity = 0.6;
             shadowLayer.shadowRadius = 3
             shadowLayer.masksToBounds = false
             
-            thumbContainerView.layer.insertSublayer(shadowLayer, atIndex: 0)
+            thumbContainerView.layer.insertSublayer(shadowLayer, at: 0)
         }
         
         if thumbGradientColors != nil && self.useGradient {
-            gradientLayer.startPoint = CGPointMake(0.5, 0.0)
-            gradientLayer.endPoint = CGPointMake(0.5, 1.0)
-            gradientLayer.backgroundColor = thumbColor.CGColor
-            gradientLayer.colors = thumbGradientColors!.map({$0.CGColor})
-            thumbView.backgroundColor = UIColor.clearColor()
+            gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+            gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+            gradientLayer.backgroundColor = thumbColor.cgColor
+            gradientLayer.colors = thumbGradientColors!.map({$0.cgColor})
+            thumbView.backgroundColor = UIColor.clear
             thumbView.layer.addSublayer(gradientLayer)
         }
     }
     
-    private func configureContainerView() {
+    fileprivate func configureContainerView() {
         containerView.backgroundColor = containerBackgroundColor
         self.addSubview(containerView)
     }
     
-    private func configureSelectedLabelsView() {
-        selectedLabelsView.backgroundColor = UIColor.clearColor()
+    fileprivate func configureSelectedLabelsView() {
+        selectedLabelsView.backgroundColor = UIColor.clear
         selectedLabelsView.clipsToBounds = true
-        selectedLabelsView.userInteractionEnabled = false
+        selectedLabelsView.isUserInteractionEnabled = false
         containerView.addSubview(selectedLabelsView)
     }
     
     
-    private func configureItemsConent() {
+    fileprivate func configureItemsConent() {
         var unselectedAttributedStrings = [NSAttributedString]()
         for title in itemTitles {
             let attString = attributedStringForText(title, isSelected: false)
@@ -250,7 +249,7 @@ extension TTSegmentedControl {
         attributedSelectedTitles = attributedStrings
     }
     
-    private func configureItems() {
+    fileprivate func configureItems() {
         var i = 1
         for title in attributedDefaultTitles {
             let label = createLabelWithTitle(title, tag: i)
@@ -260,7 +259,7 @@ extension TTSegmentedControl {
         }
     }
     
-    private func configureSelectedLabelItems() {
+    fileprivate func configureSelectedLabelItems() {
         var i = 1
         for title in attributedSelectedTitles {
             let label = createLabelWithTitle(title, tag: i)
@@ -270,9 +269,9 @@ extension TTSegmentedControl {
         }
     }
     
-    private func createLabelWithTitle(attributedTitle: NSAttributedString, tag: Int) -> UILabel {
+    fileprivate func createLabelWithTitle(_ attributedTitle: NSAttributedString, tag: Int) -> UILabel {
         let label = UILabel()
-        label.textAlignment = .Center
+        label.textAlignment = .center
         label.numberOfLines = 0
         label.attributedText = attributedTitle
         label.tag = tag
@@ -280,7 +279,7 @@ extension TTSegmentedControl {
         
     }
     
-    private func attributedStringForText(text: String, isSelected: Bool) -> NSAttributedString {
+    fileprivate func attributedStringForText(_ text: String, isSelected: Bool) -> NSAttributedString {
         let textColor = isSelected ? selectedTextColor : defaultTextColor
         let textFont = isSelected ? selectedTextFont : defaultTextFont
         
@@ -293,7 +292,7 @@ extension TTSegmentedControl {
 
 extension TTSegmentedControl {
     
-    private func updateSelectedViewFrame() {
+    fileprivate func updateSelectedViewFrame() {
         thumbContainerView.frame.origin.y = 0
         thumbContainerView.frame.size.height = containerView.frame.size.height
         
@@ -311,7 +310,7 @@ extension TTSegmentedControl {
         }
     }
     
-    private func updateFrameForLables(allLabels: [UILabel]) {
+    fileprivate func updateFrameForLables(_ allLabels: [UILabel]) {
         let itemWidth = sectionWidth
         var totalLabelWidth: CGFloat = 0
         for label in allLabels {
@@ -335,18 +334,18 @@ extension TTSegmentedControl {
 
 extension TTSegmentedControl {
     
-    override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
-        var point = touch?.locationInView(self)
+        var point = touch?.location(in: self)
         isDragging = false
-        didChangeDraggingState?(.None)
+        didChangeDraggingState?(.none)
         
         if point == nil {
             return
         }
         if isSwitch && allowToChangeThumb {
             let label = labelForPoint(thumbContainerView.center)
-            let otherIndex = allItemLabels.indexOf(label) == 1 ? 0 : 1
+            let otherIndex = allItemLabels.index(of: label) == 1 ? 0 : 1
             let secondLabel = allItemLabels[otherIndex]
             point = secondLabel.center
         }
@@ -355,15 +354,15 @@ extension TTSegmentedControl {
         allowToChangeThumb = false
     }
     
-    override public func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override open func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !allowDrag {
             return
         }
         
         let touch = touches.first
-        let point = touch?.locationInView(self)
+        let point = touch?.location(in: self)
         isDragging = true
-        didChangeDraggingState?(.Dragging)
+        didChangeDraggingState?(.dragging)
         
         if point == nil {
             return
@@ -376,9 +375,9 @@ extension TTSegmentedControl {
         changeSelectedViewWidthFor(updatePoint(point!))
     }
     
-    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
-        let point = touch?.locationInView(self)
+        let point = touch?.location(in: self)
         
         if point == nil {
             return
@@ -387,12 +386,12 @@ extension TTSegmentedControl {
         allowMove = !isOutsideOfSelectionView(point!)
     }
     
-    override public func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
-        let touch = touches?.first
-        var point = touch?.locationInView(self)
+    override open func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        var point = touch?.location(in: self)
         
         isDragging = false
-        didChangeDraggingState?(.Cancel)
+        didChangeDraggingState?(.cancel)
         
         if point == nil {
             point = containerView.center
@@ -403,7 +402,7 @@ extension TTSegmentedControl {
         }
         if isSwitch && allowToChangeThumb {
             let label = labelForPoint(thumbContainerView.center)
-            let otherIndex = allItemLabels.indexOf(label) == 1 ? 0 : 1
+            let otherIndex = allItemLabels.index(of: label) == 1 ? 0 : 1
             let secondLabel = allItemLabels[otherIndex]
             point = secondLabel.center
         }
@@ -413,20 +412,20 @@ extension TTSegmentedControl {
         allowToChangeThumb = false
     }
     
-    private func didEndTouchWithPoint(point: CGPoint) {
+    fileprivate func didEndTouchWithPoint(_ point: CGPoint) {
         let label = labelForPoint(point)
         
         let index = label.tag
         let title = label.text
         
         
-        didSelectItemWith?(index: index, title: title)
+        didSelectItemWith?(index, title)
         if title == nil {
             return
         }
     }
     
-    private func isOutsideOfSelectionView(point: CGPoint) -> Bool {
+    fileprivate func isOutsideOfSelectionView(_ point: CGPoint) -> Bool {
         if thumbContainerView.frame.contains(point) {
             return false
         }
@@ -438,32 +437,32 @@ extension TTSegmentedControl {
 
 extension TTSegmentedControl {
     
-    private func configureViewBounds() {
-        let unselectedHeight = attributedDefaultTitles.map({$0.stringSize().height}).sort({$0 < $1}).last!
-        let selectedHeight = attributedSelectedTitles.map({$0.stringSize().height}).sort({$0 < $1}).last!
-        let unselectedWidth = attributedDefaultTitles.map({$0.stringSize().width}).sort({$0 < $1}).last!
-        let selectedWidth = attributedSelectedTitles.map({$0.stringSize().width}).sort({$0 < $1}).last!
+    fileprivate func configureViewBounds() {
+        let unselectedHeight = attributedDefaultTitles.map({$0.stringSize().height}).sorted(by: {$0 < $1}).last!
+        let selectedHeight = attributedSelectedTitles.map({$0.stringSize().height}).sorted(by: {$0 < $1}).last!
+        let unselectedWidth = attributedDefaultTitles.map({$0.stringSize().width}).sorted(by: {$0 < $1}).last!
+        let selectedWidth = attributedSelectedTitles.map({$0.stringSize().width}).sorted(by: {$0 < $1}).last!
         
         frame.size.width = max(frame.size.width, CGFloat(attributedDefaultTitles.count) * (max(unselectedWidth, selectedWidth) + padding.width))
         frame.size.height = max(frame.size.height, max(unselectedHeight + padding.height, selectedHeight + padding.height))
         containerView.frame = self.bounds
     }
     
-    private func updatePoint(point: CGPoint) -> CGPoint {
-        return CGPointMake(max(minPoint.x - 0.1, min(maxPoint.x + 0.1, point.x)), containerView.frame.size.height/2)
+    fileprivate func updatePoint(_ point: CGPoint) -> CGPoint {
+        return CGPoint(x: max(minPoint.x - 0.1, min(maxPoint.x + 0.1, point.x)), y: containerView.frame.size.height/2)
     }
     
-    private func selectItemForPoint(point: CGPoint) {
+    fileprivate func selectItemForPoint(_ point: CGPoint) {
         let label = labelForPoint(point)
         updateSelectedViewFrameForLabel(label)
     }
     
-    private func updateSelectedViewFrameForLabel(label: UILabel) {
+    fileprivate func updateSelectedViewFrameForLabel(_ label: UILabel) {
         thumbContainerView.frame.size.width = label.frame.size.width + padding.width
         
     }
     
-    private func changeThumbFrameForPoint(point: CGPoint, animated: Bool) {
+    fileprivate func changeThumbFrameForPoint(_ point: CGPoint, animated: Bool) {
         lastPointX = point.x
         let label = labelForPoint(point)
         let center = label.center
@@ -476,7 +475,7 @@ extension TTSegmentedControl {
         
         CATransaction.begin()
         CATransaction.setAnimationDuration(animated ? 0.4 : 0.0)
-        shadowLayer.frame = CGRectMake(0, thumbPadding, width, height - 2 * thumbPadding)
+        shadowLayer.frame = CGRect(x: 0, y: thumbPadding, width: width, height: height - 2 * thumbPadding)
         gradientLayer.frame = shadowLayer.bounds
         CATransaction.commit()
         
@@ -484,32 +483,32 @@ extension TTSegmentedControl {
             thumbContainerView.frame.size.width = width
             thumbContainerView.center = center
             
-            let frame = CGRectMake(originX, 0, width, height)
+            let frame = CGRect(x: originX, y: 0, width: width, height: height)
             updateSelectedLabelsViewFrame(frame)
             
             lastSelectedViewWidth = thumbContainerView.frame.size.width
             return
         }
         
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             self.thumbContainerView.frame.size.width = width
             self.thumbContainerView.center = center
             
-            let frame = CGRectMake(originX, 0, width, height)
+            let frame = CGRect(x: originX, y: 0, width: width, height: height)
             self.updateSelectedLabelsViewFrame(frame)
             
             
-        }) { (completed) in
+        }, completion: { (completed) in
             self.lastSelectedViewWidth = self.thumbContainerView.frame.size.width
-        }
+        }) 
     }
     
-    private func selectedViewWidthForPoint(point: CGPoint)-> CGFloat {
+    fileprivate func selectedViewWidthForPoint(_ point: CGPoint)-> CGFloat {
         if !allowChangeThumbWidth {
             return sectionWidth - 2 * thumbPadding
         }
         let label = labelForPoint(point)
-        let index = allItemLabels.indexOf(label)!
+        let index = allItemLabels.index(of: label)!
         var width = label.frame.size.width + padding.height
         if index == 0 {
             width = 2 * label.center.x
@@ -519,7 +518,7 @@ extension TTSegmentedControl {
         return max(width, containerView.frame.size.height) - thumbPadding * 2
     }
     
-    private func changeSelectedViewWidthFor(point: CGPoint) {
+    fileprivate func changeSelectedViewWidthFor(_ point: CGPoint) {
         
         let isGoingRight = lastPointX < point.x
         lastPointX = point.x
@@ -573,15 +572,15 @@ extension TTSegmentedControl {
         
         CATransaction.begin()
         CATransaction.setAnimationDuration(0.0)
-        shadowLayer.frame = CGRectMake(0, thumbPadding, thumbView.bounds.size.width, thumbView.frame.size.height)
+        shadowLayer.frame = CGRect(x: 0, y: thumbPadding, width: thumbView.bounds.size.width, height: thumbView.frame.size.height)
         gradientLayer.frame = shadowLayer.bounds
         CATransaction.commit()
     }
     
-    private func labelsForPoint(point: CGPoint) -> (leftLabel: UILabel, rightLabel: UILabel){
+    fileprivate func labelsForPoint(_ point: CGPoint) -> (leftLabel: UILabel, rightLabel: UILabel){
         let label = labelForPoint(point)
         var secondLabel: UILabel!
-        let index = allItemLabels.indexOf(label)!
+        let index = allItemLabels.index(of: label)!
         if point.x < label.center.x && index != 0 || index == (allItemLabels.count - 1) {
             secondLabel = allItemLabels[index - 1]
             return (leftLabel: secondLabel, rightLabel: label)
@@ -592,7 +591,7 @@ extension TTSegmentedControl {
         return (leftLabel: label, rightLabel: label)
     }
     
-    private func updateSelectedLabelsViewFrame(frame: CGRect) {
+    fileprivate func updateSelectedLabelsViewFrame(_ frame: CGRect) {
         var bounds = selectedLabelsView.bounds
         bounds.size.width = frame.size.width
         bounds.origin.x = frame.origin.x
@@ -605,11 +604,11 @@ extension TTSegmentedControl {
     
     var currentIndex: Int {
         let label = labelForPoint(thumbContainerView.center)
-        let index = allItemLabels.indexOf(label)!
+        let index = allItemLabels.index(of: label)!
         return index
     }
     
-    public func selectItemAt(index index: Int, animated: Bool = false) {
+    public func selectItemAt(index: Int, animated: Bool = false) {
         if !isConfigurated {
             selectInitialItem = index
             return
@@ -618,7 +617,7 @@ extension TTSegmentedControl {
         changeThumbFrameForPoint(label.center, animated: animated)
     }
     
-    func changeTitle(title: String, atIndex: Int) {
+    func changeTitle(_ title: String, atIndex: Int) {
         if !isConfigurated {
             return
         }
@@ -629,13 +628,13 @@ extension TTSegmentedControl {
         label.attributedText = attributedStringForText(title, isSelected: false)
         selecteLabel.attributedText = attributedStringForText(title, isSelected: true)
         
-        let labelSize = label.sizeThatFits(CGSizeMake(CGFloat.max, CGFloat.max))
+        let labelSize = label.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude))
         label.frame.size.width = min(sectionWidth, labelSize.width)
         label.frame.size.height = min(thumbView.frame.size.height, labelSize.height)
         label.frame.origin.x = ((sectionWidth * CGFloat(tag)) - (0.5 * sectionWidth)) - 0.5 * label.frame.width
         label.frame.origin.y = (containerView.frame.size.height - label.frame.size.height)/2
         
-        let selectedLabelSize = selecteLabel.sizeThatFits(CGSizeMake(CGFloat.max, CGFloat.max))
+        let selectedLabelSize = selecteLabel.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude))
         selecteLabel.frame.size.width = min(sectionWidth, selectedLabelSize.width)
         selecteLabel.frame.size.height = min(thumbView.frame.size.height, selectedLabelSize.height)
         selecteLabel.frame.origin.x = ((sectionWidth * CGFloat(tag)) - (0.5 * sectionWidth)) - 0.5 * selecteLabel.frame.size.width
@@ -650,7 +649,7 @@ extension TTSegmentedControl {
         
     }
     
-    func changeAttributedTitle(title: NSAttributedString, selectedTile: NSAttributedString?, atIndex: Int) {
+    func changeAttributedTitle(_ title: NSAttributedString, selectedTile: NSAttributedString?, atIndex: Int) {
         if !isConfigurated {
             return
         }
@@ -661,13 +660,13 @@ extension TTSegmentedControl {
         label.attributedText = title
         selecteLabel.attributedText = selectedTile
         
-        let labelSize = label.sizeThatFits(CGSizeMake(CGFloat.max, containerView.frame.size.height - 5))
+        let labelSize = label.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: containerView.frame.size.height - 5))
         label.frame.size.width = min(sectionWidth, labelSize.width)
         label.frame.size.height = min(thumbView.frame.size.height, labelSize.height)
         label.frame.origin.x = ((sectionWidth * CGFloat(tag)) - (0.5 * sectionWidth)) - 0.5 * label.frame.width
         label.frame.origin.y = (containerView.frame.size.height - label.frame.size.height)/2
         
-        let selectedLabelSize = selecteLabel.sizeThatFits(CGSizeMake(CGFloat.max, containerView.frame.size.height - 5))
+        let selectedLabelSize = selecteLabel.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: containerView.frame.size.height - 5))
         selecteLabel.frame.size.width = min(sectionWidth, selectedLabelSize.width)
         selecteLabel.frame.size.height = min(thumbView.frame.size.height, selectedLabelSize.height)
         selecteLabel.frame.origin.x = ((sectionWidth * CGFloat(tag)) - (0.5 * sectionWidth)) - 0.5 * selecteLabel.frame.size.width
@@ -683,7 +682,7 @@ extension TTSegmentedControl {
         
     }
     
-    func titleForItemAtIndex(index: Int) -> String {
+    func titleForItemAtIndex(_ index: Int) -> String {
         if !isConfigurated {
             return ""
         }
@@ -691,19 +690,19 @@ extension TTSegmentedControl {
         return attributedDefaultTitles[index].string
     }
     
-    func attributedTitleAtIndex(index: Int) -> (normal: NSAttributedString, selected: NSAttributedString) {
+    func attributedTitleAtIndex(_ index: Int) -> (normal: NSAttributedString, selected: NSAttributedString) {
         return (normal: attributedDefaultTitles[index], selected: attributedSelectedTitles[index])
     }
     
-    func changeThumbShadowColor(color: UIColor) {
+    func changeThumbShadowColor(_ color: UIColor) {
         if !isConfigurated {
             return
         }
         thumbShadowColor = color
-        shadowLayer.shadowColor = color.CGColor
+        shadowLayer.shadowColor = color.cgColor
     }
     
-    func changeThumbColor(color: UIColor) {
+    func changeThumbColor(_ color: UIColor) {
         if !isConfigurated {
             return
         }
@@ -711,7 +710,7 @@ extension TTSegmentedControl {
         thumbView.backgroundColor = color
     }
     
-    func changeBackgroundColor(color: UIColor) {
+    func changeBackgroundColor(_ color: UIColor) {
         if !isConfigurated {
             return
         }
@@ -719,9 +718,9 @@ extension TTSegmentedControl {
         containerView.backgroundColor = color
     }
     
-    func changeThumbGradientColors(colors: [UIColor]) {
+    func changeThumbGradientColors(_ colors: [UIColor]) {
         thumbGradientColors = colors
-        gradientLayer.colors = thumbGradientColors!.map({$0.CGColor})
+        gradientLayer.colors = thumbGradientColors!.map({$0.cgColor})
     }
 }
 
@@ -731,12 +730,12 @@ extension TTSegmentedControl {
 
 extension NSAttributedString {
     func stringSize() -> CGSize {
-        return self.boundingRectWithSize(CGSizeMake(CGFloat.max, CGFloat.max), options: .UsesLineFragmentOrigin, context: nil).size
+        return self.boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: nil).size
     }
 }
 
 extension UIFont {
-    class func helveticaNeueLight(size: CGFloat) -> UIFont {
+    class func helveticaNeueLight(_ size: CGFloat) -> UIFont {
         return UIFont(name: "HelveticaNeue-Light", size: size)!
     }
 }

@@ -14,27 +14,27 @@ func UIColorFromRGB(rgbValue: UInt) -> UIColor {
     )
 }
 
-var options = TTSegmentedControl.Options()
 
-options.defaultTextColor = UIColor.whiteColor()
-options.selectedTextColor = UIColor.blackColor()
-options.thumbColor = UIColor.whiteColor()
-options.thumbGradientColors = []
-options.useShadow = true
-options.containerBackgroundColor = UIColorFromRGB(0x3DC120)
-options.cornerRadius = 5
 
 let mainView = UIView(frame: CGRect(x: 0, y: 0, width: 350, height: 667))
-mainView.backgroundColor = UIColor.whiteColor()
+mainView.backgroundColor = UIColor.white
 let segmentControl = TTSegmentedControl()
 
-segmentControl.options = options
+segmentControl.defaultTextColor = UIColor.white
+segmentControl.selectedTextColor = UIColor.black
+segmentControl.thumbColor = UIColor.white
+segmentControl.thumbGradientColors = []
+segmentControl.useShadow = true
+segmentControl.containerBackgroundColor = UIColorFromRGB(rgbValue: 0x3DC120)
+segmentControl
+    .cornerRadius = 5
+
 segmentControl.frame = CGRect(x: 50, y: 200, width: 100, height: 50)
 
 
 
 segmentControl.allowChangeThumbWidth = false
-segmentControl.options.padding.width = 30
+segmentControl.padding.width = 30
 segmentControl.itemTitles = ["Item1", "Item2", "Item3", "Item4"]
 segmentControl.didSelectItemWith = { (index, title) -> () in
     print("Selected item \(index)")

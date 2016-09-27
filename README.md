@@ -27,7 +27,7 @@ pod 'TTSegmentedControl'
 
 _Swift 2.x_
 ```ruby
-pod 'TTSegmentedControl', '0.1'
+pod 'TTSegmentedControl', '0.1.1'
 ```
 
 _Manually_

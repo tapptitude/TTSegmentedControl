@@ -22,9 +22,9 @@ _CocoaPods_
 pod 'TTSegmentedControl'
 ```
 
-_Swift 2.0_
+_Swift 2.x_
 ```ruby
-pod 'TTSegmentedControl', '~> 0.1'
+pod 'TTSegmentedControl', '0.1'
 ```
 
 _Manually_

@@ -1,5 +1,5 @@
 # TTSegmentedControl
-An elegant, animated and customizable segmented control for iOs.
+An elegant, animated and customizable segmented control for iOS.
 
 ![](Resources/TTSegmentedControl.gif)
 
@@ -7,7 +7,7 @@ An elegant, animated and customizable segmented control for iOs.
 # Features:
 - Variable number of items 
 - Animated transition
-- Fully configurable(color, gradient, shadow, corner radius)
+- Fully configurable (color, gradient, shadow, corner radius)
 - Designable into Interface Builder
 
 ## Requirements
@@ -77,7 +77,7 @@ segmentedControl.useShadow = true
 
 ## Contribution
 
-Feel free to Fork, submit Pull Requests or send me your feedback and suggestions!
+Feel free to Fork, submit Pull Requests or send us your feedback and suggestions!
 
 
 ## License

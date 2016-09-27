@@ -58,7 +58,13 @@ Add a UIView and set it's class to TTSegmentedControl. You can customize the con
 
 ## How to customize?
 
-In order to customize the segmented control you'll have to edit the option property.
+Checkout the playground and see how to implement and customize the SegmentedControl.
+
+```
+pod try TTSegmentedControl
+```
+
+In order to customize the segmented control you'll have to edit it's properties.
 
 ```
 segmentedControl.defaultTextColor = UIColor.blackColor()

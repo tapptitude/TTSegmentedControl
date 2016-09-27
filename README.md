@@ -18,13 +18,16 @@ An elegant, animated and customizable segmented control for iOs.
 ## Installation
 
 _CocoaPods_
+
+_Swift 3.0_
+
 ```ruby
 pod 'TTSegmentedControl'
 ```
 
-_Swift 2.0_
+_Swift 2.x_
 ```ruby
-pod 'TTSegmentedControl', '~> 0.1'
+pod 'TTSegmentedControl', '0.1'
 ```
 
 _Manually_

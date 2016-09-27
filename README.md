@@ -60,13 +60,13 @@ Add a UIView and set it's class to TTSegmentedControl. You can customize the con
 
 Checkout the playground and see how to implement and customize the SegmentedControl.
 
-```
+```ruby
 pod try TTSegmentedControl
 ```
 
 In order to customize the segmented control you'll have to edit it's properties.
 
-```
+```swift
 segmentedControl.defaultTextColor = UIColor.blackColor()
 segmentedControl.selectedTextColor = UIColor.whiteColor()
 segmentedControl.thumbGradientColors = [UIColor.redColor(), UIColor.blueColor()]

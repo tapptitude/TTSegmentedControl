@@ -5,7 +5,7 @@ import Foundation
 import XCPlayground
 
 
-func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+func UIColorFromRGB(_ rgbValue: UInt) -> UIColor {
     return UIColor(
         red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
         green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
@@ -25,7 +25,7 @@ segmentControl.selectedTextColor = UIColor.black
 segmentControl.thumbColor = UIColor.white
 segmentControl.thumbGradientColors = []
 segmentControl.useShadow = true
-segmentControl.containerBackgroundColor = UIColorFromRGB(rgbValue: 0x3DC120)
+segmentControl.containerBackgroundColor = UIColorFromRGB(0x3DC120)
 segmentControl
     .cornerRadius = 5
 

@@ -109,7 +109,7 @@ open class TTSegmentedControl: UIView {
         updateFrameForLables(allSelectedItemLabels)
         updateSelectedViewFrame()
         
-        selectItemAt(index:selectInitialItem)
+        selectItemAt(selectInitialItem)
         _ = self.subviews.map({$0.isExclusiveTouch = true})
         
     }
@@ -608,7 +608,7 @@ extension TTSegmentedControl {
         return index
     }
     
-    public func selectItemAt(index: Int, animated: Bool = false) {
+    public func selectItemAt(_ index: Int, animated: Bool = false) {
         if !isConfigurated {
             selectInitialItem = index
             return

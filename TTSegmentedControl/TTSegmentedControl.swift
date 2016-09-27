@@ -8,6 +8,7 @@
 
 import UIKit
 
+//TEST VERSION 3//
 
 @IBDesignable
 public class TTSegmentedControl: UIView {

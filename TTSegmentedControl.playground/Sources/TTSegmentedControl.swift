@@ -250,7 +250,7 @@ extension TTSegmentedControl {
     }
     
     fileprivate func configureItems() {
-        var i = 1
+        var i = 0
         for title in attributedDefaultTitles {
             let label = createLabelWithTitle(title, tag: i)
             containerView.addSubview(label)
@@ -260,7 +260,7 @@ extension TTSegmentedControl {
     }
     
     fileprivate func configureSelectedLabelItems() {
-        var i = 1
+        var i = 0
         for title in attributedSelectedTitles {
             let label = createLabelWithTitle(title, tag: i)
             selectedLabelsView.addSubview(label)

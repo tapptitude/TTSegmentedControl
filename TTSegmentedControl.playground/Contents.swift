@@ -54,6 +54,9 @@ segmentedC3.useGradient = true
 segmentedC3.useShadow = true
 segmentedC3.thumbShadowColor = TTSegmentedControl.UIColorFromRGB(0x22C6E7)
 segmentedC3.thumbGradientColors = [ TTSegmentedControl.UIColorFromRGB(0x25D0EC), TTSegmentedControl.UIColorFromRGB(0x1EA3D8)]
+segmentedC3.didSelectItemWith = { index, title in
+    print(index)
+}
 
 
 //SegmentedControl 4

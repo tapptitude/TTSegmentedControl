@@ -70,6 +70,8 @@ open class TTSegmentedControl: UIView {
     fileprivate var allowToChangeThumb = false
     fileprivate var allowMove = true
     fileprivate var selectInitialItem = 0
+    fileprivate var currentSelectedIndex = 0
+    
     
     open override func awakeFromNib() {
         super.awakeFromNib()
@@ -83,23 +85,23 @@ open class TTSegmentedControl: UIView {
         super.init(coder: aDecoder)
     }
     
+    
     open override func layoutSubviews() {
         super.layoutSubviews()
         
-        if isConfigurated {
-            return
+        if !isConfigurated {
+            configureItemsConent()
+            configureViewBounds()
+            
+            configureContainerView()
+            configureItems()
+            configureSelectedView()
+            configureSelectedLabelsView()
+            configureSelectedLabelItems()
+            
+            isConfigurated = true
         }
         
-        isConfigurated = true
-        
-        configureItemsConent()
-        configureViewBounds()
-        
-        configureContainerView()
-        configureItems()
-        configureSelectedView()
-        configureSelectedLabelsView()
-        configureSelectedLabelItems()
         
         containerView.frame = bounds
         containerView.layer.cornerRadius = cornerRadius < 0 ? 0.5 * containerView.frame.size.height : cornerRadius
@@ -109,7 +111,7 @@ open class TTSegmentedControl: UIView {
         updateFrameForLables(allSelectedItemLabels)
         updateSelectedViewFrame()
         
-        selectItemAt(index:selectInitialItem)
+        selectItemAt(index:currentSelectedIndex)
         _ = self.subviews.map({$0.isExclusiveTouch = true})
         
     }
@@ -417,7 +419,7 @@ extension TTSegmentedControl {
         
         let index = label.tag
         let title = label.text
-        
+        self.currentSelectedIndex = index
         
         didSelectItemWith?(index, title)
         if title == nil {
@@ -500,7 +502,7 @@ extension TTSegmentedControl {
             
         }, completion: { (completed) in
             self.lastSelectedViewWidth = self.thumbContainerView.frame.size.width
-        }) 
+        })
     }
     
     fileprivate func selectedViewWidthForPoint(_ point: CGPoint)-> CGFloat {
@@ -607,8 +609,8 @@ extension TTSegmentedControl {
             return 0
         }
         let label = labelForPoint(thumbContainerView.center)
-        let index = allItemLabels.index(of: label)!
-        return index
+        let index = allItemLabels.index(of: label)
+        return index ?? 0
     }
     
     public func selectItemAt(index: Int, animated: Bool = false) {

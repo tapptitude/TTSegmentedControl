@@ -1,10 +1,13 @@
 # TTSegmentedControl
+
 An elegant, animated and customizable segmented control for iOS.
+
+This project is maintained by Tapptitude, a Product-Focused Mobile Development Agency based in Cluj-Napoca, Romania, and London, the UK, specialised in building high-quality Native Mobile Apps on iOS & Android. 
 
 ![](Resources/TTSegmentedControl.gif)
 
 
-# Features:
+## Features:
 - Variable number of items 
 - Animated transition
 - Fully configurable (color, gradient, shadow, corner radius)

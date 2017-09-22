@@ -1,6 +1,8 @@
 # TTSegmentedControl
-[![CocoaPods](https://img.shields.io/cocoapods/p/TTSegmentedControl.svg)](https://cocoapods.org/pods/TTSegmentedControl)
-[![CocoaPods](https://img.shields.io/cocoapods/v/TTSegmentedControl.svg)](https://cocoapods.org/pods/TTSegmentedControl)
+![](https://img.shields.io/badge/Swift-3.0-green.svg?style=flat)
+[![Platform](https://img.shields.io/cocoapods/p/TTSegmentedControl.svg)](https://cocoapods.org/pods/TTSegmentedControl)
+[![Version](https://img.shields.io/cocoapods/v/TTSegmentedControl.svg)](https://cocoapods.org/pods/TTSegmentedControl)
+[![License](https://img.shields.io/cocoapods/l/TTSegmentedControl.svg?style=flat)](http://cocoapods.org/pods/TTSegmentedControl)
 [![Twitter](https://img.shields.io/badge/Twitter-@Tapptitude-blue.svg?style=flat)](http://twitter.com/Tapptitude)
 
 ## About

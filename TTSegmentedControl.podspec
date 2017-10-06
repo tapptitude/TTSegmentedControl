@@ -7,7 +7,7 @@ s.license = 'MIT'
 s.name = "TTSegmentedControl"
 s.summary = "An elegant, animated and customizable segmented control for iOS."
 s.requires_arc = true
-s.version = "0.3.1"
+s.version = "0.4.0"
 s.author = { "Igor Dumitru" => "igor.dumitru@tapptitude.com" }
 s.homepage = "https://tapptitude.com/"
 s.framework = "UIKit"

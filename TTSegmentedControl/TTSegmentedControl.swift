@@ -285,8 +285,8 @@ extension TTSegmentedControl {
         let textColor = isSelected ? selectedTextColor : defaultTextColor
         let textFont = isSelected ? selectedTextFont : defaultTextFont
         
-        let attributes = [NSForegroundColorAttributeName : textColor,
-                          NSFontAttributeName : textFont]
+        let attributes = [NSAttributedStringKey.foregroundColor : textColor,
+                          NSAttributedStringKey.font : textFont]
         let attributedString = NSMutableAttributedString(string: text, attributes: attributes)
         return attributedString
     }
@@ -744,3 +744,4 @@ extension UIFont {
         return UIFont(name: "HelveticaNeue-Light", size: size)!
     }
 }
+

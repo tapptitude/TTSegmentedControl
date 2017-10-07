@@ -28,15 +28,27 @@ This project is maintained by Tapptitude, a Product-Focused Mobile Development A
 
 _CocoaPods_
 
-_Swift 3.0_
+_Swift 4.0_
 
 ```ruby
 pod 'TTSegmentedControl'
 ```
 
+_Swift 3.X_
+
+```ruby
+pod 'TTSegmentedControl', '~>0.3'
+```
+
 _Swift 2.x_
 ```ruby
 pod 'TTSegmentedControl', '0.1.1'
+```
+
+_Carthage_
+
+```
+github "tapptitude/TTSegmentedControl"
 ```
 
 _Manually_

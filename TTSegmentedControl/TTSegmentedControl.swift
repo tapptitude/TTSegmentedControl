@@ -35,6 +35,14 @@ public class TTSegmentedControl: UIView {
         case cancel
     }
     
+    open var animationOptions:BounceOptions = BounceOptions()
+    open var hasBounceAnimation:Bool = false
+    public struct BounceOptions {
+        var springDamping:CGFloat = 0.7
+        var springInitialVelocity:CGFloat = 0.2
+        var options:UIViewAnimationOptions = .curveEaseInOut
+    }
+    
     open var itemTitles: [String] = ["Item1", "Item2", "Item3"]
     
     var attributedDefaultTitles: [NSAttributedString]!
@@ -502,17 +510,33 @@ extension TTSegmentedControl {
             return
         }
         
-        UIView.animate(withDuration: 0.3, animations: {
+        self.animate({
             self.thumbContainerView.frame.size.width = width
             self.thumbContainerView.center = center
             
             let frame = CGRect(x: originX, y: 0, width: width, height: height)
             self.updateSelectedLabelsViewFrame(frame)
-            
-            
-        }, completion: { (completed) in
+        }) { (completed) in
             self.lastSelectedViewWidth = self.thumbContainerView.frame.size.width
-        })
+        }
+    }
+    
+    fileprivate func animate(_ block:@escaping () -> Void, completion:@escaping (Bool)-> Void) {
+        
+        if hasBounceAnimation {
+            UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: animationOptions.springDamping, initialSpringVelocity: animationOptions.springInitialVelocity, options: animationOptions.options  , animations: {
+                block()
+            }) { (completed) in
+                completion(completed)
+            }
+        } else {
+            UIView.animate(withDuration: 0.3, animations: {
+               block()
+            }, completion: { (completed) in
+                completion(completed)
+            })
+        }
+
     }
     
     fileprivate func selectedViewWidthForPoint(_ point: CGPoint)-> CGFloat {

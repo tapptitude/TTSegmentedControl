@@ -19,7 +19,8 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        segmentedControl.noItemSelected = true 
+        segmentedControl.noItemSelected = true
+        segmentedControl.hasBounceAnimation = true 
     }
     
 }

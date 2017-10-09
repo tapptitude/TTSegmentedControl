@@ -10,7 +10,7 @@ import UIKit
 
 
 @IBDesignable
-open class TTSegmentedControl: UIView {
+public class TTSegmentedControl: UIView {
     
     //Configure the options to for a custom design
     @IBInspectable open var defaultTextFont: UIFont = UIFont.helveticaNeueLight(12)
@@ -36,6 +36,7 @@ open class TTSegmentedControl: UIView {
     }
     
     open var itemTitles: [String] = ["Item1", "Item2", "Item3"]
+    
     var attributedDefaultTitles: [NSAttributedString]!
     var attributedSelectedTitles: [NSAttributedString]!
     /*
@@ -72,6 +73,12 @@ open class TTSegmentedControl: UIView {
     fileprivate var selectInitialItem = 0
     fileprivate var currentSelectedIndex = 0
     
+    open var noItemSelected:Bool = false {
+        didSet {
+            self.thumbView.isHidden = noItemSelected
+            self.selectedLabelsView.isHidden = noItemSelected
+        }
+    }
     
     open override func awakeFromNib() {
         super.awakeFromNib()
@@ -101,7 +108,6 @@ open class TTSegmentedControl: UIView {
             
             isConfigurated = true
         }
-        
         
         containerView.frame = bounds
         containerView.layer.cornerRadius = cornerRadius < 0 ? 0.5 * containerView.frame.size.height : cornerRadius
@@ -465,6 +471,10 @@ extension TTSegmentedControl {
     }
     
     fileprivate func changeThumbFrameForPoint(_ point: CGPoint, animated: Bool) {
+        
+        selectedLabelsView.isHidden = false
+        thumbView.isHidden = false
+        
         lastPointX = point.x
         let label = labelForPoint(point)
         let center = label.center
@@ -619,6 +629,7 @@ extension TTSegmentedControl {
             return
         }
         let label = allItemLabels[min(index, attributedDefaultTitles.count)]
+        selectedLabelsView.isHidden = noItemSelected
         changeThumbFrameForPoint(label.center, animated: animated)
     }
     

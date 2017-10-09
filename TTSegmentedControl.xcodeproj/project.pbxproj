@@ -6,15 +6,42 @@
 	objectVersion = 48;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8193E5D41F8A70A900E1604E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8193E5D31F8A70A900E1604E /* AppDelegate.swift */; };
+		8193E5D61F8A70A900E1604E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8193E5D51F8A70A900E1604E /* ViewController.swift */; };
+		8193E5D91F8A70A900E1604E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8193E5D71F8A70A900E1604E /* Main.storyboard */; };
+		8193E5DB1F8A70A900E1604E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8193E5DA1F8A70A900E1604E /* Assets.xcassets */; };
+		8193E5DE1F8A70A900E1604E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8193E5DC1F8A70A900E1604E /* LaunchScreen.storyboard */; };
+		8193E5E71F8A725700E1604E /* TTSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81535A881F88BD2A00398A9A /* TTSegmentedControl.swift */; };
+		8193E5E81F8A725800E1604E /* TTSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81535A881F88BD2A00398A9A /* TTSegmentedControl.swift */; };
+		8193E5E91F8A725B00E1604E /* TTSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 81535A871F88BD2A00398A9A /* TTSegmentedControl.h */; };
+		8193E5EA1F8A725F00E1604E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81535A891F88BD2A00398A9A /* Info.plist */; };
+		8193E5EB1F8A725F00E1604E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81535A891F88BD2A00398A9A /* Info.plist */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		81535A791F88BC7300398A9A /* TTSegmentedControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TTSegmentedControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81535A871F88BD2A00398A9A /* TTSegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTSegmentedControl.h; sourceTree = "<group>"; };
 		81535A881F88BD2A00398A9A /* TTSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSegmentedControl.swift; sourceTree = "<group>"; };
 		81535A891F88BD2A00398A9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8193E5D11F8A70A900E1604E /* TTSegmentedControlSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTSegmentedControlSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8193E5D31F8A70A900E1604E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8193E5D51F8A70A900E1604E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8193E5D81F8A70A900E1604E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8193E5DA1F8A70A900E1604E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8193E5DD1F8A70A900E1604E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8193E5DF1F8A70A900E1604E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		81535A751F88BC7300398A9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8193E5CE1F8A70A900E1604E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -28,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				81535A7B1F88BC7300398A9A /* TTSegmentedControl */,
+				8193E5D21F8A70A900E1604E /* TTSegmentedControlSample */,
 				81535A7A1F88BC7300398A9A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -36,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				81535A791F88BC7300398A9A /* TTSegmentedControl.framework */,
+				8193E5D11F8A70A900E1604E /* TTSegmentedControlSample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -50,6 +79,19 @@
 			path = TTSegmentedControl;
 			sourceTree = "<group>";
 		};
+		8193E5D21F8A70A900E1604E /* TTSegmentedControlSample */ = {
+			isa = PBXGroup;
+			children = (
+				8193E5D31F8A70A900E1604E /* AppDelegate.swift */,
+				8193E5D51F8A70A900E1604E /* ViewController.swift */,
+				8193E5D71F8A70A900E1604E /* Main.storyboard */,
+				8193E5DA1F8A70A900E1604E /* Assets.xcassets */,
+				8193E5DC1F8A70A900E1604E /* LaunchScreen.storyboard */,
+				8193E5DF1F8A70A900E1604E /* Info.plist */,
+			);
+			path = TTSegmentedControlSample;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -57,6 +99,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8193E5E91F8A725B00E1604E /* TTSegmentedControl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,18 +124,40 @@
 			productReference = 81535A791F88BC7300398A9A /* TTSegmentedControl.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		8193E5D01F8A70A900E1604E /* TTSegmentedControlSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8193E5E21F8A70A900E1604E /* Build configuration list for PBXNativeTarget "TTSegmentedControlSample" */;
+			buildPhases = (
+				8193E5CD1F8A70A900E1604E /* Sources */,
+				8193E5CE1F8A70A900E1604E /* Frameworks */,
+				8193E5CF1F8A70A900E1604E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TTSegmentedControlSample;
+			productName = TTSegmentedControlSample;
+			productReference = 8193E5D11F8A70A900E1604E /* TTSegmentedControlSample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		81535A701F88BC7300398A9A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Tapptitude;
 				TargetAttributes = {
 					81535A781F88BC7300398A9A = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+					};
+					8193E5D01F8A70A900E1604E = {
+						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -103,6 +168,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 81535A6F1F88BC7300398A9A;
 			productRefGroup = 81535A7A1F88BC7300398A9A /* Products */;
@@ -110,6 +176,7 @@
 			projectRoot = "";
 			targets = (
 				81535A781F88BC7300398A9A /* TTSegmentedControl */,
+				8193E5D01F8A70A900E1604E /* TTSegmentedControlSample */,
 			);
 		};
 /* End PBXProject section */
@@ -119,6 +186,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8193E5EA1F8A725F00E1604E /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8193E5CF1F8A70A900E1604E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8193E5EB1F8A725F00E1604E /* Info.plist in Resources */,
+				8193E5DE1F8A70A900E1604E /* LaunchScreen.storyboard in Resources */,
+				8193E5DB1F8A70A900E1604E /* Assets.xcassets in Resources */,
+				8193E5D91F8A70A900E1604E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,10 +208,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8193E5E71F8A725700E1604E /* TTSegmentedControl.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8193E5CD1F8A70A900E1604E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8193E5E81F8A725800E1604E /* TTSegmentedControl.swift in Sources */,
+				8193E5D61F8A70A900E1604E /* ViewController.swift in Sources */,
+				8193E5D41F8A70A900E1604E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8193E5D71F8A70A900E1604E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8193E5D81F8A70A900E1604E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8193E5DC1F8A70A900E1604E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8193E5DD1F8A70A900E1604E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		81535A7F1F88BC7300398A9A /* Debug */ = {
@@ -293,6 +402,36 @@
 			};
 			name = Release;
 		};
+		8193E5E01F8A70A900E1604E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CZT2X995U5;
+				INFOPLIST_FILE = TTSegmentedControlSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tapptitude.TTSegmentedControlSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8193E5E11F8A70A900E1604E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CZT2X995U5;
+				INFOPLIST_FILE = TTSegmentedControlSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tapptitude.TTSegmentedControlSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -310,6 +449,15 @@
 			buildConfigurations = (
 				81535A821F88BC7300398A9A /* Debug */,
 				81535A831F88BC7300398A9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8193E5E21F8A70A900E1604E /* Build configuration list for PBXNativeTarget "TTSegmentedControlSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8193E5E01F8A70A900E1604E /* Debug */,
+				8193E5E11F8A70A900E1604E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,4 +1,5 @@
 # TTSegmentedControl
+![](https://img.shields.io/badge/Swift-4.0-green.svg?style=flat)
 ![](https://img.shields.io/badge/Swift-3.0-green.svg?style=flat)
 [![Platform](https://img.shields.io/cocoapods/p/TTSegmentedControl.svg)](https://cocoapods.org/pods/TTSegmentedControl)
 [![Version](https://img.shields.io/cocoapods/v/TTSegmentedControl.svg)](https://cocoapods.org/pods/TTSegmentedControl)
@@ -16,6 +17,7 @@ This project is maintained by Tapptitude, a Product-Focused Mobile Development A
 ## Features:
 - Variable number of items 
 - Animated transition
+- Bounce animation
 - Fully configurable (color, gradient, shadow, corner radius)
 - Designable into Interface Builder
 

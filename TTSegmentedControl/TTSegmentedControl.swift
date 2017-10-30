@@ -82,7 +82,7 @@ public class TTSegmentedControl: UIView {
     fileprivate var currentSelectedIndex = 0
     
     open var noItemSelected:Bool = false {
-        didSet {
+        didSet {            
             self.thumbView.isHidden = noItemSelected
             self.selectedLabelsView.isHidden = noItemSelected
         }

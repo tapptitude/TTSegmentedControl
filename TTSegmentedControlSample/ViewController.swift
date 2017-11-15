@@ -24,7 +24,8 @@ class ViewController: UIViewController {
         segmentedControl.hasBounceAnimation = true
     }
     @IBAction func buttonAction(_ sender: Any) {
-        segmentedControl.selectItemAt(index: 0, animated: false)
+        segmentedControl.changeTitle("asdfasdfsdfsdffasdfsdf", atIndex: 2)
+    
     }
     
 }

@@ -649,7 +649,7 @@ extension TTSegmentedControl {
     
     public func selectItemAt(index: Int, animated: Bool = false) {
         if !isConfigurated {
-            selectInitialItem = index
+            currentSelectedIndex = index
             return
         }
         let label = allItemLabels[min(index, attributedDefaultTitles.count)]

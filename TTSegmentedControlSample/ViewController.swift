@@ -14,13 +14,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var segmentedControl: TTSegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
+        segmentedControl.selectItemAt(index: 2, animated: false)
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        segmentedControl.noItemSelected = true
-        segmentedControl.hasBounceAnimation = true 
+//        segmentedControl.noItemSelected = true
+        segmentedControl.hasBounceAnimation = true
+    }
+    @IBAction func buttonAction(_ sender: Any) {
+        segmentedControl.selectItemAt(index: 0, animated: false)
     }
     
 }

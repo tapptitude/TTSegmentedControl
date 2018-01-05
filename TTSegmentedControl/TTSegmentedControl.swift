@@ -10,7 +10,7 @@ import UIKit
 
 
 @IBDesignable
-public class TTSegmentedControl: UIView {
+open class TTSegmentedControl: UIView {
     
     //Configure the options to for a custom design
     @IBInspectable open var defaultTextFont: UIFont = UIFont.helveticaNeueLight(12)

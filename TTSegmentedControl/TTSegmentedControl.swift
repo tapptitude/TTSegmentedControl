@@ -23,11 +23,15 @@ open class TTSegmentedControl: UIView {
     @IBInspectable open var thumbColor: UIColor = UIColor.clear
     @IBInspectable open var thumbGradientColors: [UIColor]? = [TTSegmentedControl.UIColorFromRGB(0xFFE900),TTSegmentedControl.UIColorFromRGB(0xFFB400)]
     @IBInspectable open var thumbShadowColor: UIColor = TTSegmentedControl.UIColorFromRGB(0x9B9B9B)
+    @IBInspectable open var thumbShadowOffset: CGSize = CGSize(width: 0, height: 1)
+    @IBInspectable open var thumbShadowOpacity: Float = 0.6
+    @IBInspectable open var thumbShadowRadius: CGFloat = 3
     @IBInspectable open var useShadow:Bool = true
     
     //left and right space between items
     @IBInspectable open var padding: CGSize = CGSize(width: 30, height: 10)
-    @IBInspectable open var cornerRadius: CGFloat = -1 // for rounded corner radius use negative value, 0 to disable
+    @IBInspectable open var contentCornerRadius: CGFloat = -1 // for rounded corner radius use negative value, 0 to disable
+    @IBInspectable open var thumbPadding: CGSize = CGSize(width: 2, height: 2)
     
     public enum DraggingState: Int {
         case none
@@ -70,11 +74,9 @@ open class TTSegmentedControl: UIView {
     fileprivate var originalCenter = CGPoint.zero
     fileprivate var lastSelectedViewWidth: CGFloat = 0
     
-    
-    fileprivate let thumbPadding: CGFloat = 2
-    
     fileprivate let shadowLayer = CAShapeLayer()
     fileprivate var gradientLayer = CAGradientLayer()
+    fileprivate let bordersLayer = CAShapeLayer()
     
     fileprivate var allowToChangeThumb = false
     fileprivate var allowMove = true
@@ -118,7 +120,9 @@ open class TTSegmentedControl: UIView {
         }
         
         containerView.frame = bounds
-        containerView.layer.cornerRadius = cornerRadius < 0 ? 0.5 * containerView.frame.size.height : cornerRadius
+        containerView.layer.cornerRadius = contentCornerRadius < 0 ? 0.5 * containerView.frame.size.height : contentCornerRadius
+        bordersLayer.frame = bounds
+        bordersLayer.cornerRadius = containerView.layer.cornerRadius
         selectedLabelsView.frame = containerView.bounds
         
         updateFrameForLables(allItemLabels)
@@ -127,7 +131,6 @@ open class TTSegmentedControl: UIView {
         
         selectItemAt(index:currentSelectedIndex)
         _ = self.subviews.map({$0.isExclusiveTouch = true})
-        
     }
     
     //MARK: - Getters
@@ -166,8 +169,8 @@ open class TTSegmentedControl: UIView {
     
     
     fileprivate func labelForPoint(_ point: CGPoint) -> UILabel {
-        var pointX = max(point.x, thumbPadding)
-        pointX = min(pointX , containerView.frame.size.width - thumbPadding)
+        var pointX = max(point.x, thumbPadding.width)
+        pointX = min(pointX , containerView.frame.size.width - thumbPadding.width)
         
         let newPoint = CGPoint(x: pointX, y: point.y)
         let allLabels = allItemLabels
@@ -207,6 +210,17 @@ open class TTSegmentedControl: UIView {
 extension TTSegmentedControl {
     
     fileprivate func configureSelectedView() {
+        bordersLayer.borderColor = layer.borderColor
+        bordersLayer.borderWidth = layer.borderWidth
+        layer.borderColor = nil
+        layer.borderWidth = 0
+        
+        thumbContainerView.clipsToBounds = false
+        thumbView.clipsToBounds = false
+        clipsToBounds = false
+        
+        containerView.layer.addSublayer(bordersLayer)
+        
         containerView.addSubview(thumbContainerView)
         thumbContainerView.addSubview(thumbView)
         
@@ -218,9 +232,9 @@ extension TTSegmentedControl {
         if useShadow {
             shadowLayer.shadowColor = thumbShadowColor.cgColor
             shadowLayer.backgroundColor = thumbColor.cgColor
-            shadowLayer.shadowOffset = CGSize(width: 0, height: 1);
-            shadowLayer.shadowOpacity = 0.6;
-            shadowLayer.shadowRadius = 3
+            shadowLayer.shadowOffset = thumbShadowOffset
+            shadowLayer.shadowOpacity = thumbShadowOpacity
+            shadowLayer.shadowRadius = thumbShadowRadius
             shadowLayer.masksToBounds = false
             
             thumbContainerView.layer.insertSublayer(shadowLayer, at: 0)
@@ -238,7 +252,7 @@ extension TTSegmentedControl {
     
     fileprivate func configureContainerView() {
         containerView.backgroundColor = containerBackgroundColor
-        self.addSubview(containerView)
+        addSubview(containerView)
     }
     
     fileprivate func configureSelectedLabelsView() {
@@ -312,10 +326,9 @@ extension TTSegmentedControl {
         thumbContainerView.frame.origin.y = 0
         thumbContainerView.frame.size.height = containerView.frame.size.height
         
-        thumbView.frame.size.height = containerView.frame.size.height - 4
-        thumbView.layer.cornerRadius = cornerRadius < 0 ? 0.5 * thumbView.frame.size.height : cornerRadius
-        thumbView.frame.origin.y = 2
-        
+        thumbView.frame.size.height = containerView.frame.size.height - thumbPadding.height * 2
+        thumbView.layer.cornerRadius = contentCornerRadius < 0 ? 0.5 * thumbView.frame.size.height : contentCornerRadius
+        thumbView.frame.origin.y = thumbPadding.height
         
         shadowLayer.frame = thumbView.bounds
         shadowLayer.cornerRadius = thumbView.layer.cornerRadius
@@ -495,7 +508,7 @@ extension TTSegmentedControl {
         
         CATransaction.begin()
         CATransaction.setAnimationDuration(animated ? 0.4 : 0.0)
-        shadowLayer.frame = CGRect(x: 0, y: thumbPadding, width: width, height: height - 2 * thumbPadding)
+        shadowLayer.frame = CGRect(x: 0, y: thumbPadding.height, width: width, height: height - 2 * thumbPadding.height)
         gradientLayer.frame = shadowLayer.bounds
         CATransaction.commit()
         
@@ -541,7 +554,7 @@ extension TTSegmentedControl {
     
     fileprivate func selectedViewWidthForPoint(_ point: CGPoint)-> CGFloat {
         if !allowChangeThumbWidth {
-            return sectionWidth - 2 * thumbPadding
+            return sectionWidth - 2 * thumbPadding.width
         }
         let label = labelForPoint(point)
         let index = allItemLabels.index(of: label)!
@@ -551,7 +564,7 @@ extension TTSegmentedControl {
         } else if index == (allItemLabels.count - 1)  {
             width = 2 * (containerView.frame.size.width - label.center.x)
         }
-        return max(width, containerView.frame.size.height) - thumbPadding * 2
+        return max(width, containerView.frame.size.height) - thumbPadding.width * 2
     }
     
     fileprivate func changeSelectedViewWidthFor(_ point: CGPoint) {
@@ -598,7 +611,7 @@ extension TTSegmentedControl {
             
             currentWidth = pointX == 0 ? initialWidth : currentWidth
         } else {
-            currentWidth = sectionWidth - 2 * thumbPadding
+            currentWidth = sectionWidth - 2 * thumbPadding.width
         }
         
         thumbContainerView.frame.size.width = currentWidth
@@ -608,7 +621,7 @@ extension TTSegmentedControl {
         
         CATransaction.begin()
         CATransaction.setAnimationDuration(0.0)
-        shadowLayer.frame = CGRect(x: 0, y: thumbPadding, width: thumbView.bounds.size.width, height: thumbView.frame.size.height)
+        shadowLayer.frame = CGRect(x: 0, y: thumbPadding.height, width: thumbView.bounds.size.width, height: thumbView.frame.size.height)
         gradientLayer.frame = shadowLayer.bounds
         CATransaction.commit()
     }

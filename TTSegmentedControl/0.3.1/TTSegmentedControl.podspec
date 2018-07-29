@@ -7,12 +7,11 @@ s.license = 'MIT'
 s.name = "TTSegmentedControl"
 s.summary = "An elegant, animated and customizable segmented control for iOS."
 s.requires_arc = true
-s.version = "0.4.5"
+s.version = "0.3.1"
 s.author = { "Igor Dumitru" => "igor.dumitru@tapptitude.com" }
 s.homepage = "https://tapptitude.com/"
 s.framework = "UIKit"
 s.source = { :git => 'https://github.com/tapptitude/TTSegmentedControl.git', :tag => s.version }
 s.source_files = 'TTSegmentedControl/*.{swift}'
-s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
 
 end

@@ -1,12 +1,23 @@
 # TTSegmentedControl
+![](https://img.shields.io/badge/Swift-4.0-green.svg?style=flat)
+![](https://img.shields.io/badge/Swift-3.0-green.svg?style=flat)
+[![Platform](https://img.shields.io/cocoapods/p/TTSegmentedControl.svg)](https://cocoapods.org/pods/TTSegmentedControl)
+[![Version](https://img.shields.io/cocoapods/v/TTSegmentedControl.svg)](https://cocoapods.org/pods/TTSegmentedControl)
+[![License](https://img.shields.io/cocoapods/l/TTSegmentedControl.svg?style=flat)](http://cocoapods.org/pods/TTSegmentedControl)
+[![Twitter](https://img.shields.io/badge/Twitter-@Tapptitude-blue.svg?style=flat)](http://twitter.com/Tapptitude)
+
+## About
 An elegant, animated and customizable segmented control for iOS.
+
+This project is maintained by Tapptitude, a mobile app development agency specialized in building high-quality iOS and Android mobile apps, for startups and brands alike. A lively team of skilled app developers and app designers based in Europe, we provide full-stack mobile app development services to entrepreneurs looking to innovate on mobile. 
 
 ![](Resources/TTSegmentedControl.gif)
 
 
-# Features:
+## Features:
 - Variable number of items 
 - Animated transition
+- Bounce animation
 - Fully configurable (color, gradient, shadow, corner radius)
 - Designable into Interface Builder
 
@@ -19,15 +30,27 @@ An elegant, animated and customizable segmented control for iOS.
 
 _CocoaPods_
 
-_Swift 3.0_
+_Swift 4.0_
 
 ```ruby
 pod 'TTSegmentedControl'
 ```
 
+_Swift 3.X_
+
+```ruby
+pod 'TTSegmentedControl', '~>0.3'
+```
+
 _Swift 2.x_
 ```ruby
 pod 'TTSegmentedControl', '0.1.1'
+```
+
+_Carthage_
+
+```
+github "tapptitude/TTSegmentedControl"
 ```
 
 _Manually_

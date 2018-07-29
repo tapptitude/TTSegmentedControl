@@ -139,7 +139,7 @@ open class TTSegmentedControl: UIView {
     }
     
     //MARK: - Helpers
-    static func UIColorFromRGB(_ rgbValue: UInt) -> UIColor {
+    static public func UIColorFromRGB(_ rgbValue: UInt) -> UIColor {
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
@@ -250,7 +250,7 @@ extension TTSegmentedControl {
     }
     
     fileprivate func configureItems() {
-        var i = 1
+        var i = 0
         for title in attributedDefaultTitles {
             let label = createLabelWithTitle(title, tag: i)
             containerView.addSubview(label)
@@ -260,7 +260,7 @@ extension TTSegmentedControl {
     }
     
     fileprivate func configureSelectedLabelItems() {
-        var i = 1
+        var i = 0
         for title in attributedSelectedTitles {
             let label = createLabelWithTitle(title, tag: i)
             selectedLabelsView.addSubview(label)

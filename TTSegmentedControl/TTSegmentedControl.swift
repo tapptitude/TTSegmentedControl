@@ -10,7 +10,7 @@ import UIKit
 
 
 @IBDesignable
-open class TTSegmentedControl: UIView {
+open class TTSegmentedControl: UIControl {
     
     //Configure the options to for a custom design
     @IBInspectable open var defaultTextFont: UIFont = UIFont.helveticaNeueLight(12)
@@ -126,7 +126,10 @@ open class TTSegmentedControl: UIView {
         updateSelectedViewFrame()
         
         selectItemAt(index:currentSelectedIndex)
-        _ = self.subviews.map({$0.isExclusiveTouch = true})
+        _ = self.subviews.map({
+            $0.isExclusiveTouch = true
+            $0.isUserInteractionEnabled = false
+        })
         
     }
     
@@ -350,14 +353,13 @@ extension TTSegmentedControl {
 
 extension TTSegmentedControl {
     
-    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first
+    open override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
         var point = touch?.location(in: self)
         isDragging = false
         didChangeDraggingState?(.none)
         
         if point == nil {
-            return
+            return 
         }
         if isSwitch && allowToChangeThumb {
             let label = labelForPoint(thumbContainerView.center)
@@ -370,52 +372,43 @@ extension TTSegmentedControl {
         allowToChangeThumb = false
     }
     
-    override open func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    
+
+    open override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+
         if !allowDrag {
-            return
+            return false
         }
         
-        let touch = touches.first
-        let point = touch?.location(in: self)
+        let point = touch.location(in: self)
         isDragging = true
         didChangeDraggingState?(.dragging)
         
-        if point == nil {
-            return
-        }
         
         if !allowMove {
-            return
+            return false
         }
         allowToChangeThumb = false
-        changeSelectedViewWidthFor(updatePoint(point!))
-    }
-    
-    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first
-        let point = touch?.location(in: self)
+        changeSelectedViewWidthFor(updatePoint(point))
         
-        if point == nil {
-            return
-        }
-        allowToChangeThumb = isSwitch
-        allowMove = !isOutsideOfSelectionView(point!)
+        return true
     }
     
-    override open func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first
-        var point = touch?.location(in: self)
+    open override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        let point = touch.location(in: self)
+
+        allowToChangeThumb = isSwitch
+        allowMove = !isOutsideOfSelectionView(point)
+        
+        return true
+    }
+    
+    open override func cancelTracking(with event: UIEvent?) {
         
         isDragging = false
         didChangeDraggingState?(.cancel)
+        var point = containerView.center
         
-        if point == nil {
-            point = containerView.center
-            
-        }
-        if point == nil {
-            return
-        }
         if isSwitch && allowToChangeThumb {
             let label = labelForPoint(thumbContainerView.center)
             let otherIndex = allItemLabels.index(of: label) == 1 ? 0 : 1
@@ -423,8 +416,8 @@ extension TTSegmentedControl {
             point = secondLabel.center
         }
         
-        changeThumbFrameForPoint(updatePoint(point!), animated: true)
-        didEndTouchWithPoint(point!)
+        changeThumbFrameForPoint(updatePoint(point), animated: true)
+        didEndTouchWithPoint(point)
         allowToChangeThumb = false
     }
     

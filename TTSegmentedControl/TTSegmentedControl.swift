@@ -40,7 +40,7 @@ open class TTSegmentedControl: UIView {
     public struct BounceOptions {
         var springDamping:CGFloat = 0.7
         var springInitialVelocity:CGFloat = 0.2
-        var options:UIViewAnimationOptions = .curveEaseInOut
+        var options:UIView.AnimationOptions = .curveEaseInOut
     }
     
     open var itemTitles: [String] = ["Item1", "Item2", "Item3"]
@@ -299,8 +299,8 @@ extension TTSegmentedControl {
         let textColor = isSelected ? selectedTextColor : defaultTextColor
         let textFont = isSelected ? selectedTextFont : defaultTextFont
         
-        let attributes = [NSAttributedStringKey.foregroundColor : textColor,
-                          NSAttributedStringKey.font : textFont]
+        let attributes = [NSAttributedString.Key.foregroundColor : textColor,
+                          NSAttributedString.Key.font : textFont]
         let attributedString = NSMutableAttributedString(string: text, attributes: attributes)
         return attributedString
     }

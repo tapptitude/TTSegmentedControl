@@ -14,9 +14,7 @@
 		8193E5DE1F8A70A900E1604E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8193E5DC1F8A70A900E1604E /* LaunchScreen.storyboard */; };
 		8193E5E71F8A725700E1604E /* TTSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81535A881F88BD2A00398A9A /* TTSegmentedControl.swift */; };
 		8193E5E81F8A725800E1604E /* TTSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81535A881F88BD2A00398A9A /* TTSegmentedControl.swift */; };
-		8193E5E91F8A725B00E1604E /* TTSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 81535A871F88BD2A00398A9A /* TTSegmentedControl.h */; };
 		8193E5EA1F8A725F00E1604E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81535A891F88BD2A00398A9A /* Info.plist */; };
-		8193E5EB1F8A725F00E1604E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81535A891F88BD2A00398A9A /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,7 +97,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8193E5E91F8A725B00E1604E /* TTSegmentedControl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +191,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8193E5EB1F8A725F00E1604E /* Info.plist in Resources */,
 				8193E5DE1F8A70A900E1604E /* LaunchScreen.storyboard in Resources */,
 				8193E5DB1F8A70A900E1604E /* Assets.xcassets in Resources */,
 				8193E5D91F8A70A900E1604E /* Main.storyboard in Resources */,
@@ -409,12 +405,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZT2X995U5;
+				DEVELOPMENT_TEAM = NF6484JE8F;
 				INFOPLIST_FILE = TTSegmentedControlSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapptitude.TTSegmentedControlSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -424,12 +420,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZT2X995U5;
+				DEVELOPMENT_TEAM = NF6484JE8F;
 				INFOPLIST_FILE = TTSegmentedControlSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapptitude.TTSegmentedControlSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

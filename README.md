@@ -30,10 +30,16 @@ This project is maintained by Tapptitude, a mobile app development agency specia
 
 _CocoaPods_
 
-_Swift 4.0_
+_Swift 4.2_
 
 ```ruby
 pod 'TTSegmentedControl'
+```
+
+_Swift 4.0_
+
+```ruby
+pod 'TTSegmentedControl', '~>0.4.6'
 ```
 
 _Swift 3.X_

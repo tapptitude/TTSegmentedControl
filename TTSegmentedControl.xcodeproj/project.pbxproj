@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		239299BE222547EE00263573 /* TTSegmentedControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81535A791F88BC7300398A9A /* TTSegmentedControl.framework */; };
 		8193E5D41F8A70A900E1604E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8193E5D31F8A70A900E1604E /* AppDelegate.swift */; };
 		8193E5D61F8A70A900E1604E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8193E5D51F8A70A900E1604E /* ViewController.swift */; };
 		8193E5D91F8A70A900E1604E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8193E5D71F8A70A900E1604E /* Main.storyboard */; };
 		8193E5DB1F8A70A900E1604E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8193E5DA1F8A70A900E1604E /* Assets.xcassets */; };
 		8193E5DE1F8A70A900E1604E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8193E5DC1F8A70A900E1604E /* LaunchScreen.storyboard */; };
 		8193E5E71F8A725700E1604E /* TTSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81535A881F88BD2A00398A9A /* TTSegmentedControl.swift */; };
-		8193E5E81F8A725800E1604E /* TTSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81535A881F88BD2A00398A9A /* TTSegmentedControl.swift */; };
 		8193E5EA1F8A725F00E1604E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81535A891F88BD2A00398A9A /* Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -43,18 +43,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				239299BE222547EE00263573 /* TTSegmentedControl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		239299BD222547EE00263573 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		81535A6F1F88BC7300398A9A = {
 			isa = PBXGroup;
 			children = (
 				81535A7B1F88BC7300398A9A /* TTSegmentedControl */,
 				8193E5D21F8A70A900E1604E /* TTSegmentedControlSample */,
 				81535A7A1F88BC7300398A9A /* Products */,
+				239299BD222547EE00263573 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,7 +221,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8193E5E81F8A725800E1604E /* TTSegmentedControl.swift in Sources */,
 				8193E5D61F8A70A900E1604E /* ViewController.swift in Sources */,
 				8193E5D41F8A70A900E1604E /* AppDelegate.swift in Sources */,
 			);

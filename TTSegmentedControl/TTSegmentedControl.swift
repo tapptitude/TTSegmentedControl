@@ -45,8 +45,8 @@ open class TTSegmentedControl: UIView {
     
     open var itemTitles: [String] = ["Item1", "Item2", "Item3"]
     
-    var attributedDefaultTitles: [NSAttributedString]!
-    var attributedSelectedTitles: [NSAttributedString]!
+    open var attributedDefaultTitles: [NSAttributedString]!
+    open var attributedSelectedTitles: [NSAttributedString]!
     /*
      Gets called when an item is selected
      */

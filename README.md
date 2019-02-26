@@ -103,7 +103,41 @@ segmentedControl.useShadow = true
 
 ```
 
+You can add image instead of title.
 
+![](Resources/Image_with_attributes.png)
+
+```swift
+// ask segmented control to initialize all elements internally
+segmentedControl.layoutSubviews()
+        
+let imageAttachment = NSTextAttachment()
+imageAttachment.image = image
+imageAttachment.bounds = CGRect(x: 0, y: -5, width: 20, height: 20)
+        
+let attributes = NSAttributedString(attachment: imageAttachment)
+        
+segmentedControl.changeAttributedTitle(attributes, selectedTile: attributes, atIndex: atIndex)
+```
+
+Or combine them.
+
+```swift
+// ask segmented control to initialize all elements internally
+segmentedControl.layoutSubviews()
+        
+let imageAttachment = NSTextAttachment()
+imageAttachment.image = image
+imageAttachment.bounds = CGRect(x: 0, y: -5, width: 20, height: 20)
+        
+let attributes = segmentedControl.attributedDefaultTitles.first?.mutableCopy() as! NSMutableAttributedString
+attributes.append(NSAttributedString(attachment: imageAttachment))
+        
+let selectedAttributes = segmentedControl.attributedSelectedTitles.first?.mutableCopy() as! NSMutableAttributedString
+selectedAttributes.append(NSAttributedString(attachment: imageAttachment))
+        
+segmentedControl.changeAttributedTitle(attributes, selectedTile: selectedAttributes, atIndex: atIndex)
+```
 ## Contribution
 
 Feel free to Fork, submit Pull Requests or send us your feedback and suggestions!

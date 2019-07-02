@@ -1,4 +1,5 @@
 # TTSegmentedControl
+![](https://img.shields.io/badge/Swift-5.0-green.svg?style=flat)
 ![](https://img.shields.io/badge/Swift-4.0-green.svg?style=flat)
 ![](https://img.shields.io/badge/Swift-3.0-green.svg?style=flat)
 [![Platform](https://img.shields.io/cocoapods/p/TTSegmentedControl.svg)](https://cocoapods.org/pods/TTSegmentedControl)
@@ -30,10 +31,15 @@ This project is maintained by Tapptitude, a mobile app development agency specia
 
 _CocoaPods_
 
+_Swift 5.0_
+
+```ruby
+pod 'TTSegmentedControl', '~>0.4.9'
+
 _Swift 4.2_
 
 ```ruby
-pod 'TTSegmentedControl'
+pod 'TTSegmentedControl', '~>0.4.8'
 ```
 
 _Swift 4.0_

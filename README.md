@@ -35,7 +35,7 @@ _Swift 5.0_
 
 ```ruby
 pod 'TTSegmentedControl', '~>0.4.9'
-
+```
 _Swift 4.2_
 
 ```ruby

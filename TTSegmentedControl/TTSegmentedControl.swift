@@ -361,7 +361,7 @@ extension TTSegmentedControl {
         }
         if isSwitch && allowToChangeThumb {
             let label = labelForPoint(thumbContainerView.center)
-            let otherIndex = allItemLabels.index(of: label) == 1 ? 0 : 1
+            let otherIndex = allItemLabels.firstIndex(of: label) == 1 ? 0 : 1
             let secondLabel = allItemLabels[otherIndex]
             point = secondLabel.center
         }
@@ -418,7 +418,7 @@ extension TTSegmentedControl {
         }
         if isSwitch && allowToChangeThumb {
             let label = labelForPoint(thumbContainerView.center)
-            let otherIndex = allItemLabels.index(of: label) == 1 ? 0 : 1
+            let otherIndex = allItemLabels.firstIndex(of: label) == 1 ? 0 : 1
             let secondLabel = allItemLabels[otherIndex]
             point = secondLabel.center
         }
@@ -544,7 +544,7 @@ extension TTSegmentedControl {
             return sectionWidth - 2 * thumbPadding
         }
         let label = labelForPoint(point)
-        let index = allItemLabels.index(of: label)!
+        let index = allItemLabels.firstIndex(of: label)!
         var width = label.frame.size.width + padding.height
         if index == 0 {
             width = 2 * label.center.x
@@ -577,7 +577,7 @@ extension TTSegmentedControl {
             let finalWidth = selectedViewWidthForPoint(targetLabel.center)
             let initialWidth = selectedViewWidthForPoint(label.center)
             
-            let diff = fabs(initialWidth - finalWidth)
+            let diff = abs(initialWidth - finalWidth)
             
             let minOriginX = min(label.center.x, targetLabel.center.x)
             let maxOriginX = max(label.center.x, targetLabel.center.x)
@@ -616,7 +616,7 @@ extension TTSegmentedControl {
     fileprivate func labelsForPoint(_ point: CGPoint) -> (leftLabel: UILabel, rightLabel: UILabel){
         let label = labelForPoint(point)
         var secondLabel: UILabel!
-        let index = allItemLabels.index(of: label)!
+        let index = allItemLabels.firstIndex(of: label)!
         if point.x < label.center.x && index != 0 || index == (allItemLabels.count - 1) {
             secondLabel = allItemLabels[index - 1]
             return (leftLabel: secondLabel, rightLabel: label)
@@ -643,7 +643,7 @@ extension TTSegmentedControl {
             return 0
         }
         let label = labelForPoint(thumbContainerView.center)
-        let index = allItemLabels.index(of: label)
+        let index = allItemLabels.firstIndex(of: label)
         return index ?? 0
     }
     

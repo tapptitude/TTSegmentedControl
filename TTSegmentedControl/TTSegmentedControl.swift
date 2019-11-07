@@ -652,7 +652,7 @@ extension TTSegmentedControl {
             currentSelectedIndex = index
             return
         }
-        let label = allItemLabels[min(index, attributedDefaultTitles.count)]
+        let label = allItemLabels[min(index, attributedDefaultTitles.count - 1)]
         selectedLabelsView.isHidden = noItemSelected
         changeThumbFrameForPoint(label.center, animated: animated)
     }

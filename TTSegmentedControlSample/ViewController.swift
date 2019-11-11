@@ -57,7 +57,9 @@ class ViewController: UIViewController {
         
     }
     @IBAction func buttonAction(_ sender: Any) {
-        segmentedControl.changeTitle("asdfasdfsdfsdffasdfsdf", atIndex: 2)
+        
+        segmentedControl.defaultTextColor = UIColor.red
+        segmentedControl.reconfigure()
     
     }
     

@@ -164,9 +164,7 @@ open class TTSegmentedControl: UIView {
         return 100
     }
     
-    fileprivate var isSwitch: Bool {
-        return attributedDefaultTitles.count == 2
-    }
+    open var isSwitch: Bool = false
     
     //MARK: - Helpers
     static public func UIColorFromRGB(_ rgbValue: UInt) -> UIColor {

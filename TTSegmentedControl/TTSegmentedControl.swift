@@ -18,6 +18,8 @@ open class TTSegmentedControl: UIView {
     @IBInspectable open var selectedTextFont: UIFont = UIFont.helveticaNeueLight(12)
     @IBInspectable open var defaultTextColor: UIColor = UIColor.black
     @IBInspectable open var selectedTextColor: UIColor = UIColor.white
+    open var defaultTextAttributes: [NSAttributedString.Key: Any]?
+    open var selectedTextAttributes: [NSAttributedString.Key: Any]?
     @IBInspectable open var useGradient: Bool = true
     
     @IBInspectable open var containerBackgroundColor: UIColor = TTSegmentedControl.UIColorFromRGB(0xF4F4F4)
@@ -311,8 +313,15 @@ extension TTSegmentedControl {
         let textColor = isSelected ? selectedTextColor : defaultTextColor
         let textFont = isSelected ? selectedTextFont : defaultTextFont
         
-        let attributes = [NSAttributedString.Key.foregroundColor : textColor,
+        var attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor : textColor,
                           NSAttributedString.Key.font : textFont]
+        
+        if isSelected && self.selectedTextAttributes != nil {
+            attributes.merge(self.selectedTextAttributes!, uniquingKeysWith: { _, userDefined in userDefined })
+        }else if self.defaultTextAttributes != nil {
+            attributes.merge(self.defaultTextAttributes!, uniquingKeysWith: { _, userDefined in userDefined })
+        }
+        
         let attributedString = NSMutableAttributedString(string: text, attributes: attributes)
         return attributedString
     }

@@ -80,7 +80,11 @@ open class TTSegmentedControl: UIView {
     fileprivate var allowToChangeThumb = false
     fileprivate var allowMove = true
     fileprivate var selectInitialItem = 0
-    fileprivate var currentSelectedIndex = 0
+    fileprivate var _currentIndex: Int = 0
+    
+    open var currentIndex: Int {
+        return _currentIndex
+    }
     
     open var noItemSelected:Bool = false {
         didSet {            
@@ -139,7 +143,7 @@ open class TTSegmentedControl: UIView {
         updateFrameForLables(allSelectedItemLabels)
         updateSelectedViewFrame()
         
-        selectItemAt(index:currentSelectedIndex)
+        selectItemAt(index: _currentIndex)
         _ = self.subviews.map({$0.isExclusiveTouch = true})
         
     }
@@ -445,7 +449,7 @@ extension TTSegmentedControl {
         
         let index = label.tag
         let title = label.text
-        self.currentSelectedIndex = index
+        self._currentIndex = index
         
         didSelectItemWith?(index, title)
         if title == nil {
@@ -650,21 +654,19 @@ extension TTSegmentedControl {
 
 extension TTSegmentedControl {
     
-    open var currentIndex: Int {
-        if !isConfigurated {
-            return 0
-        }
-        let label = labelForPoint(thumbContainerView.center)
-        let index = allItemLabels.firstIndex(of: label)
-        return index ?? 0
-    }
-    
     public func selectItemAt(index: Int, animated: Bool = false) {
-        if !isConfigurated {
-            currentSelectedIndex = index
+        guard (index >= 0 && index < itemTitles.count) else {
+            print("[TTSegmentedControl]: Index \(index) is out of range.")
             return
         }
-        let label = allItemLabels[min(index, attributedDefaultTitles.count - 1)]
+        
+        _currentIndex = index
+        
+        guard isConfigurated else {
+            return
+        }
+        
+        let label = allItemLabels[index]
         selectedLabelsView.isHidden = noItemSelected
         changeThumbFrameForPoint(label.center, animated: animated)
     }

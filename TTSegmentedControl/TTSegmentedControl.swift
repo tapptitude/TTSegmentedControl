@@ -66,7 +66,7 @@ open class TTSegmentedControl: UIView {
     fileprivate var thumbView = UIView()
     fileprivate var selectedLabelsView = UIView()
     
-    fileprivate var isConfigurated = false
+    fileprivate var isConfigured = false
     fileprivate var lastPointX: CGFloat = 0
     fileprivate var originalCenter = CGPoint.zero
     fileprivate var lastSelectedViewWidth: CGFloat = 0
@@ -106,7 +106,7 @@ open class TTSegmentedControl: UIView {
     }
     
     open func reconfigure() {
-        self.isConfigurated = false
+        self.isConfigured = false
         allItemLabels = []
         allSelectedItemLabels = []
         self.containerView.removeFromSuperview()
@@ -124,7 +124,7 @@ open class TTSegmentedControl: UIView {
     open override func layoutSubviews() {
         super.layoutSubviews()
         
-        if !isConfigurated {
+        if !isConfigured {
             configureItemsConent()
             configureViewBounds()
             configureContainerView()
@@ -132,15 +132,15 @@ open class TTSegmentedControl: UIView {
             configureSelectedView()
             configureSelectedLabelsView()
             configureSelectedLabelItems()
-            isConfigurated = true
+            isConfigured = true
         }
         
         containerView.frame = bounds
         containerView.layer.cornerRadius = cornerRadius < 0 ? 0.5 * containerView.frame.size.height : cornerRadius
         selectedLabelsView.frame = containerView.bounds
         
-        updateFrameForLables(allItemLabels)
-        updateFrameForLables(allSelectedItemLabels)
+        updateFrameForLabels(allItemLabels)
+        updateFrameForLabels(allSelectedItemLabels)
         updateSelectedViewFrame()
         
         if !noItemSelected {
@@ -345,7 +345,7 @@ extension TTSegmentedControl {
         }
     }
     
-    fileprivate func updateFrameForLables(_ allLabels: [UILabel]) {
+    fileprivate func updateFrameForLabels(_ allLabels: [UILabel]) {
         let itemWidth = sectionWidth
         var totalLabelWidth: CGFloat = 0
         for label in allLabels {
@@ -663,7 +663,7 @@ extension TTSegmentedControl {
         
         _currentIndex = index
         
-        guard isConfigurated else {
+        guard isConfigured else {
             return
         }
         
@@ -672,7 +672,7 @@ extension TTSegmentedControl {
     }
     
     open func changeTitle(_ title: String, atIndex: Int) {
-        if !isConfigurated {
+        if !isConfigured {
             return
         }
         
@@ -705,7 +705,7 @@ extension TTSegmentedControl {
     }
     
     open func changeAttributedTitle(_ title: NSAttributedString, selectedTile: NSAttributedString?, atIndex: Int) {
-        if !isConfigurated {
+        if !isConfigured {
             return
         }
         
@@ -738,7 +738,7 @@ extension TTSegmentedControl {
     }
     
     open func titleForItemAtIndex(_ index: Int) -> String {
-        if !isConfigurated {
+        if !isConfigured {
             return ""
         }
         
@@ -750,7 +750,7 @@ extension TTSegmentedControl {
     }
     
     open func changeThumbShadowColor(_ color: UIColor) {
-        if !isConfigurated {
+        if !isConfigured {
             return
         }
         thumbShadowColor = color
@@ -758,7 +758,7 @@ extension TTSegmentedControl {
     }
     
     open func changeThumbColor(_ color: UIColor) {
-        if !isConfigurated {
+        if !isConfigured {
             return
         }
         thumbColor = color
@@ -766,7 +766,7 @@ extension TTSegmentedControl {
     }
     
     open func changeBackgroundColor(_ color: UIColor) {
-        if !isConfigurated {
+        if !isConfigured {
             return
         }
         containerBackgroundColor = color

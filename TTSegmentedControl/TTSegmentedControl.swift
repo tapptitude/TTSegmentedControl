@@ -143,7 +143,10 @@ open class TTSegmentedControl: UIView {
         updateFrameForLables(allSelectedItemLabels)
         updateSelectedViewFrame()
         
-        selectItemAt(index: _currentIndex)
+        if !noItemSelected {
+            selectItemAt(index: _currentIndex)
+        }
+        
         _ = self.subviews.map({$0.isExclusiveTouch = true})
         
     }
@@ -495,10 +498,8 @@ extension TTSegmentedControl {
     }
     
     fileprivate func changeThumbFrameForPoint(_ point: CGPoint, animated: Bool) {
-        
-        selectedLabelsView.isHidden = false
-        thumbView.isHidden = false
-        
+        noItemSelected = false
+
         lastPointX = point.x
         let label = labelForPoint(point)
         let center = label.center
@@ -667,7 +668,6 @@ extension TTSegmentedControl {
         }
         
         let label = allItemLabels[index]
-        selectedLabelsView.isHidden = noItemSelected
         changeThumbFrameForPoint(label.center, animated: animated)
     }
     

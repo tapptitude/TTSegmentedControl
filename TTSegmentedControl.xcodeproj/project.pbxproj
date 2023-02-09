@@ -8,22 +8,127 @@
 
 /* Begin PBXBuildFile section */
 		239299BE222547EE00263573 /* TTSegmentedControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81535A791F88BC7300398A9A /* TTSegmentedControl.framework */; };
+		787A45FA2994FAB700C38A9F /* TTSegmentedControlLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45DC2994FAB700C38A9F /* TTSegmentedControlLayout.swift */; };
+		787A45FB2994FAB700C38A9F /* TTSegmentedControlLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45DC2994FAB700C38A9F /* TTSegmentedControlLayout.swift */; };
+		787A45FC2994FAB700C38A9F /* TTSegmentedControl.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 787A45DE2994FAB700C38A9F /* TTSegmentedControl.podspec */; };
+		787A45FD2994FAB700C38A9F /* TTSegmentedControl.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 787A45DE2994FAB700C38A9F /* TTSegmentedControl.podspec */; };
+		787A45FE2994FAB700C38A9F /* SelectionViewFrameForIndexBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E02994FAB700C38A9F /* SelectionViewFrameForIndexBuilder.swift */; };
+		787A45FF2994FAB700C38A9F /* SelectionViewFrameForIndexBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E02994FAB700C38A9F /* SelectionViewFrameForIndexBuilder.swift */; };
+		787A46002994FAB700C38A9F /* MinSizeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E12994FAB700C38A9F /* MinSizeBuilder.swift */; };
+		787A46012994FAB700C38A9F /* MinSizeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E12994FAB700C38A9F /* MinSizeBuilder.swift */; };
+		787A46022994FAB700C38A9F /* TitleComponentFrameListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E22994FAB700C38A9F /* TitleComponentFrameListBuilder.swift */; };
+		787A46032994FAB700C38A9F /* TitleComponentFrameListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E22994FAB700C38A9F /* TitleComponentFrameListBuilder.swift */; };
+		787A46042994FAB700C38A9F /* SelectionViewFrameForPointBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E32994FAB700C38A9F /* SelectionViewFrameForPointBuilder.swift */; };
+		787A46052994FAB700C38A9F /* SelectionViewFrameForPointBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E32994FAB700C38A9F /* SelectionViewFrameForPointBuilder.swift */; };
+		787A46062994FAB700C38A9F /* SelectedIndexBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E42994FAB700C38A9F /* SelectedIndexBuilder.swift */; };
+		787A46072994FAB700C38A9F /* SelectedIndexBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E42994FAB700C38A9F /* SelectedIndexBuilder.swift */; };
+		787A46082994FAB700C38A9F /* CornerRadiusBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E52994FAB700C38A9F /* CornerRadiusBuilder.swift */; };
+		787A46092994FAB700C38A9F /* CornerRadiusBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E52994FAB700C38A9F /* CornerRadiusBuilder.swift */; };
+		787A460A2994FAB700C38A9F /* TTSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 787A45E62994FAB700C38A9F /* TTSegmentedControl.h */; };
+		787A460B2994FAB700C38A9F /* TTSegmentedControlAnimationOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E82994FAB700C38A9F /* TTSegmentedControlAnimationOption.swift */; };
+		787A460C2994FAB700C38A9F /* TTSegmentedControlAnimationOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E82994FAB700C38A9F /* TTSegmentedControlAnimationOption.swift */; };
+		787A460D2994FAB700C38A9F /* TTSegmentedControlShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E92994FAB700C38A9F /* TTSegmentedControlShadow.swift */; };
+		787A460E2994FAB700C38A9F /* TTSegmentedControlShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45E92994FAB700C38A9F /* TTSegmentedControlShadow.swift */; };
+		787A460F2994FAB700C38A9F /* LayoutParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45EA2994FAB700C38A9F /* LayoutParameter.swift */; };
+		787A46102994FAB700C38A9F /* LayoutParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45EA2994FAB700C38A9F /* LayoutParameter.swift */; };
+		787A46112994FAB700C38A9F /* TTSegmentedControlGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45EB2994FAB700C38A9F /* TTSegmentedControlGradient.swift */; };
+		787A46122994FAB700C38A9F /* TTSegmentedControlGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45EB2994FAB700C38A9F /* TTSegmentedControlGradient.swift */; };
+		787A46132994FAB700C38A9F /* TitleComponentFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45EC2994FAB700C38A9F /* TitleComponentFrame.swift */; };
+		787A46142994FAB700C38A9F /* TitleComponentFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45EC2994FAB700C38A9F /* TitleComponentFrame.swift */; };
+		787A46152994FAB700C38A9F /* TTSegmentedControlTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45ED2994FAB700C38A9F /* TTSegmentedControlTitle.swift */; };
+		787A46162994FAB700C38A9F /* TTSegmentedControlTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45ED2994FAB700C38A9F /* TTSegmentedControlTitle.swift */; };
+		787A46172994FAB700C38A9F /* TTSegmentedControlBounceOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45EE2994FAB700C38A9F /* TTSegmentedControlBounceOptions.swift */; };
+		787A46182994FAB700C38A9F /* TTSegmentedControlBounceOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45EE2994FAB700C38A9F /* TTSegmentedControlBounceOptions.swift */; };
+		787A46192994FAB700C38A9F /* String+HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F02994FAB700C38A9F /* String+HexColor.swift */; };
+		787A461A2994FAB700C38A9F /* String+HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F02994FAB700C38A9F /* String+HexColor.swift */; };
+		787A461B2994FAB700C38A9F /* NSAttributedString+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F12994FAB700C38A9F /* NSAttributedString+Addition.swift */; };
+		787A461C2994FAB700C38A9F /* NSAttributedString+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F12994FAB700C38A9F /* NSAttributedString+Addition.swift */; };
+		787A461D2994FAB700C38A9F /* TTSegmentedControlTitle+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F22994FAB700C38A9F /* TTSegmentedControlTitle+Addition.swift */; };
+		787A461E2994FAB700C38A9F /* TTSegmentedControlTitle+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F22994FAB700C38A9F /* TTSegmentedControlTitle+Addition.swift */; };
+		787A461F2994FAB700C38A9F /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F32994FAB700C38A9F /* UIView+Shadow.swift */; };
+		787A46202994FAB700C38A9F /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F32994FAB700C38A9F /* UIView+Shadow.swift */; };
+		787A46212994FAB700C38A9F /* CAGradientLayer+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F42994FAB700C38A9F /* CAGradientLayer+Addition.swift */; };
+		787A46222994FAB700C38A9F /* CAGradientLayer+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F42994FAB700C38A9F /* CAGradientLayer+Addition.swift */; };
+		787A46232994FAB700C38A9F /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F52994FAB700C38A9F /* UIView+Animation.swift */; };
+		787A46242994FAB700C38A9F /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F52994FAB700C38A9F /* UIView+Animation.swift */; };
+		787A46252994FAB700C38A9F /* TTSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F62994FAB700C38A9F /* TTSegmentedControl.swift */; };
+		787A46262994FAB700C38A9F /* TTSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F62994FAB700C38A9F /* TTSegmentedControl.swift */; };
+		787A46272994FAB700C38A9F /* DelayedWorkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F82994FAB700C38A9F /* DelayedWorkItem.swift */; };
+		787A46282994FAB700C38A9F /* DelayedWorkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45F82994FAB700C38A9F /* DelayedWorkItem.swift */; };
+		787A462C2994FC5500C38A9F /* TTSwiftUISegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A462B2994FC5500C38A9F /* TTSwiftUISegmentedControl.swift */; };
+		787A462D2994FC5500C38A9F /* TTSwiftUISegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A462B2994FC5500C38A9F /* TTSwiftUISegmentedControl.swift */; };
+		787A462F2994FDE900C38A9F /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A462E2994FDE800C38A9F /* SwiftUIView.swift */; };
+		787A46302994FDE900C38A9F /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A462E2994FDE800C38A9F /* SwiftUIView.swift */; };
+		787A46A02995066100C38A9F /* DelayedWorkItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A46902995066100C38A9F /* DelayedWorkItemTests.swift */; };
+		787A46A12995066100C38A9F /* CornerRadiusBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A46922995066100C38A9F /* CornerRadiusBuilderTests.swift */; };
+		787A46A22995066100C38A9F /* SelectionViewFrameForIndexBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A46932995066100C38A9F /* SelectionViewFrameForIndexBuilderTests.swift */; };
+		787A46A32995066100C38A9F /* TitleComponentFrameListBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A46942995066100C38A9F /* TitleComponentFrameListBuilderTests.swift */; };
+		787A46A42995066100C38A9F /* SelectionViewFrameForPointBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A46952995066100C38A9F /* SelectionViewFrameForPointBuilderTests.swift */; };
+		787A46A52995066100C38A9F /* SelectedIndexBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A46962995066100C38A9F /* SelectedIndexBuilderTests.swift */; };
+		787A46A62995066100C38A9F /* MinSizeBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A46972995066100C38A9F /* MinSizeBuilderTests.swift */; };
+		787A46A72995066100C38A9F /* TTSegmentedControlDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A469A2995066100C38A9F /* TTSegmentedControlDelegateMock.swift */; };
+		787A46A82995066100C38A9F /* TouchFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A469C2995066100C38A9F /* TouchFake.swift */; };
+		787A46A92995066100C38A9F /* TTSegmentedControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A469D2995066100C38A9F /* TTSegmentedControlTests.swift */; };
+		787A46AA2995066100C38A9F /* TTSegmentedControlTitleAdditionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A469F2995066100C38A9F /* TTSegmentedControlTitleAdditionTests.swift */; };
 		8193E5D41F8A70A900E1604E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8193E5D31F8A70A900E1604E /* AppDelegate.swift */; };
-		8193E5D61F8A70A900E1604E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8193E5D51F8A70A900E1604E /* ViewController.swift */; };
 		8193E5D91F8A70A900E1604E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8193E5D71F8A70A900E1604E /* Main.storyboard */; };
 		8193E5DB1F8A70A900E1604E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8193E5DA1F8A70A900E1604E /* Assets.xcassets */; };
 		8193E5DE1F8A70A900E1604E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8193E5DC1F8A70A900E1604E /* LaunchScreen.storyboard */; };
-		8193E5E71F8A725700E1604E /* TTSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81535A881F88BD2A00398A9A /* TTSegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		787A468A2995063C00C38A9F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81535A701F88BC7300398A9A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8193E5D01F8A70A900E1604E;
+			remoteInfo = TTSegmentedControlSample;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		787A45DC2994FAB700C38A9F /* TTSegmentedControlLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSegmentedControlLayout.swift; sourceTree = "<group>"; };
+		787A45DE2994FAB700C38A9F /* TTSegmentedControl.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TTSegmentedControl.podspec; sourceTree = "<group>"; };
+		787A45E02994FAB700C38A9F /* SelectionViewFrameForIndexBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewFrameForIndexBuilder.swift; sourceTree = "<group>"; };
+		787A45E12994FAB700C38A9F /* MinSizeBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinSizeBuilder.swift; sourceTree = "<group>"; };
+		787A45E22994FAB700C38A9F /* TitleComponentFrameListBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleComponentFrameListBuilder.swift; sourceTree = "<group>"; };
+		787A45E32994FAB700C38A9F /* SelectionViewFrameForPointBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewFrameForPointBuilder.swift; sourceTree = "<group>"; };
+		787A45E42994FAB700C38A9F /* SelectedIndexBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedIndexBuilder.swift; sourceTree = "<group>"; };
+		787A45E52994FAB700C38A9F /* CornerRadiusBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerRadiusBuilder.swift; sourceTree = "<group>"; };
+		787A45E62994FAB700C38A9F /* TTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSegmentedControl.h; sourceTree = "<group>"; };
+		787A45E82994FAB700C38A9F /* TTSegmentedControlAnimationOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSegmentedControlAnimationOption.swift; sourceTree = "<group>"; };
+		787A45E92994FAB700C38A9F /* TTSegmentedControlShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSegmentedControlShadow.swift; sourceTree = "<group>"; };
+		787A45EA2994FAB700C38A9F /* LayoutParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutParameter.swift; sourceTree = "<group>"; };
+		787A45EB2994FAB700C38A9F /* TTSegmentedControlGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSegmentedControlGradient.swift; sourceTree = "<group>"; };
+		787A45EC2994FAB700C38A9F /* TitleComponentFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleComponentFrame.swift; sourceTree = "<group>"; };
+		787A45ED2994FAB700C38A9F /* TTSegmentedControlTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSegmentedControlTitle.swift; sourceTree = "<group>"; };
+		787A45EE2994FAB700C38A9F /* TTSegmentedControlBounceOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSegmentedControlBounceOptions.swift; sourceTree = "<group>"; };
+		787A45F02994FAB700C38A9F /* String+HexColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+HexColor.swift"; sourceTree = "<group>"; };
+		787A45F12994FAB700C38A9F /* NSAttributedString+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Addition.swift"; sourceTree = "<group>"; };
+		787A45F22994FAB700C38A9F /* TTSegmentedControlTitle+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TTSegmentedControlTitle+Addition.swift"; sourceTree = "<group>"; };
+		787A45F32994FAB700C38A9F /* UIView+Shadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
+		787A45F42994FAB700C38A9F /* CAGradientLayer+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Addition.swift"; sourceTree = "<group>"; };
+		787A45F52994FAB700C38A9F /* UIView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
+		787A45F62994FAB700C38A9F /* TTSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSegmentedControl.swift; sourceTree = "<group>"; };
+		787A45F82994FAB700C38A9F /* DelayedWorkItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayedWorkItem.swift; sourceTree = "<group>"; };
+		787A45F92994FAB700C38A9F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		787A462B2994FC5500C38A9F /* TTSwiftUISegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSwiftUISegmentedControl.swift; sourceTree = "<group>"; };
+		787A462E2994FDE800C38A9F /* SwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		787A46862995063C00C38A9F /* TTSegmentedControlSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTSegmentedControlSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		787A46902995066100C38A9F /* DelayedWorkItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayedWorkItemTests.swift; sourceTree = "<group>"; };
+		787A46922995066100C38A9F /* CornerRadiusBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerRadiusBuilderTests.swift; sourceTree = "<group>"; };
+		787A46932995066100C38A9F /* SelectionViewFrameForIndexBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewFrameForIndexBuilderTests.swift; sourceTree = "<group>"; };
+		787A46942995066100C38A9F /* TitleComponentFrameListBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleComponentFrameListBuilderTests.swift; sourceTree = "<group>"; };
+		787A46952995066100C38A9F /* SelectionViewFrameForPointBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewFrameForPointBuilderTests.swift; sourceTree = "<group>"; };
+		787A46962995066100C38A9F /* SelectedIndexBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedIndexBuilderTests.swift; sourceTree = "<group>"; };
+		787A46972995066100C38A9F /* MinSizeBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinSizeBuilderTests.swift; sourceTree = "<group>"; };
+		787A469A2995066100C38A9F /* TTSegmentedControlDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSegmentedControlDelegateMock.swift; sourceTree = "<group>"; };
+		787A469C2995066100C38A9F /* TouchFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchFake.swift; sourceTree = "<group>"; };
+		787A469D2995066100C38A9F /* TTSegmentedControlTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSegmentedControlTests.swift; sourceTree = "<group>"; };
+		787A469F2995066100C38A9F /* TTSegmentedControlTitleAdditionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSegmentedControlTitleAdditionTests.swift; sourceTree = "<group>"; };
 		81535A791F88BC7300398A9A /* TTSegmentedControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TTSegmentedControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		81535A871F88BD2A00398A9A /* TTSegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTSegmentedControl.h; sourceTree = "<group>"; };
-		81535A881F88BD2A00398A9A /* TTSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSegmentedControl.swift; sourceTree = "<group>"; };
-		81535A891F88BD2A00398A9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8193E5D11F8A70A900E1604E /* TTSegmentedControlSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTSegmentedControlSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8193E5D31F8A70A900E1604E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8193E5D51F8A70A900E1604E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8193E5D81F8A70A900E1604E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8193E5DA1F8A70A900E1604E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8193E5DD1F8A70A900E1604E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,6 +136,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		787A46832995063C00C38A9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		81535A751F88BC7300398A9A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -56,11 +168,151 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		787A45DB2994FAB700C38A9F /* TTSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				787A45F92994FAB700C38A9F /* Info.plist */,
+				787A45DD2994FAB700C38A9F /* 0.3.1 */,
+				787A45E62994FAB700C38A9F /* TTSegmentedControl.h */,
+				787A462B2994FC5500C38A9F /* TTSwiftUISegmentedControl.swift */,
+				787A45F62994FAB700C38A9F /* TTSegmentedControl.swift */,
+				787A45DC2994FAB700C38A9F /* TTSegmentedControlLayout.swift */,
+				787A45F72994FAB700C38A9F /* Helpers */,
+				787A45DF2994FAB700C38A9F /* Builders */,
+				787A45E72994FAB700C38A9F /* Models */,
+				787A45EF2994FAB700C38A9F /* Extensions */,
+			);
+			path = TTSegmentedControl;
+			sourceTree = "<group>";
+		};
+		787A45DD2994FAB700C38A9F /* 0.3.1 */ = {
+			isa = PBXGroup;
+			children = (
+				787A45DE2994FAB700C38A9F /* TTSegmentedControl.podspec */,
+			);
+			path = 0.3.1;
+			sourceTree = "<group>";
+		};
+		787A45DF2994FAB700C38A9F /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				787A45E52994FAB700C38A9F /* CornerRadiusBuilder.swift */,
+				787A45E12994FAB700C38A9F /* MinSizeBuilder.swift */,
+				787A45E42994FAB700C38A9F /* SelectedIndexBuilder.swift */,
+				787A45E32994FAB700C38A9F /* SelectionViewFrameForPointBuilder.swift */,
+				787A45E02994FAB700C38A9F /* SelectionViewFrameForIndexBuilder.swift */,
+				787A45E22994FAB700C38A9F /* TitleComponentFrameListBuilder.swift */,
+			);
+			path = Builders;
+			sourceTree = "<group>";
+		};
+		787A45E72994FAB700C38A9F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				787A45EE2994FAB700C38A9F /* TTSegmentedControlBounceOptions.swift */,
+				787A45E92994FAB700C38A9F /* TTSegmentedControlShadow.swift */,
+				787A45E82994FAB700C38A9F /* TTSegmentedControlAnimationOption.swift */,
+				787A45EB2994FAB700C38A9F /* TTSegmentedControlGradient.swift */,
+				787A45ED2994FAB700C38A9F /* TTSegmentedControlTitle.swift */,
+				787A45EC2994FAB700C38A9F /* TitleComponentFrame.swift */,
+				787A45EA2994FAB700C38A9F /* LayoutParameter.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		787A45EF2994FAB700C38A9F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				787A45F12994FAB700C38A9F /* NSAttributedString+Addition.swift */,
+				787A45F52994FAB700C38A9F /* UIView+Animation.swift */,
+				787A45F32994FAB700C38A9F /* UIView+Shadow.swift */,
+				787A45F42994FAB700C38A9F /* CAGradientLayer+Addition.swift */,
+				787A45F22994FAB700C38A9F /* TTSegmentedControlTitle+Addition.swift */,
+				787A45F02994FAB700C38A9F /* String+HexColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		787A45F72994FAB700C38A9F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				787A45F82994FAB700C38A9F /* DelayedWorkItem.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		787A46872995063C00C38A9F /* TTSegmentedControlSampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				787A46982995066100C38A9F /* TTSegmentedControl */,
+				787A468F2995066100C38A9F /* Helpers */,
+				787A46912995066100C38A9F /* Builders */,
+				787A469E2995066100C38A9F /* Extensions */,
+			);
+			path = TTSegmentedControlSampleTests;
+			sourceTree = "<group>";
+		};
+		787A468F2995066100C38A9F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				787A46902995066100C38A9F /* DelayedWorkItemTests.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		787A46912995066100C38A9F /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				787A46922995066100C38A9F /* CornerRadiusBuilderTests.swift */,
+				787A46972995066100C38A9F /* MinSizeBuilderTests.swift */,
+				787A46962995066100C38A9F /* SelectedIndexBuilderTests.swift */,
+				787A46952995066100C38A9F /* SelectionViewFrameForPointBuilderTests.swift */,
+				787A46932995066100C38A9F /* SelectionViewFrameForIndexBuilderTests.swift */,
+				787A46942995066100C38A9F /* TitleComponentFrameListBuilderTests.swift */,
+			);
+			path = Builders;
+			sourceTree = "<group>";
+		};
+		787A46982995066100C38A9F /* TTSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				787A469D2995066100C38A9F /* TTSegmentedControlTests.swift */,
+				787A46992995066100C38A9F /* Mock */,
+				787A469B2995066100C38A9F /* Fake */,
+			);
+			path = TTSegmentedControl;
+			sourceTree = "<group>";
+		};
+		787A46992995066100C38A9F /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				787A469A2995066100C38A9F /* TTSegmentedControlDelegateMock.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		787A469B2995066100C38A9F /* Fake */ = {
+			isa = PBXGroup;
+			children = (
+				787A469C2995066100C38A9F /* TouchFake.swift */,
+			);
+			path = Fake;
+			sourceTree = "<group>";
+		};
+		787A469E2995066100C38A9F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				787A469F2995066100C38A9F /* TTSegmentedControlTitleAdditionTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		81535A6F1F88BC7300398A9A = {
 			isa = PBXGroup;
 			children = (
-				81535A7B1F88BC7300398A9A /* TTSegmentedControl */,
+				787A45DB2994FAB700C38A9F /* TTSegmentedControl */,
 				8193E5D21F8A70A900E1604E /* TTSegmentedControlSample */,
+				787A46872995063C00C38A9F /* TTSegmentedControlSampleTests */,
 				81535A7A1F88BC7300398A9A /* Products */,
 				239299BD222547EE00263573 /* Frameworks */,
 			);
@@ -71,25 +323,16 @@
 			children = (
 				81535A791F88BC7300398A9A /* TTSegmentedControl.framework */,
 				8193E5D11F8A70A900E1604E /* TTSegmentedControlSample.app */,
+				787A46862995063C00C38A9F /* TTSegmentedControlSampleTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		81535A7B1F88BC7300398A9A /* TTSegmentedControl */ = {
-			isa = PBXGroup;
-			children = (
-				81535A891F88BD2A00398A9A /* Info.plist */,
-				81535A871F88BD2A00398A9A /* TTSegmentedControl.h */,
-				81535A881F88BD2A00398A9A /* TTSegmentedControl.swift */,
-			);
-			path = TTSegmentedControl;
 			sourceTree = "<group>";
 		};
 		8193E5D21F8A70A900E1604E /* TTSegmentedControlSample */ = {
 			isa = PBXGroup;
 			children = (
 				8193E5D31F8A70A900E1604E /* AppDelegate.swift */,
-				8193E5D51F8A70A900E1604E /* ViewController.swift */,
+				787A462E2994FDE800C38A9F /* SwiftUIView.swift */,
 				8193E5D71F8A70A900E1604E /* Main.storyboard */,
 				8193E5DA1F8A70A900E1604E /* Assets.xcassets */,
 				8193E5DC1F8A70A900E1604E /* LaunchScreen.storyboard */,
@@ -105,12 +348,31 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				787A460A2994FAB700C38A9F /* TTSegmentedControl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		787A46852995063C00C38A9F /* TTSegmentedControlSampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 787A468C2995063C00C38A9F /* Build configuration list for PBXNativeTarget "TTSegmentedControlSampleTests" */;
+			buildPhases = (
+				787A46822995063C00C38A9F /* Sources */,
+				787A46832995063C00C38A9F /* Frameworks */,
+				787A46842995063C00C38A9F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				787A468B2995063C00C38A9F /* PBXTargetDependency */,
+			);
+			name = TTSegmentedControlSampleTests;
+			productName = TTSegmentedControlSampleTests;
+			productReference = 787A46862995063C00C38A9F /* TTSegmentedControlSampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		81535A781F88BC7300398A9A /* TTSegmentedControl */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 81535A811F88BC7300398A9A /* Build configuration list for PBXNativeTarget "TTSegmentedControl" */;
@@ -152,10 +414,16 @@
 		81535A701F88BC7300398A9A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				DefaultBuildSystemTypeForWorkspace = Original;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Tapptitude;
 				TargetAttributes = {
+					787A46852995063C00C38A9F = {
+						CreatedOnToolsVersion = 14.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8193E5D01F8A70A900E1604E;
+					};
 					81535A781F88BC7300398A9A = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 1020;
@@ -182,15 +450,24 @@
 			targets = (
 				81535A781F88BC7300398A9A /* TTSegmentedControl */,
 				8193E5D01F8A70A900E1604E /* TTSegmentedControlSample */,
+				787A46852995063C00C38A9F /* TTSegmentedControlSampleTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		787A46842995063C00C38A9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		81535A771F88BC7300398A9A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				787A45FC2994FAB700C38A9F /* TTSegmentedControl.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,17 +478,59 @@
 				8193E5DE1F8A70A900E1604E /* LaunchScreen.storyboard in Resources */,
 				8193E5DB1F8A70A900E1604E /* Assets.xcassets in Resources */,
 				8193E5D91F8A70A900E1604E /* Main.storyboard in Resources */,
+				787A45FD2994FAB700C38A9F /* TTSegmentedControl.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		787A46822995063C00C38A9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				787A46A12995066100C38A9F /* CornerRadiusBuilderTests.swift in Sources */,
+				787A46A72995066100C38A9F /* TTSegmentedControlDelegateMock.swift in Sources */,
+				787A46A62995066100C38A9F /* MinSizeBuilderTests.swift in Sources */,
+				787A46A02995066100C38A9F /* DelayedWorkItemTests.swift in Sources */,
+				787A46A32995066100C38A9F /* TitleComponentFrameListBuilderTests.swift in Sources */,
+				787A46A22995066100C38A9F /* SelectionViewFrameForIndexBuilderTests.swift in Sources */,
+				787A46A92995066100C38A9F /* TTSegmentedControlTests.swift in Sources */,
+				787A46A42995066100C38A9F /* SelectionViewFrameForPointBuilderTests.swift in Sources */,
+				787A46AA2995066100C38A9F /* TTSegmentedControlTitleAdditionTests.swift in Sources */,
+				787A46A52995066100C38A9F /* SelectedIndexBuilderTests.swift in Sources */,
+				787A46A82995066100C38A9F /* TouchFake.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		81535A741F88BC7300398A9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8193E5E71F8A725700E1604E /* TTSegmentedControl.swift in Sources */,
+				787A46252994FAB700C38A9F /* TTSegmentedControl.swift in Sources */,
+				787A46132994FAB700C38A9F /* TitleComponentFrame.swift in Sources */,
+				787A462F2994FDE900C38A9F /* SwiftUIView.swift in Sources */,
+				787A462C2994FC5500C38A9F /* TTSwiftUISegmentedControl.swift in Sources */,
+				787A46172994FAB700C38A9F /* TTSegmentedControlBounceOptions.swift in Sources */,
+				787A460B2994FAB700C38A9F /* TTSegmentedControlAnimationOption.swift in Sources */,
+				787A45FE2994FAB700C38A9F /* SelectionViewFrameForIndexBuilder.swift in Sources */,
+				787A46152994FAB700C38A9F /* TTSegmentedControlTitle.swift in Sources */,
+				787A46042994FAB700C38A9F /* SelectionViewFrameForPointBuilder.swift in Sources */,
+				787A460F2994FAB700C38A9F /* LayoutParameter.swift in Sources */,
+				787A46002994FAB700C38A9F /* MinSizeBuilder.swift in Sources */,
+				787A46082994FAB700C38A9F /* CornerRadiusBuilder.swift in Sources */,
+				787A461D2994FAB700C38A9F /* TTSegmentedControlTitle+Addition.swift in Sources */,
+				787A461B2994FAB700C38A9F /* NSAttributedString+Addition.swift in Sources */,
+				787A46212994FAB700C38A9F /* CAGradientLayer+Addition.swift in Sources */,
+				787A46192994FAB700C38A9F /* String+HexColor.swift in Sources */,
+				787A46022994FAB700C38A9F /* TitleComponentFrameListBuilder.swift in Sources */,
+				787A45FA2994FAB700C38A9F /* TTSegmentedControlLayout.swift in Sources */,
+				787A460D2994FAB700C38A9F /* TTSegmentedControlShadow.swift in Sources */,
+				787A46112994FAB700C38A9F /* TTSegmentedControlGradient.swift in Sources */,
+				787A46272994FAB700C38A9F /* DelayedWorkItem.swift in Sources */,
+				787A46232994FAB700C38A9F /* UIView+Animation.swift in Sources */,
+				787A461F2994FAB700C38A9F /* UIView+Shadow.swift in Sources */,
+				787A46062994FAB700C38A9F /* SelectedIndexBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,12 +538,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8193E5D61F8A70A900E1604E /* ViewController.swift in Sources */,
+				787A46142994FAB700C38A9F /* TitleComponentFrame.swift in Sources */,
+				787A45FF2994FAB700C38A9F /* SelectionViewFrameForIndexBuilder.swift in Sources */,
+				787A46012994FAB700C38A9F /* MinSizeBuilder.swift in Sources */,
+				787A46032994FAB700C38A9F /* TitleComponentFrameListBuilder.swift in Sources */,
+				787A460C2994FAB700C38A9F /* TTSegmentedControlAnimationOption.swift in Sources */,
+				787A45FB2994FAB700C38A9F /* TTSegmentedControlLayout.swift in Sources */,
+				787A461C2994FAB700C38A9F /* NSAttributedString+Addition.swift in Sources */,
+				787A46072994FAB700C38A9F /* SelectedIndexBuilder.swift in Sources */,
+				787A46242994FAB700C38A9F /* UIView+Animation.swift in Sources */,
+				787A46282994FAB700C38A9F /* DelayedWorkItem.swift in Sources */,
+				787A461A2994FAB700C38A9F /* String+HexColor.swift in Sources */,
+				787A46122994FAB700C38A9F /* TTSegmentedControlGradient.swift in Sources */,
+				787A461E2994FAB700C38A9F /* TTSegmentedControlTitle+Addition.swift in Sources */,
+				787A462D2994FC5500C38A9F /* TTSwiftUISegmentedControl.swift in Sources */,
+				787A46262994FAB700C38A9F /* TTSegmentedControl.swift in Sources */,
+				787A46162994FAB700C38A9F /* TTSegmentedControlTitle.swift in Sources */,
+				787A46052994FAB700C38A9F /* SelectionViewFrameForPointBuilder.swift in Sources */,
+				787A460E2994FAB700C38A9F /* TTSegmentedControlShadow.swift in Sources */,
 				8193E5D41F8A70A900E1604E /* AppDelegate.swift in Sources */,
+				787A46302994FDE900C38A9F /* SwiftUIView.swift in Sources */,
+				787A46202994FAB700C38A9F /* UIView+Shadow.swift in Sources */,
+				787A46222994FAB700C38A9F /* CAGradientLayer+Addition.swift in Sources */,
+				787A46182994FAB700C38A9F /* TTSegmentedControlBounceOptions.swift in Sources */,
+				787A46092994FAB700C38A9F /* CornerRadiusBuilder.swift in Sources */,
+				787A46102994FAB700C38A9F /* LayoutParameter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		787A468B2995063C00C38A9F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8193E5D01F8A70A900E1604E /* TTSegmentedControlSample */;
+			targetProxy = 787A468A2995063C00C38A9F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8193E5D71F8A70A900E1604E /* Main.storyboard */ = {
@@ -246,6 +596,53 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		787A468D2995063C00C38A9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8N4MQ98MM6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = Tapptitude.TTSegmentedControlSampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TTSegmentedControlSample.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TTSegmentedControlSample";
+			};
+			name = Debug;
+		};
+		787A468E2995063C00C38A9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8N4MQ98MM6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = Tapptitude.TTSegmentedControlSampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TTSegmentedControlSample.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TTSegmentedControlSample";
+			};
+			name = Release;
+		};
 		81535A7F1F88BC7300398A9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -376,7 +773,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = TTSegmentedControl/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapptitude.TTSegmentedControl;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -400,7 +797,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = TTSegmentedControl/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapptitude.TTSegmentedControl;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -417,6 +814,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NF6484JE8F;
 				INFOPLIST_FILE = TTSegmentedControlSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapptitude.TTSegmentedControlSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -432,6 +830,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NF6484JE8F;
 				INFOPLIST_FILE = TTSegmentedControlSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapptitude.TTSegmentedControlSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -443,6 +842,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		787A468C2995063C00C38A9F /* Build configuration list for PBXNativeTarget "TTSegmentedControlSampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				787A468D2995063C00C38A9F /* Debug */,
+				787A468E2995063C00C38A9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		81535A731F88BC7300398A9A /* Build configuration list for PBXProject "TTSegmentedControl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

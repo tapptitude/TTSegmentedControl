@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "1400"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "81535A781F88BC7300398A9A"
-               BuildableName = "TTSegmentedControl.framework"
-               BlueprintName = "TTSegmentedControl"
+               BlueprintIdentifier = "8193E5D01F8A70A900E1604E"
+               BuildableName = "TTSegmentedControlSample.app"
+               BlueprintName = "TTSegmentedControlSample"
                ReferencedContainer = "container:TTSegmentedControl.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,6 +29,17 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "787A46852995063C00C38A9F"
+               BuildableName = "TTSegmentedControlSampleTests.xctest"
+               BlueprintName = "TTSegmentedControlSampleTests"
+               ReferencedContainer = "container:TTSegmentedControl.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -41,15 +52,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "81535A781F88BC7300398A9A"
-            BuildableName = "TTSegmentedControl.framework"
-            BlueprintName = "TTSegmentedControl"
+            BlueprintIdentifier = "8193E5D01F8A70A900E1604E"
+            BuildableName = "TTSegmentedControlSample.app"
+            BlueprintName = "TTSegmentedControlSample"
             ReferencedContainer = "container:TTSegmentedControl.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -57,15 +69,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "81535A781F88BC7300398A9A"
-            BuildableName = "TTSegmentedControl.framework"
-            BlueprintName = "TTSegmentedControl"
+            BlueprintIdentifier = "8193E5D01F8A70A900E1604E"
+            BuildableName = "TTSegmentedControlSample.app"
+            BlueprintName = "TTSegmentedControlSample"
             ReferencedContainer = "container:TTSegmentedControl.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

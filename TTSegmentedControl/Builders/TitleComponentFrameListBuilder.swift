@@ -89,7 +89,6 @@ extension TitleComponentFrameListBuilder {
             
             items.append(componentsFrame)
         }
-        
         return items
     }
 }
@@ -157,8 +156,12 @@ extension TitleComponentFrameListBuilder {
                 originY = totalFrame.maxY - imageSize.height
             }
         }
-        
-        return CGRect(x: originX, y: originY, width: imageSize.width, height: imageSize.height)
+        return CGRect(
+            x: originX,
+            y: originY,
+            width: imageSize.width,
+            height: imageSize.height
+        )
     }
 }
 

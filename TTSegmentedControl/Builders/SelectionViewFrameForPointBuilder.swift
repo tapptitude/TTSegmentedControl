@@ -61,7 +61,6 @@ extension SelectionViewFrameForPointBuilder {
             let originX = point.x - 0.5 * width
             frame = CGRect(x: originX, y: trailingFrame.origin.y, width: width, height: trailingFrame.height)
         }
-        
         return frame
     }
 }

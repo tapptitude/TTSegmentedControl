@@ -78,7 +78,6 @@ extension SelectedIndexBuilder {
             frames.append(frame)
             index = index + 1
         }
-        
         return frames
     }
 }

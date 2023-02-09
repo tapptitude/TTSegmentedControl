@@ -141,20 +141,3 @@ extension TTSwiftUISegmentedControl {
         segmentedView.delegate = context.coordinator
     }
 }
-
-final class ContainerView: UIView {
-    init() {
-        super.init(frame: .zero)
-        self.backgroundColor = .clear
-    }
-
-    @available(*, unavailable)
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) is not supported")
-    }
-
-    override var intrinsicContentSize: CGSize {
-        subviews.first?.frame.size ?? .zero
-    }
-}

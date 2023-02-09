@@ -21,7 +21,9 @@ extension CornerRadiusBuilder {
     func build() -> CGFloat {
         let maxCornerRadius = 0.5 * min(frame.height, frame.width)
         let minCornerRadius: CGFloat = 0
-        let cornerRadius = (self.cornerRadius < 0) ? maxCornerRadius : min(maxCornerRadius, self.cornerRadius)
+        let cornerRadius = (self.cornerRadius < 0)
+            ? maxCornerRadius
+            : min(maxCornerRadius, self.cornerRadius)
         return min(max(minCornerRadius, cornerRadius), maxCornerRadius)
     }
 }

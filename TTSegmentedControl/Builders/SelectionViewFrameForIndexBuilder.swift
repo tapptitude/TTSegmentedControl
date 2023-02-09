@@ -66,7 +66,6 @@ extension SelectionViewFrameForIndexBuilder {
             frame.origin.x = frame.midX - 0.5 * sectionWidth
             frame.size.width = sectionWidth
         }
-        
         return frame
     }
 }

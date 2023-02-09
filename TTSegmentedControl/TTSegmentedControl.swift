@@ -176,7 +176,7 @@ extension TTSegmentedControl {
 //MARK: - Prepare
 extension TTSegmentedControl {
     private func prepare() {
-        removeAllSuviews()
+        removeAllSubviews()
         prepareView()
         prepareContainerView()
         prepareContainerGradientLayer()
@@ -190,7 +190,7 @@ extension TTSegmentedControl {
         prepareSelectedStateImagesViews()
     }
 
-    private func removeAllSuviews() {
+    private func removeAllSubviews() {
         subviews.forEach({$0.removeFromSuperview()})
     }
     

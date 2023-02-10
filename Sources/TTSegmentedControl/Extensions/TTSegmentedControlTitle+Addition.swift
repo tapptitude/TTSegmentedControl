@@ -37,8 +37,8 @@ extension TTSegmentedControlTitle {
         guard let defaultImageName = defaultImageName, let selectedImageName = selectedImageName else {
             return .zero
         }
-        guard let defaultImage = UIImage(named: defaultImageName),
-              let selectedImage = UIImage(named: selectedImageName)
+        guard let defaultImage = UIImage(named: defaultImageName, in: .module, compatibleWith: nil),
+              let selectedImage = UIImage(named: selectedImageName, in: .module, compatibleWith: nil)
         else {
             return .zero
         }

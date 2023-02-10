@@ -153,11 +153,12 @@ final class TTSegmentedControlTitleAdditionTests: XCTestCase {
     
     func testAvailableImageSizeForImageWithoutImageSize() {
         // Given
-        let initialImageSize = UIImage(named: "youtube_selected")!.size
+        
+        let initialImageSize = UIImage(named: "test_image", in: .module, compatibleWith: nil)!.size
         let title = TTSegmentedControlTitle.init(
             text: "text",
-            defaultImageName: "youtube_selected",
-            selectedImageName: "youtube_selected"
+            defaultImageName: "test_image",
+            selectedImageName: "test_image"
         )
         
         // When

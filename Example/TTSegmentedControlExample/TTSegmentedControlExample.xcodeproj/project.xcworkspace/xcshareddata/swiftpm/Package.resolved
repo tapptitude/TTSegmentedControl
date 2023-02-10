@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "ttsegmentedcontrol",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dumitruigor/TTSegmentedControl",
+      "state" : {
+        "branch" : "swiftPackage",
+        "revision" : "e31d744428ef77c9dacbb8703f20b07247f482f2"
+      }
+    }
+  ],
+  "version" : 2
+}

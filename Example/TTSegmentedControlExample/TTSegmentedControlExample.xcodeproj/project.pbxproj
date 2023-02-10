@@ -8,19 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		785CD72029967597001C5FDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CD71F29967597001C5FDB /* AppDelegate.swift */; };
-		785CD7292996759B001C5FDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 785CD7282996759B001C5FDB /* Assets.xcassets */; };
 		785CD72C2996759B001C5FDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785CD72A2996759B001C5FDB /* LaunchScreen.storyboard */; };
 		785CD734299675FF001C5FDB /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CD733299675FF001C5FDB /* SwiftUIView.swift */; };
-		785CD737299676D2001C5FDB /* TTSegmentedControl in Frameworks */ = {isa = PBXBuildFile; productRef = 785CD736299676D2001C5FDB /* TTSegmentedControl */; };
+		785CD73B299684E8001C5FDB /* TTSegmentedControl in Frameworks */ = {isa = PBXBuildFile; productRef = 785CD73A299684E8001C5FDB /* TTSegmentedControl */; };
+		785CD73F29968568001C5FDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 785CD73E29968568001C5FDB /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		785CD71C29967597001C5FDB /* TTSegmentedControlExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTSegmentedControlExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		785CD71F29967597001C5FDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		785CD7282996759B001C5FDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		785CD72B2996759B001C5FDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		785CD72D2996759B001C5FDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		785CD733299675FF001C5FDB /* SwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		785CD73E29968568001C5FDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,7 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				785CD737299676D2001C5FDB /* TTSegmentedControl in Frameworks */,
+				785CD73B299684E8001C5FDB /* TTSegmentedControl in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +56,7 @@
 			children = (
 				785CD71F29967597001C5FDB /* AppDelegate.swift */,
 				785CD733299675FF001C5FDB /* SwiftUIView.swift */,
-				785CD7282996759B001C5FDB /* Assets.xcassets */,
+				785CD73E29968568001C5FDB /* Assets.xcassets */,
 				785CD72A2996759B001C5FDB /* LaunchScreen.storyboard */,
 				785CD72D2996759B001C5FDB /* Info.plist */,
 			);
@@ -80,7 +80,7 @@
 			);
 			name = TTSegmentedControlExample;
 			packageProductDependencies = (
-				785CD736299676D2001C5FDB /* TTSegmentedControl */,
+				785CD73A299684E8001C5FDB /* TTSegmentedControl */,
 			);
 			productName = TTSegmentedControlExample;
 			productReference = 785CD71C29967597001C5FDB /* TTSegmentedControlExample.app */;
@@ -111,7 +111,7 @@
 			);
 			mainGroup = 785CD71329967597001C5FDB;
 			packageReferences = (
-				785CD735299676D1001C5FDB /* XCRemoteSwiftPackageReference "TTSegmentedControl" */,
+				785CD739299684E8001C5FDB /* XCRemoteSwiftPackageReference "TTSegmentedControl" */,
 			);
 			productRefGroup = 785CD71D29967597001C5FDB /* Products */;
 			projectDirPath = "";
@@ -127,8 +127,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				785CD73F29968568001C5FDB /* Assets.xcassets in Resources */,
 				785CD72C2996759B001C5FDB /* LaunchScreen.storyboard in Resources */,
-				785CD7292996759B001C5FDB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +354,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		785CD735299676D1001C5FDB /* XCRemoteSwiftPackageReference "TTSegmentedControl" */ = {
+		785CD739299684E8001C5FDB /* XCRemoteSwiftPackageReference "TTSegmentedControl" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dumitruigor/TTSegmentedControl";
 			requirement = {
@@ -365,9 +365,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		785CD736299676D2001C5FDB /* TTSegmentedControl */ = {
+		785CD73A299684E8001C5FDB /* TTSegmentedControl */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 785CD735299676D1001C5FDB /* XCRemoteSwiftPackageReference "TTSegmentedControl" */;
+			package = 785CD739299684E8001C5FDB /* XCRemoteSwiftPackageReference "TTSegmentedControl" */;
 			productName = TTSegmentedControl;
 		};
 /* End XCSwiftPackageProductDependency section */

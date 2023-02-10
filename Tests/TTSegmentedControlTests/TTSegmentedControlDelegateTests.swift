@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import TTSegmentedControlSample
+@testable import TTSegmentedControl
 
 final class TTSegmentedControlDelegateTests: XCTestCase {
     private var delegate: TTSegmentedControlDelegateTestMock!

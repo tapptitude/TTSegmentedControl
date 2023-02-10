@@ -1,6 +1,6 @@
 //
 //  TTSegmentedControlTitle+Addition.swift
-//  SegmentedControl
+//  TTSegmentedControl
 //
 //  Created by Igor Dumitru on 02.02.2023.
 //

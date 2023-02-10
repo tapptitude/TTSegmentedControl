@@ -70,6 +70,8 @@
 		787A46A82995066100C38A9F /* TouchFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A469C2995066100C38A9F /* TouchFake.swift */; };
 		787A46A92995066100C38A9F /* TTSegmentedControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A469D2995066100C38A9F /* TTSegmentedControlTests.swift */; };
 		787A46AA2995066100C38A9F /* TTSegmentedControlTitleAdditionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A469F2995066100C38A9F /* TTSegmentedControlTitleAdditionTests.swift */; };
+		787A46AC299657F700C38A9F /* TTSegmentedControlDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A46AB299657F600C38A9F /* TTSegmentedControlDelegateTests.swift */; };
+		787A46AE29965A2E00C38A9F /* TTSwiftUISegmentedControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A46AD29965A2E00C38A9F /* TTSwiftUISegmentedControlTests.swift */; };
 		8193E5D41F8A70A900E1604E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8193E5D31F8A70A900E1604E /* AppDelegate.swift */; };
 		8193E5D91F8A70A900E1604E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8193E5D71F8A70A900E1604E /* Main.storyboard */; };
 		8193E5DB1F8A70A900E1604E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8193E5DA1F8A70A900E1604E /* Assets.xcassets */; };
@@ -126,6 +128,8 @@
 		787A469C2995066100C38A9F /* TouchFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchFake.swift; sourceTree = "<group>"; };
 		787A469D2995066100C38A9F /* TTSegmentedControlTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSegmentedControlTests.swift; sourceTree = "<group>"; };
 		787A469F2995066100C38A9F /* TTSegmentedControlTitleAdditionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSegmentedControlTitleAdditionTests.swift; sourceTree = "<group>"; };
+		787A46AB299657F600C38A9F /* TTSegmentedControlDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSegmentedControlDelegateTests.swift; sourceTree = "<group>"; };
+		787A46AD29965A2E00C38A9F /* TTSwiftUISegmentedControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSwiftUISegmentedControlTests.swift; sourceTree = "<group>"; };
 		81535A791F88BC7300398A9A /* TTSegmentedControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TTSegmentedControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8193E5D11F8A70A900E1604E /* TTSegmentedControlSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTSegmentedControlSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8193E5D31F8A70A900E1604E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -277,6 +281,8 @@
 			isa = PBXGroup;
 			children = (
 				787A469D2995066100C38A9F /* TTSegmentedControlTests.swift */,
+				787A46AD29965A2E00C38A9F /* TTSwiftUISegmentedControlTests.swift */,
+				787A46AB299657F600C38A9F /* TTSegmentedControlDelegateTests.swift */,
 				787A46992995066100C38A9F /* Mock */,
 				787A469B2995066100C38A9F /* Fake */,
 			);
@@ -490,8 +496,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				787A46A12995066100C38A9F /* CornerRadiusBuilderTests.swift in Sources */,
+				787A46AE29965A2E00C38A9F /* TTSwiftUISegmentedControlTests.swift in Sources */,
 				787A46A72995066100C38A9F /* TTSegmentedControlDelegateMock.swift in Sources */,
 				787A46A62995066100C38A9F /* MinSizeBuilderTests.swift in Sources */,
+				787A46AC299657F700C38A9F /* TTSegmentedControlDelegateTests.swift in Sources */,
 				787A46A02995066100C38A9F /* DelayedWorkItemTests.swift in Sources */,
 				787A46A32995066100C38A9F /* TitleComponentFrameListBuilderTests.swift in Sources */,
 				787A46A22995066100C38A9F /* SelectionViewFrameForIndexBuilderTests.swift in Sources */,

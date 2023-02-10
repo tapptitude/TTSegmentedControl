@@ -1,6 +1,6 @@
 //
 //  TTSegmentedControlTitleAdditionTests.swift
-//  SegmentedControlTests
+//  TTSegmentedControlTests
 //
 //  Created by Igor Dumitru on 08.02.2023.
 //

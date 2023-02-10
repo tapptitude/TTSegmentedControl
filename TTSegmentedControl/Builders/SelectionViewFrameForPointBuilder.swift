@@ -1,6 +1,6 @@
 //
 //  SelectionViewFrameForPointBuilder.swift
-//  SegmentedControl
+//  TTSegmentedControl
 //
 //  Created by Igor Dumitru on 03.02.2023.
 //

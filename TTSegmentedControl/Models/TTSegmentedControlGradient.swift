@@ -1,6 +1,6 @@
 //
 //  TTSegmentedControlGradient.swift
-//  SegmentedControl
+//  TTSegmentedControl
 //
 //  Created by Igor Dumitru on 01.02.2023.
 //

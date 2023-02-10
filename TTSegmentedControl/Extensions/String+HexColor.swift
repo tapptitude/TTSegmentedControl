@@ -1,6 +1,6 @@
 //
 //  String+HexColor.swift
-//  SegmentedControl
+//  TTSegmentedControl
 //
 //  Created by Igor Dumitru on 06.02.2023.
 //

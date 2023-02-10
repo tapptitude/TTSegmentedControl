@@ -1,6 +1,6 @@
 //
 //  TTSegmentedControlTests.swift
-//  SegmentedControlTests
+//  TTSegmentedControlTests
 //
 //  Created by Igor Dumitru on 07.02.2023.
 //

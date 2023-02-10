@@ -1,6 +1,6 @@
 //
 //  TextLabelsFrameListBuilder.swift
-//  SegmentedControl
+//  TTSegmentedControl
 //
 //  Created by Igor Dumitru on 30.01.2023.
 //

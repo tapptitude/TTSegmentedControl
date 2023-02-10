@@ -1,6 +1,6 @@
 //
 //  SelectedIndexBuilderTests.swift
-//  SegmentedControlTests
+//  TTSegmentedControlTests
 //
 //  Created by Igor Dumitru on 07.02.2023.
 //
@@ -86,5 +86,26 @@ final class SelectedIndexBuilderTests: XCTestCase {
         
         // Then
         XCTAssertEqual(index, 1)
+    }
+    
+    func testWhenNoTitles() {
+        // Given
+        let point: CGPoint = .init(x: 20, y: viewBounds.midY)
+        
+        let builder = SelectedIndexBuilder(
+            viewBounds: viewBounds,
+            cornerRadius: .zero,
+            defaultTitleComponentsFrames: [],
+            selectedTitleComponentsFrames: [],
+            point: point,
+            padding: padding,
+            titleDistribution: titleDistribution
+        )
+        
+        // When
+        let index = builder.build()
+        
+        // Then
+        XCTAssertEqual(index, 0)
     }
 }

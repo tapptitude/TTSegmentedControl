@@ -1,6 +1,6 @@
 //
 //  SelectedIndexBuilder.swift
-//  SegmentedControl
+//  TTSegmentedControl
 //
 //  Created by Igor Dumitru on 30.01.2023.
 //
@@ -38,14 +38,9 @@ struct SelectedIndexBuilder {
 extension SelectedIndexBuilder {
     func build() -> Int {
         let segmentFrames = segmentFrames
-        let point = CGPoint(x: point.x, y: 0.5 * viewBounds.height)
-        if point.x < (segmentFrames.first?.origin.x ?? 0) {
-            return 0
-        }
-        if point.x > (segmentFrames.last?.maxX ?? viewBounds.width) {
-            return segmentFrames.count - 1
-        }
-        return segmentFrames.firstIndex(where: {$0.contains(point)}) ?? 0
+        let x = min(max(0, point.x), viewBounds.width - 1)
+        let newPoint = CGPoint(x: x, y: 0.5 * viewBounds.height)
+        return segmentFrames.firstIndex(where: {$0.contains(newPoint)}) ?? 0
     }
 }
 

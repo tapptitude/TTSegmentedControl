@@ -1,6 +1,6 @@
 //
 //  MinSizeBuilder.swift
-//  SegmentedControl
+//  TTSegmentedControl
 //
 //  Created by Igor Dumitru on 27.01.2023.
 //

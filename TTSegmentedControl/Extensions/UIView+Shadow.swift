@@ -1,6 +1,6 @@
 //
 //  UIView+Shadow.swift
-//  SegmentedControl
+//  TTSegmentedControl
 //
 //  Created by Igor Dumitru on 31.01.2023.
 //

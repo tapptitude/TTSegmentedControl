@@ -1,6 +1,6 @@
 //
 //  TouchFake.swift
-//  SegmentedControlTests
+//  TTSegmentedControlTests
 //
 //  Created by Igor Dumitru on 09.02.2023.
 //

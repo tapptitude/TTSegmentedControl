@@ -188,6 +188,7 @@ extension TTSegmentedControl {
         prepareSelectedLabelsView()
         prepareSelectedStateLabels()
         prepareSelectedStateImagesViews()
+        prepareSelectedSegmentedIndex()
     }
 
     private func removeAllSubviews() {
@@ -276,6 +277,10 @@ extension TTSegmentedControl {
         view.clipsToBounds = true
         addSubview(view)
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    }
+    
+    private func prepareSelectedSegmentedIndex() {
+        selectedIndex = min(selectedIndex, max(0, titles.count - 1))
     }
 }
 

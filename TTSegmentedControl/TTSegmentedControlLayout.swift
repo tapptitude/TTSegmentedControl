@@ -190,7 +190,7 @@ extension TTSegmentedControlLayout {
     }
 }
 
-extension TTSegmentedControlLayout {    
+extension TTSegmentedControlLayout {
     private func layoutSelectionView(for point: CGPoint) {
         let index = index(for: point)
         layoutSelectionView(for: index)
@@ -215,6 +215,7 @@ extension TTSegmentedControlLayout {
     }
     
     private func layoutSelectionViewGradientLayer(animated: Bool = false) {
+        if selectionViewFrames.isEmpty { return }
         CATransaction.begin()
         CATransaction.setAnimationDuration(animated ? params.animationDuration - 0.1 : 0.0)
         view.selectionViewGradientLayer.frame = view.selectionView.bounds

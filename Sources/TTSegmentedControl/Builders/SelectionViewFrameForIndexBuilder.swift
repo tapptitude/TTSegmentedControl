@@ -60,8 +60,9 @@ extension SelectionViewFrameForIndexBuilder {
             frame.size.width = 2 * (rightMargin - frame.midX)
             frame.origin.x = rightMargin - frame.size.width
         } else if titleDistribution == .equalSpacing {
-            frame.origin.x = frame.origin.x - 0.5 * widthOffset
-            frame.size.width = frame.size.width + widthOffset
+            let width = frame.size.width + widthOffset
+            frame.origin.x = frame.midX - 0.5 * width
+            frame.size.width = width
         } else {
             frame.origin.x = frame.midX - 0.5 * sectionWidth
             frame.size.width = sectionWidth

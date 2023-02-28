@@ -11,7 +11,7 @@ import XCTest
 
 final class TTSwiftUISegmentedControlTests: XCTestCase {
     private let  uiKitSegmentControl = TTSegmentedControl()
-    private let titles = ["Men", "Women"].map({TTSegmentedControlTitle(text: $0)})
+    private let titles = ["Men", "Women"].map { TTSegmentedControlTitle(text: $0) }
     
     func testSegmentedViewDidBegin() {
         // Given

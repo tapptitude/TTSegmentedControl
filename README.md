@@ -24,8 +24,8 @@ This project is maintained by Tapptitude, a mobile app development agency specia
 
 ## Requirements
 
-- iOS 8.0+
-- Xcode 7.3+
+- iOS 13.0+
+- Xcode 11+
 
 ## Installation
 
@@ -39,32 +39,8 @@ dependencies: [
 
 _CocoaPods_
 
-_Swift 5.0_
-
 ```ruby
-pod 'TTSegmentedControl', '~>0.4.9'
-```
-_Swift 4.2_
-
-```ruby
-pod 'TTSegmentedControl', '~>0.4.8'
-```
-
-_Swift 4.0_
-
-```ruby
-pod 'TTSegmentedControl', '~>0.4.6'
-```
-
-_Swift 3.X_
-
-```ruby
-pod 'TTSegmentedControl', '~>0.3'
-```
-
-_Swift 2.x_
-```ruby
-pod 'TTSegmentedControl', '0.1.1'
+  pod 'TTSegmentedControl', :git => 'https://github.com/dumitruigor/TTSegmentedControl.git', :branch => 'swiftPackage'
 ```
 
 _Carthage_
@@ -75,82 +51,226 @@ github "tapptitude/TTSegmentedControl"
 
 _Manually_
 
-Add the TTSegmentedControl.swift file to your project.
+Add the TTSegmentedControl to your project.
 
 ## Usage
 
-- Programatic:
+- SwiftUI:
 
+```swift
+let titles = ["Title1", "Title2"].map { TTSegmentedControlTitle(text: $0) }
 
+TTSwiftUISegmentedControl(titles: titles, selectedIndex: $selectedIndex)
 ```
+
+- UIKit:
+
+```swift
+let titles = ["Title1", "Title2"].map { TTSegmentedControlTitle(text: $0) }
+
 let segmentedControl = TTSegmentedControl()
-segmentedControl.allowChangeThumbWidth = false
-segmentedControl.frame = CGRect(x: 50, y: 200, width: 100, height: 50)
-segmentedControl.didSelectItemWith = { (index, title) -> () in
-    print("Selected item \(index)")
-}
+segmentedControl.titles = titles
 view.addSubview(segmentedControl)
 ```
 
-- Interface Builder:
-
-Add a UIView and set it's class to TTSegmentedControl. You can customize the control directly from the interface builder.
-
-![](Resources/IB.png)
-
-
 ## How to customize?
 
-Checkout the playground and see how to implement and customize the SegmentedControl.
-
-```ruby
-pod try TTSegmentedControl
-```
-
-In order to customize the segmented control you'll have to edit it's properties.
+In order to customize the segmented control you'll have to edit it's properties:
 
 ```swift
-segmentedControl.defaultTextColor = UIColor.blackColor()
-segmentedControl.selectedTextColor = UIColor.whiteColor()
-segmentedControl.thumbGradientColors = [UIColor.redColor(), UIColor.blueColor()]
-segmentedControl.useShadow = true
+//UIKit
+segmentedControl.titleDistribution = .equalSpacing 
+segmentedControl.isDragEnabled = true 
+segmentedControl.isSizeAdjustEnabled = true
+segmentedControl.isSwitchBehaviorEnabled = false
+segmentedControl.containerBackgroundColor = .white
+segmentedControl.cornerRadius = 15
+segmentedControl.padding = .init(width: 2, height: 2)
 
+//SwiftUI
+TTSwiftUISegmentedControl(
+    titles: titles,
+    titleDistribution: .equalSpacing,
+    padding: .init(width: 2, height: 2),
+    isDragEnabled: true,
+    containerBackgroundColor: .white,
+    selectionViewColor: .blue,
+    cornerRadius: 15,
+    isSwitchBehaviorEnabled: false
+)
 ```
 
-You can add image instead of title.
+You can even disable animation or/and bounce effect:
+
+```swift
+//UIKit
+segmentedControl.animationOptions = nil 
+segmentedControl.bounceAnimationOptions = nil
+
+//SwiftUI
+TTSwiftUISegmentedControl(
+    titles: titles,
+    animationOptions: nil,
+    bounceAnimationOptions: nil
+)
+```
+
+Or you can edit them:
+
+```swift
+
+let animationOptions = TTSegmentedControlAnimationOption(duration: 0.5, options: .curveEaseInOut)
+let bounceAnimationOptions = TTSegmentedControlBounceOptions(springDamping: 0.7, springInitialVelocity: 0.2)
+
+//UIKit
+segmentedControl.animationOptions = animationOptions
+segmentedControl.bounceAnimationOptions = bounceAnimationOptions
+
+//SwiftUI
+TTSwiftUISegmentedControl(
+    titles: titles,
+    animationOptions: animationOptions,
+    bounceAnimationOptions: bounceAnimationOptions
+)
+```
+
+The segmentedControl titles can be customized:
+
+```swift
+let title1 = TTSegmentedControlTitle(
+    text: "Title 1",
+    defaultColor: .black,
+    defaultFont: .systemFont(ofSize: 12),
+    selectedColor: .white,
+    selectedFont: .systemFont(ofSize: 13)
+)
+
+let title2 = TTSegmentedControlTitle(
+    text: "Title 2",
+    defaultColor: .black,
+    defaultFont: .systemFont(ofSize: 12),
+    selectedColor: .white,
+    selectedFont: .systemFont(ofSize: 13)
+)
+
+//UIKit
+segmentedControl.titles = [title1, title2]
+
+//SwiftUI
+TTSwiftUISegmentedControl(titles: [title1, title2])
+```
+
+Instead of text the titles can be initialized with NSAttributedString objects:
+
+```swift
+let title1 = TTSegmentedControlTitle(
+    defaultAttributedText: attributedText1,
+    selectedAttributedText: attributedText2
+)
+
+let title2 = TTSegmentedControlTitle(
+    defaultAttributedText: attributedText3,
+    selectedAttributedText: attributedText4
+)
+
+//UIKit
+segmentedControl.titles = [title1, title2]
+
+//SwiftUI
+TTSwiftUISegmentedControl(titles: [title1, title2])
+```
+
+You can add image instead of title:
+
+![](Resources/Image_with_attributes_3.png)
+
+```swift
+let title1 = TTSegmentedControlTitle(
+    defaultImageName: "default_image_1",
+    selectedImageName: "selected_image_1"
+)
+
+let title2 = TTSegmentedControlTitle(
+    defaultImageName: "default_image_2",
+    selectedImageName: "selected_image_2"
+)
+
+let title3 = TTSegmentedControlTitle(
+    defaultImageName: "default_image_3",
+    selectedImageName: "selected_image_3"
+)
+
+//UIKit
+segmentedControl.titles = [title1, title2, title3]
+
+//SwiftUI
+TTSwiftUISegmentedControl(titles: [title1, title2, title3])
+```
+
+The image sizes can be customized for each title:
 
 ![](Resources/Image_with_attributes.png)
 
 ```swift
-// ask segmented control to initialize all elements internally
-segmentedControl.layoutSubviews()
-        
-let imageAttachment = NSTextAttachment()
-imageAttachment.image = image
-imageAttachment.bounds = CGRect(x: 0, y: -5, width: 20, height: 20)
-        
-let attributes = NSAttributedString(attachment: imageAttachment)
-        
-segmentedControl.changeAttributedTitle(attributes, selectedTile: attributes, atIndex: atIndex)
+let title1 = TTSegmentedControlTitle(
+    defaultImageName: "default_image_1",
+    selectedImageName: "selected_image_1",
+    imageSize: CGSize(width: 10, height: 10)
+)
+
+let title2 = TTSegmentedControlTitle(
+    defaultImageName: "default_image_2",
+    selectedImageName: "selected_image_2",
+    imageSize: CGSize(width: 30, height: 30)
+)
+
+let title3 = TTSegmentedControlTitle(
+    defaultImageName: "default_image_3",
+    selectedImageName: "selected_image_3",
+    imageSize: CGSize(width: 20, height: 20)
+)
+
+//UIKit
+segmentedControl.titles = [title1, title2, title3]
+
+//SwiftUI
+TTSwiftUISegmentedControl(titles: [title1, title2, title3])
 ```
 
-Or combine them.
+The texts can be combined with the images:
+
+![](Resources/Image_with_attributes_2.png)
 
 ```swift
-// ask segmented control to initialize all elements internally
-segmentedControl.layoutSubviews()
-        
-let imageAttachment = NSTextAttachment()
-imageAttachment.image = image
-imageAttachment.bounds = CGRect(x: 0, y: -5, width: 20, height: 20)
-        
-let attributes = segmentedControl.attributedDefaultTitles.first?.mutableCopy() as! NSMutableAttributedString
-attributes.append(NSAttributedString(attachment: imageAttachment))
-        
-let selectedAttributes = segmentedControl.attributedSelectedTitles.first?.mutableCopy() as! NSMutableAttributedString
-selectedAttributes.append(NSAttributedString(attachment: imageAttachment))
-        
-segmentedControl.changeAttributedTitle(attributes, selectedTile: selectedAttributes, atIndex: atIndex)
+let title1 = TTSegmentedControlTitle(
+    text: "Facebook",
+    defaultImageName: "default_image_1",
+    selectedImageName: "selected_image_1",
+    imageSize: CGSize(width: 5, height: 5),
+    imagePosition: .left
+)
+
+let title2 = TTSegmentedControlTitle(
+    text: "Youtube",
+    defaultImageName: "default_image_2",
+    selectedImageName: "selected_image_2",
+    imageSize: CGSize(width: 8, height: 8),
+    imagePosition: .bottom
+)
+
+let title3 = TTSegmentedControlTitle(
+    text: "Twitter",
+    defaultImageName: "default_image_2",
+    selectedImageName: "selected_image_2",
+    imageSize: CGSize(width: 8, height: 7),
+    imagePosition: .top
+)
+
+//UIKit
+segmentedControl.titles = [title1, title2, title3]
+
+//SwiftUI
+TTSwiftUISegmentedControl(titles: [title1, title2, title3])
 ```
 ## Contribution
 

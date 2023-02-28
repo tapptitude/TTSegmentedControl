@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct TTSwiftUISegmentedControl: UIViewRepresentable {
-    @Binding private var selectedIndex: Int
+    @Binding private var selectedIndex: Int?
     private let bounceAnimationOptions: TTSegmentedControlBounceOptions?
     private let selectionViewShadow: TTSegmentedControlShadow?
     private let titleDistribution: TTSegmentedControl.TitleDistribution
@@ -30,7 +30,7 @@ public struct TTSwiftUISegmentedControl: UIViewRepresentable {
     public init(
         titles: [TTSegmentedControlTitle] = [],
         titleDistribution: TTSegmentedControl.TitleDistribution = .equalSpacing,
-        selectedIndex: Binding<Int> = .constant(0),
+        selectedIndex: Binding<Int?>? = .constant(nil),
         padding: CGSize = .init(width: 2, height: 2),
         isDragEnabled: Bool = true,
         animationOptions: TTSegmentedControlAnimationOption? = .init(),
@@ -49,7 +49,7 @@ public struct TTSwiftUISegmentedControl: UIViewRepresentable {
     ) {
         self.titles = titles
         self.titleDistribution = titleDistribution
-        self._selectedIndex = selectedIndex
+        self._selectedIndex = selectedIndex ?? Binding.constant(nil)
         self.padding = padding
         self.bounceAnimationOptions = bounceAnimationOptions
         self.selectionViewShadow = selectionViewShadow
@@ -89,18 +89,18 @@ public struct TTSwiftUISegmentedControl: UIViewRepresentable {
     }
     
     final public class Coordinator: TTSegmentedControlDelegate {
-        @Binding private var selectedIndex: Int
+        @Binding private var selectedIndex: Int?
         private let didBeginTouch: (() -> Void)?
         private let didDragOverItemAtIndex: ((Int) -> Void)?
         private let didEndTouchAtIndex: ((Int) -> Void)?
         
         init(
-            selectedIndex: Binding<Int>,
+            selectedIndex: Binding<Int?>?,
             didBeginTouch: (() -> Void)?,
             didDragOverItemAtIndex: ((Int) -> Void)?,
             didEndTouchAtIndex: ((Int) -> Void)?
         ) {
-            self._selectedIndex = selectedIndex
+            self._selectedIndex = selectedIndex ?? Binding.constant(nil)
             self.didBeginTouch = didBeginTouch
             self.didDragOverItemAtIndex = didDragOverItemAtIndex
             self.didEndTouchAtIndex = didEndTouchAtIndex
@@ -137,7 +137,9 @@ extension TTSwiftUISegmentedControl {
         segmentedView.selectionViewGradient = selectionViewGradient
         segmentedView.cornerRadius = cornerRadius
         segmentedView.isSwitchBehaviorEnabled = isSwitchBehaviorEnabled
-        segmentedView.selectItem(at: selectedIndex, animated: false)
         segmentedView.delegate = context.coordinator
+        if let selectedIndex = selectedIndex {
+            segmentedView.selectItem(at: selectedIndex, animated: false)
+        }
     }
 }

@@ -69,7 +69,7 @@ public struct TTSwiftUISegmentedControl: UIViewRepresentable {
     
     public func makeUIView(context: Context) -> UIView {
         let segmentedView = TTSegmentedControl()
-        update(segmentedView, in: context)        
+        update(segmentedView, in: context)
         return segmentedView
     }
     

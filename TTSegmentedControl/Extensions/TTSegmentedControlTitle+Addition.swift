@@ -9,8 +9,11 @@ import UIKit
 
 extension TTSegmentedControlTitle {
     var availableDefaultAttributedText: NSAttributedString {
-        if let defaultAttributedText = defaultAttributedText {
-            return defaultAttributedText
+        if let defaultAttributedText = defaultAttributedText ?? selectedAttributedText {
+            var attributes = defaultAttributedText.attributes(at: 0, effectiveRange: nil)
+            attributes[.foregroundColor] = attributes[.foregroundColor] ?? defaultColor
+            attributes[.font] = attributes[.font] ?? defaultFont
+            return NSAttributedString(string: defaultAttributedText.string, attributes: attributes)
         }
         let attributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: defaultColor,
@@ -20,8 +23,11 @@ extension TTSegmentedControlTitle {
     }
     
     var availableSelectedAttributedText: NSAttributedString {
-        if let selectedAttributedText = selectedAttributedText {
-            return selectedAttributedText
+        if let selectedAttributedText = selectedAttributedText ?? defaultAttributedText {
+            var attributes = selectedAttributedText.attributes(at: 0, effectiveRange: nil)
+            attributes[.foregroundColor] = attributes[.foregroundColor] ?? selectedColor
+            attributes[.font] = attributes[.font] ?? selectedFont
+            return NSAttributedString(string: selectedAttributedText.string, attributes: attributes)
         }
         let attributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: selectedColor,

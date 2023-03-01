@@ -53,14 +53,12 @@ extension SwiftUIView {
     }
     
     private var switchView: some View {
-        TTSwiftUISegmentedControl(
-            titles: switchTitles,
-            containerBackgroundColor: "EFEEF3".color,
-            selectionViewColor: "00C7BE".color,
-            selectionViewShadow: .init(),
-            bounceAnimationOptions: .init()
-        )
-        .frame(width: 100, height: 34)
+        TTSwiftUISegmentedControl(titles: switchTitles)
+            .containerBackgroundColor("EFEEF3".color)
+            .selectionViewColor("00C7BE".color)
+            .selectionViewShadow(.init())
+            .bounceAnimationOptions(.init())
+            .frame(width: 100, height: 34)
     }
 }
 
@@ -78,13 +76,11 @@ extension SwiftUIView {
     }
     
     private var smallBorderSegmentView: some View {
-        TTSwiftUISegmentedControl(
-            titles: smallBorderSegmentViewTitles,
-            selectionViewColor: "D9CC23".color,
-            bounceAnimationOptions: .init(),
-            cornerRadius: .constant(value: 5)
-        )
-        .frame(height: 45)
+        TTSwiftUISegmentedControl(titles: smallBorderSegmentViewTitles)
+            .selectionViewColor( "D9CC23".color)
+            .bounceAnimationOptions( .init())
+            .cornerRadius( .constant(value: 5))
+            .frame(height: 45)
     }
 }
 
@@ -99,14 +95,12 @@ extension SwiftUIView {
     
     private var fillEquallySegmentView: some View {
         HStack(spacing: .zero) {
-            TTSwiftUISegmentedControl(
-                titles: smallBorderSegmentViewTitles,
-                titleDistribution: .fillEqually,
-                selectionViewColor: "D9CC23".color,
-                selectionViewShadow: .init(),
-                cornerRadius: .none
-            )
-            .frame(height: 45)
+            TTSwiftUISegmentedControl(titles: smallBorderSegmentViewTitles)
+                .titleDistribution(.fillEqually)
+                .selectionViewColor("D9CC23".color)
+                .selectionViewShadow(.init())
+                .cornerRadius(.none)
+                .frame(height: 45)
         }
     }
 }
@@ -147,14 +141,12 @@ extension SwiftUIView {
     
     private var differentColorTitleSegmentView: some View {
         HStack(spacing: .zero) {
-            TTSwiftUISegmentedControl(
-                titles: differentColorTitleSegmentViewTitles,
-                containerGradient: .init(startPoint: .init(x: 0.5, y: 0), endPoint: .init(x: 0.5, y: 1), colors: [.white, .gray.withAlphaComponent(0.5)]),
-                selectionViewColor: "FFCC00".color,
-                selectionViewGradient: .init(startPoint: .init(x: 0.5, y: 0), endPoint: .init(x: 0.5, y: 1), colors: ["FF2D55".color, "FFC555".color]),
-                selectionViewShadow: .init()
-            )
-            .frame(height: 55)
+            TTSwiftUISegmentedControl(titles: differentColorTitleSegmentViewTitles)
+                .containerGradient(.init(startPoint: .init(x: 0.5, y: 0), endPoint: .init(x: 0.5, y: 1), colors: [.white, .gray.withAlphaComponent(0.5)]))
+                .selectionViewColor("FFCC00".color)
+                .selectionViewGradient(.init(startPoint: .init(x: 0.5, y: 0), endPoint: .init(x: 0.5, y: 1), colors: ["FF2D55".color, "FFC555".color]))
+                .selectionViewShadow(.init())
+                .frame(height: 55)
         }
     }
 }
@@ -201,13 +193,11 @@ extension SwiftUIView {
     
     private var titlesWithImagesSegmentView: some View {
         HStack(spacing: .zero) {
-            TTSwiftUISegmentedControl(
-                titles: titlesWithImagesSegmentViewTitles,
-                selectionViewColor: "7BEA73".color,
-                selectionViewShadow: .init(),
-                cornerRadius: .constant(value: 5)
-            )
-            .frame(height: 45)
+            TTSwiftUISegmentedControl(titles: titlesWithImagesSegmentViewTitles)
+                .selectionViewColor("7BEA73".color)
+                .selectionViewShadow(.init())
+                .cornerRadius(.constant(value: 5))
+                .frame(height: 45)
         }
     }
 }
@@ -258,13 +248,11 @@ extension SwiftUIView {
     
     private var differentImagePositionSegmentView: some View {
         HStack(spacing: .zero) {
-            TTSwiftUISegmentedControl(
-                titles: differentImagePositionSegmentViewTitles,
-                selectionViewColor: "7BEA73".color,
-                selectionViewShadow: .init(),
-                bounceAnimationOptions: .init()
-            )
-            .frame(height: 55)
+            TTSwiftUISegmentedControl(titles: differentImagePositionSegmentViewTitles)
+                .selectionViewColor("7BEA73".color)
+                .selectionViewShadow(.init())
+                .bounceAnimationOptions(.init())
+                .frame(height: 55)
         }
     }
 }

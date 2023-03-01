@@ -173,7 +173,6 @@ extension TTSegmentedControl {
         prepareTouchPointOffset(for: point)
         let pointToNotJumpViewWhenDragged = CGPoint(x: point.x + touchPointOffset.x, y: touchPointOffset.x)
         let isSwipeToLeft = point.x < lastTouchPoint.x
-        debugPrint(pointToNotJumpViewWhenDragged)
         layout.layoutSelectionViewAndMaskView(for: pointToNotJumpViewWhenDragged, whenUserMoveFingerToLeft: isSwipeToLeft)
         lastTouchPoint = point
         notifyDragInProgress(at: point)

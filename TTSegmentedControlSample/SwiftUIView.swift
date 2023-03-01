@@ -82,7 +82,7 @@ extension SwiftUIView {
             titles: smallBorderSegmentViewTitles,
             selectionViewColor: "D9CC23".color,
             bounceAnimationOptions: .init(),
-            cornerRadius: 5
+            cornerRadius: .constant(value: 5)
         )
         .frame(height: 45)
     }
@@ -104,7 +104,7 @@ extension SwiftUIView {
                 titleDistribution: .fillEqually,
                 selectionViewColor: "D9CC23".color,
                 selectionViewShadow: .init(),
-                cornerRadius: 0
+                cornerRadius: .none
             )
             .frame(height: 45)
         }
@@ -172,27 +172,27 @@ extension SwiftUIView {
         let title1 = TTSegmentedControlTitle(
             text: "Facebook",
             defaultColor: .black,
-            defaultImageName: "facebook_unselected",
+            defaultImage: UIImage(named: "facebook_unselected"),
             selectedColor: "39549D".color,
-            selectedImageName: "facebook_selected",
+            selectedImage: UIImage(named: "facebook_selected"),
             imageSize: CGSize(width: 16, height: 16)
         )
         
         let title2 = TTSegmentedControlTitle(
             text: "Youtube",
             defaultColor: .black,
-            defaultImageName: "youtube_unselected",
+            defaultImage: UIImage(named: "youtube_unselected"),
             selectedColor: "FF0000".color,
-            selectedImageName: "youtube_selected",
+            selectedImage: UIImage(named: "youtube_selected"),
             imageSize: CGSize(width: 16, height: 16)
         )
         
         let title3 = TTSegmentedControlTitle(
             text: "Twitter",
             defaultColor: .black,
-            defaultImageName: "twitter_unselected",
+            defaultImage: UIImage(named: "twitter_unselected"),
             selectedColor: "65BBF2".color,
-            selectedImageName: "twitter_selected",
+            selectedImage: UIImage(named: "twitter_selected"),
             imageSize: CGSize(width: 16, height: 16)
         )
         
@@ -205,7 +205,7 @@ extension SwiftUIView {
                 titles: titlesWithImagesSegmentViewTitles,
                 selectionViewColor: "7BEA73".color,
                 selectionViewShadow: .init(),
-                cornerRadius: 5
+                cornerRadius: .constant(value: 5)
             )
             .frame(height: 45)
         }
@@ -225,9 +225,9 @@ extension SwiftUIView {
         let title1 = TTSegmentedControlTitle(
             text: "Facebook",
             defaultColor: .black,
-            defaultImageName: "facebook_unselected",
+            defaultImage: UIImage(named: "facebook_unselected"),
             selectedColor: "39549D".color,
-            selectedImageName: "facebook_selected",
+            selectedImage: UIImage(named: "facebook_selected"),
             imageSize: CGSize(width: 16, height: 16),
             imagePosition: .left
             
@@ -236,9 +236,9 @@ extension SwiftUIView {
         let title2 = TTSegmentedControlTitle(
             text: "Youtube",
             defaultColor: .black,
-            defaultImageName: "youtube_unselected",
+            defaultImage: UIImage(named: "youtube_unselected"),
             selectedColor: "FF0000".color,
-            selectedImageName: "youtube_selected",
+            selectedImage: UIImage(named: "youtube_selected"),
             imageSize: CGSize(width: 16, height: 16),
             imagePosition: .bottom
         )
@@ -246,9 +246,9 @@ extension SwiftUIView {
         let title3 = TTSegmentedControlTitle(
             text: "Twitter",
             defaultColor: .black,
-            defaultImageName: "twitter_unselected",
+            defaultImage: UIImage(named: "twitter_unselected"),
             selectedColor: "65BBF2".color,
-            selectedImageName: "twitter_selected",
+            selectedImage: UIImage(named: "twitter_selected"),
             imageSize: CGSize(width: 16, height: 16),
             imagePosition: .top
         )

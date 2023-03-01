@@ -34,12 +34,7 @@ extension TTSegmentedControlTitle {
         if let imageSize = imageSize {
             return imageSize
         }
-        guard let defaultImageName = defaultImageName, let selectedImageName = selectedImageName else {
-            return .zero
-        }
-        guard let defaultImage = UIImage(named: defaultImageName),
-              let selectedImage = UIImage(named: selectedImageName)
-        else {
+        guard let defaultImage = defaultImage, let selectedImage = selectedImage else {
             return .zero
         }
         return CGSize(

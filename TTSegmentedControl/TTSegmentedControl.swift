@@ -32,8 +32,10 @@ public final class TTSegmentedControl: UIView {
     public var containerGradient: TTSegmentedControlGradient? { didSet { configure() } }
     public var selectionViewColor: UIColor = .blue { didSet { configure() } }
     public var selectionViewGradient: TTSegmentedControlGradient? { didSet { configure() } }
+    public var selectionViewFillType: SelectionViewFillType = .fillSegment { didSet { updateLayout() } }
     public var padding: CGSize = .init(width: 2, height: 2) { didSet { reloadView() } }
-    public var cornerRadius: CGFloat = -1 { didSet { reloadView() } }
+    public var cornerRadius: CornerRadius = .maximum { didSet { reloadView() } }
+    public var cornerCurve: CALayerCornerCurve = .circular { didSet { reloadView() } }
     public var titles: [TTSegmentedControlTitle] = [] { didSet { reloadView() } }
     public var isSwitchBehaviorEnabled: Bool = true
     
@@ -44,6 +46,8 @@ public final class TTSegmentedControl: UIView {
     private(set) var selectionViewMask = UIView()
     private(set) var selectedStateView = UIView()
     
+    private var isSelectionViewTouched = false
+    private var isValidTouch = true
     private var isLayoutUpdated = false
     private var isSwitch: Bool { titles.count == 2 && isSwitchBehaviorEnabled }
     private var lastTouchPoint: CGPoint = .zero
@@ -75,8 +79,10 @@ public final class TTSegmentedControl: UIView {
             selectedIndex: selectedIndex,
             padding: padding,
             cornerRadius: cornerRadius,
+            cornerCurve: cornerCurve,
             isSizeAdjustEnabled: isSizeAdjustEnabled,
             titleDistribution: titleDistribution,
+            selectionViewFillType: selectionViewFillType,
             animationDuration: animationOptions?.duration ?? 0
         )
         layout.layoutSubviews(with: layoutParams)
@@ -93,38 +99,16 @@ public final class TTSegmentedControl: UIView {
 extension TTSegmentedControl {
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let point = touches.first?.location(in: self) else { return }
-        touchState = .touch
-        lastTouchPoint = point
-        let index = switchIndexForSelected(layout.index(for: point))
-        updateSelectionViewFrame(at: index)
-        notifyBeginTouch(for: index)
-        selectedIndex = index
+        touchBegin(at: point)
     }
-    
-    public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !isDragEnabled { return }
-        guard let point = touches.first?.location(in: self) else { return }
-        touchState = .drag
-        prepareTouchPointOffset(for: point)
-        let pointToNotJumpViewWhenDragged = CGPoint(x: point.x + touchPointOffset.x, y: touchPointOffset.x)
-        let isSwipeToLeft = point.x < lastTouchPoint.x
-        layout.layoutSelectionViewAndMaskView(for: pointToNotJumpViewWhenDragged, whenUserMoveFingerToLeft: isSwipeToLeft)
-        lastTouchPoint = point
-        notifyDragInProgress(at: point)
-    }
-    
+
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let point = touches.first?.location(in: self), touchState == .drag {
-            selectedIndex = layout.index(for: point)
-            updateSelectionViewFrame(at: selectedIndex)
-        }
-        touchState = .none
-        touchPointOffset = .zero
-        notifyEndTouch()
+        guard let point = touches.first?.location(in: self) else { return }
+        endTouch(at: point)
     }
-    
+
     public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        touchesEnded(touches, with: event)
+//        touchesEnded(touches, with: event)
     }
     
     private func prepareTouchPointOffset(for point: CGPoint) {
@@ -155,6 +139,55 @@ extension TTSegmentedControl {
         } else {
             return index
         }
+    }
+    
+    @objc private func panAction(_ gestureRecognizer: UIPanGestureRecognizer) {
+        let state = gestureRecognizer.state
+        let point = gestureRecognizer.location(in: self)
+        
+        switch state {
+        case .began:
+            touchBegin(at: point)
+        case .ended, .cancelled:
+            endTouch(at: point)
+        default:
+            panAction(at: point)
+        }
+    }
+
+    private func touchBegin(at point: CGPoint) {
+        if touchState == .touch { return }
+        touchState = .touch
+        lastTouchPoint = point
+        let index = switchIndexForSelected(layout.index(for: point))
+        isSelectionViewTouched = index == selectedIndex
+        notifyBeginTouch(for: index)
+    }
+    
+    private func panAction(at point: CGPoint) {
+        if !isDragEnabled || !isSelectionViewTouched {
+            isValidTouch = PointAvailabilityCheckBuilder(viewBounds: bounds, point: point).build()
+            return
+        }
+        touchState = .drag
+        prepareTouchPointOffset(for: point)
+        let pointToNotJumpViewWhenDragged = CGPoint(x: point.x + touchPointOffset.x, y: touchPointOffset.x)
+        let isSwipeToLeft = point.x < lastTouchPoint.x
+        debugPrint(pointToNotJumpViewWhenDragged)
+        layout.layoutSelectionViewAndMaskView(for: pointToNotJumpViewWhenDragged, whenUserMoveFingerToLeft: isSwipeToLeft)
+        lastTouchPoint = point
+        notifyDragInProgress(at: point)
+    }
+    
+    private func endTouch(at point: CGPoint) {
+        isSelectionViewTouched = false
+        touchState = .none
+        touchPointOffset = .zero
+        
+        if !isValidTouch { return }
+        selectedIndex = switchIndexForSelected(layout.index(for: point))
+        updateSelectionViewFrame(at: selectedIndex)
+        notifyEndTouch()
     }
 }
 
@@ -189,6 +222,7 @@ extension TTSegmentedControl {
         prepareSelectedStateLabels()
         prepareSelectedStateImagesViews()
         prepareSelectedSegmentedIndex()
+        preparePanGestureRecognizer()
     }
 
     private func removeAllSubviews() {
@@ -282,6 +316,12 @@ extension TTSegmentedControl {
     private func prepareSelectedSegmentedIndex() {
         selectedIndex = min(selectedIndex, max(0, titles.count - 1))
     }
+    
+    private func preparePanGestureRecognizer() {
+        if gestureRecognizers?.compactMap({$0 as? UIPanGestureRecognizer}).first != nil { return }
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panAction(_:)))
+        addGestureRecognizer(panGestureRecognizer)
+    }
 }
 
 //MARK: - Configure subviews
@@ -321,8 +361,7 @@ extension TTSegmentedControl {
         for index in 0..<titles.count {
             let tag = index + 1
             guard let imageView = defaultStateView.subviews.compactMap({$0 as? UIImageView}).first(where: {$0.tag == tag}) else { continue }
-            let imageName = titles[index].defaultImageName ?? ""
-            imageView.image = imageName.isEmpty ? nil : UIImage(named: imageName)
+            imageView.image = titles[index].defaultImage
         }
     }
     
@@ -353,8 +392,7 @@ extension TTSegmentedControl {
         for index in 0..<titles.count {
             let tag = index + 1
             guard let imageView = selectedStateView.subviews.compactMap({$0 as? UIImageView}).first(where: {$0.tag == tag}) else { continue }
-            let imageName = titles[index].selectedImageName ?? ""
-            imageView.image = imageName.isEmpty ? nil : UIImage(named: imageName)
+            imageView.image = titles[index].selectedImage
         }
     }
 }
@@ -387,5 +425,16 @@ extension TTSegmentedControl {
     public enum TitleDistribution {
         case fillEqually
         case equalSpacing
+    }
+    
+    public enum SelectionViewFillType {
+        case fillSegment
+        case fillText
+    }
+    
+    public enum CornerRadius {
+        case none
+        case maximum
+        case constant(value: CGFloat)
     }
 }

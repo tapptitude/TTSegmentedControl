@@ -13,12 +13,12 @@ public struct TTSegmentedControlTitle {
     public let defaultColor: UIColor
     public let defaultFont: UIFont
     public let defaultAttributedText: NSAttributedString?
-    public let defaultImageName: String?
+    public let defaultImage: UIImage?
     
     public let selectedColor: UIColor
     public let selectedFont: UIFont
     public let selectedAttributedText: NSAttributedString?
-    public let selectedImageName: String?
+    public let selectedImage: UIImage?
     
     public let imageSize: CGSize?
     public let imagePosition: TTSegmentedControlTitle.ImagePosition
@@ -29,11 +29,11 @@ public struct TTSegmentedControlTitle {
         defaultColor: UIColor = .black,
         defaultFont: UIFont = .systemFont(ofSize: 12),
         defaultAttributedText: NSAttributedString? = nil,
-        defaultImageName: String? = nil,
+        defaultImage: UIImage? = nil,
         selectedColor: UIColor = .white,
         selectedFont: UIFont = .systemFont(ofSize: 12),
         selectedAttributedText: NSAttributedString? = nil,
-        selectedImageName: String? = nil,
+        selectedImage: UIImage? = nil,
         imageSize: CGSize? = nil,
         imagePosition: TTSegmentedControlTitle.ImagePosition = .right,
         spaceBetweenTextAndImage: CGFloat = 5
@@ -42,11 +42,11 @@ public struct TTSegmentedControlTitle {
         self.defaultColor = defaultColor
         self.defaultFont = defaultFont
         self.defaultAttributedText = defaultAttributedText
-        self.defaultImageName = defaultImageName
+        self.defaultImage = defaultImage
         self.selectedColor = selectedColor
         self.selectedFont = selectedFont
         self.selectedAttributedText = selectedAttributedText
-        self.selectedImageName = selectedImageName
+        self.selectedImage = selectedImage
         self.imageSize = imageSize
         self.imagePosition = imagePosition
         self.spaceBetweenTextAndImage = spaceBetweenTextAndImage

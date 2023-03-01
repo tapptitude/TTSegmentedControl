@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		239299BE222547EE00263573 /* TTSegmentedControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81535A791F88BC7300398A9A /* TTSegmentedControl.framework */; };
+		7822343F29AF30E90049A60F /* PointAvailabilityCheckBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822343E29AF30E90049A60F /* PointAvailabilityCheckBuilder.swift */; };
+		7822344029AF30E90049A60F /* PointAvailabilityCheckBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822343E29AF30E90049A60F /* PointAvailabilityCheckBuilder.swift */; };
+		7822344129AF30E90049A60F /* PointAvailabilityCheckBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822343E29AF30E90049A60F /* PointAvailabilityCheckBuilder.swift */; };
 		787A45FA2994FAB700C38A9F /* TTSegmentedControlLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45DC2994FAB700C38A9F /* TTSegmentedControlLayout.swift */; };
 		787A45FB2994FAB700C38A9F /* TTSegmentedControlLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A45DC2994FAB700C38A9F /* TTSegmentedControlLayout.swift */; };
 		787A45FC2994FAB700C38A9F /* TTSegmentedControl.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 787A45DE2994FAB700C38A9F /* TTSegmentedControl.podspec */; };
@@ -89,6 +92,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7822343E29AF30E90049A60F /* PointAvailabilityCheckBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAvailabilityCheckBuilder.swift; sourceTree = "<group>"; };
 		787A45DC2994FAB700C38A9F /* TTSegmentedControlLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSegmentedControlLayout.swift; sourceTree = "<group>"; };
 		787A45DE2994FAB700C38A9F /* TTSegmentedControl.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TTSegmentedControl.podspec; sourceTree = "<group>"; };
 		787A45E02994FAB700C38A9F /* SelectionViewFrameForIndexBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewFrameForIndexBuilder.swift; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 				787A45E32994FAB700C38A9F /* SelectionViewFrameForPointBuilder.swift */,
 				787A45E02994FAB700C38A9F /* SelectionViewFrameForIndexBuilder.swift */,
 				787A45E22994FAB700C38A9F /* TitleComponentFrameListBuilder.swift */,
+				7822343E29AF30E90049A60F /* PointAvailabilityCheckBuilder.swift */,
 			);
 			path = Builders;
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 				787A46A32995066100C38A9F /* TitleComponentFrameListBuilderTests.swift in Sources */,
 				787A46A22995066100C38A9F /* SelectionViewFrameForIndexBuilderTests.swift in Sources */,
 				787A46A92995066100C38A9F /* TTSegmentedControlTests.swift in Sources */,
+				7822344129AF30E90049A60F /* PointAvailabilityCheckBuilder.swift in Sources */,
 				787A46A42995066100C38A9F /* SelectionViewFrameForPointBuilderTests.swift in Sources */,
 				787A46AA2995066100C38A9F /* TTSegmentedControlTitleAdditionTests.swift in Sources */,
 				787A46A52995066100C38A9F /* SelectedIndexBuilderTests.swift in Sources */,
@@ -522,6 +528,7 @@
 				787A46172994FAB700C38A9F /* TTSegmentedControlBounceOptions.swift in Sources */,
 				787A460B2994FAB700C38A9F /* TTSegmentedControlAnimationOption.swift in Sources */,
 				787A45FE2994FAB700C38A9F /* SelectionViewFrameForIndexBuilder.swift in Sources */,
+				7822343F29AF30E90049A60F /* PointAvailabilityCheckBuilder.swift in Sources */,
 				787A46152994FAB700C38A9F /* TTSegmentedControlTitle.swift in Sources */,
 				787A46042994FAB700C38A9F /* SelectionViewFrameForPointBuilder.swift in Sources */,
 				787A460F2994FAB700C38A9F /* LayoutParameter.swift in Sources */,
@@ -563,6 +570,7 @@
 				787A46262994FAB700C38A9F /* TTSegmentedControl.swift in Sources */,
 				787A46162994FAB700C38A9F /* TTSegmentedControlTitle.swift in Sources */,
 				787A46052994FAB700C38A9F /* SelectionViewFrameForPointBuilder.swift in Sources */,
+				7822344029AF30E90049A60F /* PointAvailabilityCheckBuilder.swift in Sources */,
 				787A460E2994FAB700C38A9F /* TTSegmentedControlShadow.swift in Sources */,
 				8193E5D41F8A70A900E1604E /* AppDelegate.swift in Sources */,
 				787A46302994FDE900C38A9F /* SwiftUIView.swift in Sources */,

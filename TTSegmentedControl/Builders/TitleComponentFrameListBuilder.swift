@@ -9,7 +9,7 @@ import UIKit
 
 struct TitleComponentFrameListBuilder {
     private let viewBounds: CGRect
-    private let cornerRadius: CGFloat
+    private let cornerRadius: TTSegmentedControl.CornerRadius
     private let textsSizes: [CGSize]
     private let imagesSizes: [CGSize]
     private let spaceBetweenTitleItems: [CGFloat]
@@ -19,7 +19,7 @@ struct TitleComponentFrameListBuilder {
     
     init(
         viewBounds: CGRect,
-        cornerRadius: CGFloat,
+        cornerRadius: TTSegmentedControl.CornerRadius,
         textsSizes: [CGSize],
         imagesSizes: [CGSize],
         spaceBetweenTitleItems: [CGFloat],
@@ -224,7 +224,7 @@ extension TitleComponentFrameListBuilder {
     }
 
     private var selectionViewCornerRadius: CGFloat {
-        let cornerRadius = self.cornerRadius < 0 ? 0.5 * viewBounds.height : self.cornerRadius
+        let cornerRadius = CornerRadiusBuilder(frame: viewBounds, cornerRadius: self.cornerRadius).build()
         let radiusRatio = cornerRadius / (0.5 * viewBounds.height)
         let selectionViewHeight = viewBounds.height - 2 * padding.height
         return 0.5 * (radiusRatio * selectionViewHeight)

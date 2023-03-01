@@ -139,9 +139,7 @@ final class TTSegmentedControlTitleAdditionTests: XCTestCase {
         // Given
     
         let title = TTSegmentedControlTitle.init(
-            text: "text",
-            defaultImageName: "",
-            selectedImageName: ""
+            text: "text"
         )
         
         // When
@@ -156,8 +154,8 @@ final class TTSegmentedControlTitleAdditionTests: XCTestCase {
         let initialImageSize = UIImage(named: "youtube_selected")!.size
         let title = TTSegmentedControlTitle.init(
             text: "text",
-            defaultImageName: "youtube_selected",
-            selectedImageName: "youtube_selected"
+            defaultImage: UIImage(named: "youtube_selected"),
+            selectedImage: UIImage(named: "youtube_selected")
         )
         
         // When

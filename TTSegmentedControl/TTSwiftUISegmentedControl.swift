@@ -19,8 +19,10 @@ public struct TTSwiftUISegmentedControl: UIViewRepresentable {
     private let containerGradient: TTSegmentedControlGradient?
     private let selectionViewColor: UIColor
     private let selectionViewGradient: TTSegmentedControlGradient?
+    private let selectionViewFillType: TTSegmentedControl.SelectionViewFillType
     private let padding: CGSize
-    private let cornerRadius: CGFloat
+    private let cornerRadius: TTSegmentedControl.CornerRadius
+    private let cornerCurve: CALayerCornerCurve
     private let titles: [TTSegmentedControlTitle]
     private let isSwitchBehaviorEnabled: Bool
     private let didBeginTouch: (() -> Void)?
@@ -40,8 +42,10 @@ public struct TTSwiftUISegmentedControl: UIViewRepresentable {
         selectionViewColor: UIColor = .blue,
         selectionViewGradient: TTSegmentedControlGradient? = nil,
         selectionViewShadow: TTSegmentedControlShadow? = nil,
+        selectionViewFillType: TTSegmentedControl.SelectionViewFillType = .fillSegment,
         bounceAnimationOptions: TTSegmentedControlBounceOptions? = nil,
-        cornerRadius: CGFloat = -1,
+        cornerRadius: TTSegmentedControl.CornerRadius = .maximum,
+        cornerCurve: CALayerCornerCurve = .continuous,
         isSwitchBehaviorEnabled: Bool = true,
         didBeginTouch: (() -> Void)? = nil,
         didDragOverItemAtIndex: ((Int) -> Void)? = nil,
@@ -60,7 +64,9 @@ public struct TTSwiftUISegmentedControl: UIViewRepresentable {
         self.containerGradient = containerGradient
         self.selectionViewColor = selectionViewColor
         self.selectionViewGradient = selectionViewGradient
+        self.selectionViewFillType = selectionViewFillType
         self.cornerRadius = cornerRadius
+        self.cornerCurve = cornerCurve
         self.isSwitchBehaviorEnabled = isSwitchBehaviorEnabled
         self.didBeginTouch = didBeginTouch
         self.didDragOverItemAtIndex = didDragOverItemAtIndex
@@ -135,7 +141,9 @@ extension TTSwiftUISegmentedControl {
         segmentedView.containerGradient = containerGradient
         segmentedView.selectionViewColor = selectionViewColor
         segmentedView.selectionViewGradient = selectionViewGradient
+        segmentedView.selectionViewFillType = selectionViewFillType
         segmentedView.cornerRadius = cornerRadius
+        segmentedView.cornerCurve = cornerCurve
         segmentedView.isSwitchBehaviorEnabled = isSwitchBehaviorEnabled
         segmentedView.delegate = context.coordinator
         if let selectedIndex = selectedIndex {

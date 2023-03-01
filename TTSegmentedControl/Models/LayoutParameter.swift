@@ -5,7 +5,7 @@
 //  Created by Igor Dumitru on 31.01.2023.
 //
 
-import Foundation
+import UIKit
 
 struct LayoutParameter {
     let defaultTextsSizes: [CGSize]
@@ -15,9 +15,11 @@ struct LayoutParameter {
     let imagePositions: [TTSegmentedControlTitle.ImagePosition]
     let selectedIndex: Int
     let padding: CGSize
-    let cornerRadius: CGFloat
+    let cornerRadius: TTSegmentedControl.CornerRadius
+    let cornerCurve: CALayerCornerCurve
     let isSizeAdjustEnabled: Bool
     let titleDistribution: TTSegmentedControl.TitleDistribution
+    let selectionViewFillType: TTSegmentedControl.SelectionViewFillType
     let animationDuration: TimeInterval
     
     init(
@@ -28,9 +30,11 @@ struct LayoutParameter {
         imagePositions: [TTSegmentedControlTitle.ImagePosition],
         selectedIndex: Int,
         padding: CGSize,
-        cornerRadius: CGFloat,
+        cornerRadius: TTSegmentedControl.CornerRadius,
+        cornerCurve: CALayerCornerCurve,
         isSizeAdjustEnabled: Bool,
         titleDistribution: TTSegmentedControl.TitleDistribution,
+        selectionViewFillType: TTSegmentedControl.SelectionViewFillType,
         animationDuration: TimeInterval
     ) {
         self.defaultTextsSizes = defaultTitlesSizes
@@ -41,8 +45,10 @@ struct LayoutParameter {
         self.selectedIndex = selectedIndex
         self.padding = padding
         self.cornerRadius = cornerRadius
+        self.cornerCurve = cornerCurve
         self.isSizeAdjustEnabled = isSizeAdjustEnabled
         self.titleDistribution = titleDistribution
+        self.selectionViewFillType = selectionViewFillType
         self.animationDuration = animationDuration
     }
 }

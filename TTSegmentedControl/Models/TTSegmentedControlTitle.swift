@@ -25,14 +25,12 @@ public struct TTSegmentedControlTitle {
     public let spaceBetweenTextAndImage: CGFloat
     
     public init(
-        text: String? = nil,
+        text: String,
         defaultColor: UIColor = .black,
         defaultFont: UIFont = .systemFont(ofSize: 12),
-        defaultAttributedText: NSAttributedString? = nil,
         defaultImage: UIImage? = nil,
         selectedColor: UIColor = .white,
         selectedFont: UIFont = .systemFont(ofSize: 12),
-        selectedAttributedText: NSAttributedString? = nil,
         selectedImage: UIImage? = nil,
         imageSize: CGSize? = nil,
         imagePosition: TTSegmentedControlTitle.ImagePosition = .right,
@@ -41,10 +39,33 @@ public struct TTSegmentedControlTitle {
         self.text = text
         self.defaultColor = defaultColor
         self.defaultFont = defaultFont
-        self.defaultAttributedText = defaultAttributedText
+        self.defaultAttributedText = nil
         self.defaultImage = defaultImage
         self.selectedColor = selectedColor
         self.selectedFont = selectedFont
+        self.selectedAttributedText = nil
+        self.selectedImage = selectedImage
+        self.imageSize = imageSize
+        self.imagePosition = imagePosition
+        self.spaceBetweenTextAndImage = spaceBetweenTextAndImage
+    }
+    
+    public init(
+        defaultAttributedText: NSAttributedString,
+        defaultImage: UIImage? = nil,
+        selectedAttributedText: NSAttributedString,
+        selectedImage: UIImage? = nil,
+        imageSize: CGSize? = nil,
+        imagePosition: TTSegmentedControlTitle.ImagePosition = .right,
+        spaceBetweenTextAndImage: CGFloat = 5
+    ) {
+        self.text = nil
+        self.defaultColor = .black
+        self.defaultFont = .systemFont(ofSize: 12)
+        self.defaultAttributedText = defaultAttributedText
+        self.defaultImage = defaultImage
+        self.selectedColor = .white
+        self.selectedFont = .systemFont(ofSize: 12)
         self.selectedAttributedText = selectedAttributedText
         self.selectedImage = selectedImage
         self.imageSize = imageSize

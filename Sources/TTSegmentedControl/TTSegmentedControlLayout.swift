@@ -102,12 +102,11 @@ extension TTSegmentedControlLayout {
         for index in 0..<params.selectedTextsSizes.count {
             let frameBuilder = SelectionViewFrameForIndexBuilder(
                 viewBounds: view.bounds,
-                cornerRadius: params.cornerRadius,
                 defaultTitleComponentsFrames: defaultTitleComponentsFrames,
                 selectedTitleComponentsFrames: selectedTitleComponentsFrames,
                 index: index,
                 padding: params.padding,
-                titleDistribution: params.titleDistribution
+                selectionViewFillType: params.selectionViewFillType
             )
             let frame = frameBuilder.build()
             frames.append(frame)
@@ -118,6 +117,7 @@ extension TTSegmentedControlLayout {
 
 extension TTSegmentedControlLayout {
     private func layoutDefaultStateView() {
+        view.defaultStateView.layer.cornerCurve = params.cornerCurve
         view.defaultStateView.layer.cornerRadius = CornerRadiusBuilder(frame: view.bounds, cornerRadius: params.cornerRadius).build()
     }
     
@@ -145,6 +145,7 @@ extension TTSegmentedControlLayout {
         CATransaction.begin()
         CATransaction.setAnimationDuration(0.0)
         view.defaultStateViewGradientLayer.frame = view.defaultStateView.bounds
+        view.defaultStateViewGradientLayer.cornerCurve = params.cornerCurve
         view.defaultStateViewGradientLayer.cornerRadius = view.defaultStateView.layer.cornerRadius
         CATransaction.commit()
     }
@@ -207,10 +208,12 @@ extension TTSegmentedControlLayout {
 
         let radiusRatio = view.defaultStateView.layer.cornerRadius / (0.5 * view.frame.height)
         view.selectionView.layer.cornerRadius = radiusRatio * (0.5 * view.selectionView.frame.height)
+        view.selectionView.layer.cornerCurve = params.cornerCurve
     }
     
     private func layoutSelectionViewMask() {
         view.selectionViewMask.frame = view.selectionView.frame
+        view.selectionViewMask.layer.cornerCurve = params.cornerCurve
         view.selectionViewMask.layer.cornerRadius = view.selectionView.layer.cornerRadius
     }
     
@@ -219,6 +222,7 @@ extension TTSegmentedControlLayout {
         CATransaction.begin()
         CATransaction.setAnimationDuration(animated ? params.animationDuration - 0.1 : 0.0)
         view.selectionViewGradientLayer.frame = view.selectionView.bounds
+        view.selectionViewGradientLayer.cornerCurve = params.cornerCurve
         view.selectionViewGradientLayer.cornerRadius = view.selectionView.layer.cornerRadius
         CATransaction.commit()
     }
@@ -226,7 +230,6 @@ extension TTSegmentedControlLayout {
     func index(for point: CGPoint) -> Int {
         let builder = SelectedIndexBuilder(
             viewBounds: view.bounds,
-            cornerRadius: params.cornerRadius,
             defaultTitleComponentsFrames: defaultTitleComponentsFrames,
             selectedTitleComponentsFrames: selectedTitleComponentsFrames,
             point: point,

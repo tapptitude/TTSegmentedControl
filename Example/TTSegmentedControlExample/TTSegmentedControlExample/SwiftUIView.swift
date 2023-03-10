@@ -54,14 +54,12 @@ extension SwiftUIView {
     }
     
     private var switchView: some View {
-        TTSwiftUISegmentedControl(
-            titles: switchTitles,
-            containerBackgroundColor: "EFEEF3".color,
-            selectionViewColor: "00C7BE".color,
-            selectionViewShadow: .init(),
-            bounceAnimationOptions: .init()
-        )
-        .frame(width: 100, height: 34)
+        TTSwiftUISegmentedControl(titles: switchTitles)
+            .containerBackgroundColor("EFEEF3".color)
+            .selectionViewColor("00C7BE".color)
+            .selectionViewShadow(.init())
+            .bounceAnimationOptions(.init())
+            .frame(width: 100, height: 34)
     }
 }
 
@@ -79,13 +77,11 @@ extension SwiftUIView {
     }
     
     private var smallBorderSegmentView: some View {
-        TTSwiftUISegmentedControl(
-            titles: smallBorderSegmentViewTitles,
-            selectionViewColor: "D9CC23".color,
-            bounceAnimationOptions: .init(),
-            cornerRadius: 5
-        )
-        .frame(height: 45)
+        TTSwiftUISegmentedControl(titles: smallBorderSegmentViewTitles)
+            .selectionViewColor( "D9CC23".color)
+            .bounceAnimationOptions( .init())
+            .cornerRadius( .constant(value: 5))
+            .frame(height: 45)
     }
 }
 
@@ -100,14 +96,12 @@ extension SwiftUIView {
     
     private var fillEquallySegmentView: some View {
         HStack(spacing: .zero) {
-            TTSwiftUISegmentedControl(
-                titles: smallBorderSegmentViewTitles,
-                titleDistribution: .fillEqually,
-                selectionViewColor: "D9CC23".color,
-                selectionViewShadow: .init(),
-                cornerRadius: 0
-            )
-            .frame(height: 45)
+            TTSwiftUISegmentedControl(titles: smallBorderSegmentViewTitles)
+                .titleDistribution(.fillEqually)
+                .selectionViewColor("D9CC23".color)
+                .selectionViewShadow(.init())
+                .cornerRadius(.none)
+                .frame(height: 45)
         }
     }
 }
@@ -148,14 +142,12 @@ extension SwiftUIView {
     
     private var differentColorTitleSegmentView: some View {
         HStack(spacing: .zero) {
-            TTSwiftUISegmentedControl(
-                titles: differentColorTitleSegmentViewTitles,
-                containerGradient: .init(startPoint: .init(x: 0.5, y: 0), endPoint: .init(x: 0.5, y: 1), colors: [.white, .gray.withAlphaComponent(0.5)]),
-                selectionViewColor: "FFCC00".color,
-                selectionViewGradient: .init(startPoint: .init(x: 0.5, y: 0), endPoint: .init(x: 0.5, y: 1), colors: ["FF2D55".color, "FFC555".color]),
-                selectionViewShadow: .init()
-            )
-            .frame(height: 55)
+            TTSwiftUISegmentedControl(titles: differentColorTitleSegmentViewTitles)
+                .containerGradient(.init(startPoint: .init(x: 0.5, y: 0), endPoint: .init(x: 0.5, y: 1), colors: [.white, .gray.withAlphaComponent(0.5)]))
+                .selectionViewColor("FFCC00".color)
+                .selectionViewGradient(.init(startPoint: .init(x: 0.5, y: 0), endPoint: .init(x: 0.5, y: 1), colors: ["FF2D55".color, "FFC555".color]))
+                .selectionViewShadow(.init())
+                .frame(height: 55)
         }
     }
 }
@@ -173,27 +165,27 @@ extension SwiftUIView {
         let title1 = TTSegmentedControlTitle(
             text: "Facebook",
             defaultColor: .black,
-            defaultImageName: "facebook_unselected",
+            defaultImage: UIImage(named: "facebook_unselected"),
             selectedColor: "39549D".color,
-            selectedImageName: "facebook_selected",
+            selectedImage: UIImage(named: "facebook_selected"),
             imageSize: CGSize(width: 16, height: 16)
         )
         
         let title2 = TTSegmentedControlTitle(
             text: "Youtube",
             defaultColor: .black,
-            defaultImageName: "youtube_unselected",
+            defaultImage: UIImage(named: "youtube_unselected"),
             selectedColor: "FF0000".color,
-            selectedImageName: "youtube_selected",
+            selectedImage: UIImage(named: "youtube_selected"),
             imageSize: CGSize(width: 16, height: 16)
         )
         
         let title3 = TTSegmentedControlTitle(
             text: "Twitter",
             defaultColor: .black,
-            defaultImageName: "twitter_unselected",
+            defaultImage: UIImage(named: "twitter_unselected"),
             selectedColor: "65BBF2".color,
-            selectedImageName: "twitter_selected",
+            selectedImage: UIImage(named: "twitter_selected"),
             imageSize: CGSize(width: 16, height: 16)
         )
         
@@ -202,13 +194,11 @@ extension SwiftUIView {
     
     private var titlesWithImagesSegmentView: some View {
         HStack(spacing: .zero) {
-            TTSwiftUISegmentedControl(
-                titles: titlesWithImagesSegmentViewTitles,
-                selectionViewColor: "7BEA73".color,
-                selectionViewShadow: .init(),
-                cornerRadius: 5
-            )
-            .frame(height: 45)
+            TTSwiftUISegmentedControl(titles: titlesWithImagesSegmentViewTitles)
+                .selectionViewColor("7BEA73".color)
+                .selectionViewShadow(.init())
+                .cornerRadius(.constant(value: 5))
+                .frame(height: 45)
         }
     }
 }
@@ -226,9 +216,9 @@ extension SwiftUIView {
         let title1 = TTSegmentedControlTitle(
             text: "Facebook",
             defaultColor: .black,
-            defaultImageName: "facebook_unselected",
+            defaultImage: UIImage(named: "facebook_unselected"),
             selectedColor: "39549D".color,
-            selectedImageName: "facebook_selected",
+            selectedImage: UIImage(named: "facebook_selected"),
             imageSize: CGSize(width: 16, height: 16),
             imagePosition: .left
             
@@ -237,9 +227,9 @@ extension SwiftUIView {
         let title2 = TTSegmentedControlTitle(
             text: "Youtube",
             defaultColor: .black,
-            defaultImageName: "youtube_unselected",
+            defaultImage: UIImage(named: "youtube_unselected"),
             selectedColor: "FF0000".color,
-            selectedImageName: "youtube_selected",
+            selectedImage: UIImage(named: "youtube_selected"),
             imageSize: CGSize(width: 16, height: 16),
             imagePosition: .bottom
         )
@@ -247,9 +237,9 @@ extension SwiftUIView {
         let title3 = TTSegmentedControlTitle(
             text: "Twitter",
             defaultColor: .black,
-            defaultImageName: "twitter_unselected",
+            defaultImage: UIImage(named: "twitter_unselected"),
             selectedColor: "65BBF2".color,
-            selectedImageName: "twitter_selected",
+            selectedImage: UIImage(named: "twitter_selected"),
             imageSize: CGSize(width: 16, height: 16),
             imagePosition: .top
         )
@@ -259,13 +249,11 @@ extension SwiftUIView {
     
     private var differentImagePositionSegmentView: some View {
         HStack(spacing: .zero) {
-            TTSwiftUISegmentedControl(
-                titles: differentImagePositionSegmentViewTitles,
-                selectionViewColor: "7BEA73".color,
-                selectionViewShadow: .init(),
-                bounceAnimationOptions: .init()
-            )
-            .frame(height: 55)
+            TTSwiftUISegmentedControl(titles: differentImagePositionSegmentViewTitles)
+                .selectionViewColor("7BEA73".color)
+                .selectionViewShadow(.init())
+                .bounceAnimationOptions(.init())
+                .frame(height: 55)
         }
     }
 }

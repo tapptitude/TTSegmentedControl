@@ -9,29 +9,26 @@ import UIKit
 
 struct SelectionViewFrameForIndexBuilder {
     private let viewBounds: CGRect
-    private let cornerRadius: CGFloat
     private let defaultTitleComponentsFrames: [TitleComponentFrame]
     private let selectedTitleComponentsFrames: [TitleComponentFrame]
     private let index: Int
     private let padding: CGSize
-    private let titleDistribution: TTSegmentedControl.TitleDistribution
+    private let selectionViewFillType: TTSegmentedControl.SelectionViewFillType
     
     init(
         viewBounds: CGRect,
-        cornerRadius: CGFloat,
         defaultTitleComponentsFrames: [TitleComponentFrame],
         selectedTitleComponentsFrames: [TitleComponentFrame],
         index: Int,
         padding: CGSize,
-        titleDistribution: TTSegmentedControl.TitleDistribution
+        selectionViewFillType: TTSegmentedControl.SelectionViewFillType
     ) {
         self.viewBounds = viewBounds
-        self.cornerRadius = cornerRadius
         self.defaultTitleComponentsFrames = defaultTitleComponentsFrames
         self.selectedTitleComponentsFrames = selectedTitleComponentsFrames
         self.index = index
         self.padding = padding
-        self.titleDistribution = titleDistribution
+        self.selectionViewFillType = selectionViewFillType
     }
 }
 
@@ -59,10 +56,9 @@ extension SelectionViewFrameForIndexBuilder {
             let rightMargin = viewBounds.width - padding.width
             frame.size.width = 2 * (rightMargin - frame.midX)
             frame.origin.x = rightMargin - frame.size.width
-        } else if titleDistribution == .equalSpacing {
-            let width = frame.size.width + widthOffset
-            frame.origin.x = frame.midX - 0.5 * width
-            frame.size.width = width
+        } else if selectionViewFillType == .fillText {
+            frame.origin.x = frame.origin.x - 0.5 * widthOffset
+            frame.size.width = frame.size.width + widthOffset
         } else {
             frame.origin.x = frame.midX - 0.5 * sectionWidth
             frame.size.width = sectionWidth

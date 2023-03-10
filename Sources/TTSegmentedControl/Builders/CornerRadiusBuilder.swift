@@ -9,9 +9,9 @@ import UIKit
 
 struct CornerRadiusBuilder {
     private let frame: CGRect
-    private let cornerRadius: CGFloat
+    private let cornerRadius: TTSegmentedControl.CornerRadius
     
-    init(frame: CGRect, cornerRadius: CGFloat) {
+    init(frame: CGRect, cornerRadius: TTSegmentedControl.CornerRadius) {
         self.frame = frame
         self.cornerRadius = cornerRadius
     }
@@ -19,11 +19,13 @@ struct CornerRadiusBuilder {
 
 extension CornerRadiusBuilder {
     func build() -> CGFloat {
-        let maxCornerRadius = 0.5 * min(frame.height, frame.width)
-        let minCornerRadius: CGFloat = 0
-        let cornerRadius = (self.cornerRadius < 0)
-            ? maxCornerRadius
-            : min(maxCornerRadius, self.cornerRadius)
-        return min(max(minCornerRadius, cornerRadius), maxCornerRadius)
+        switch self.cornerRadius {
+        case .none:
+            return 0
+        case .maximum:
+            return 0.5 * frame.height
+        case .constant(let value):
+            return max(0, min(value, 0.5 * frame.height))
+        }
     }
 }

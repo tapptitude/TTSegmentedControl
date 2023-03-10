@@ -79,24 +79,25 @@ In order to customize the segmented control you'll have to edit it's properties:
 
 ```swift
 //UIKit
+segmentedControl.selectionViewFillType = .fillSegment
 segmentedControl.titleDistribution = .equalSpacing 
 segmentedControl.isDragEnabled = true 
 segmentedControl.isSizeAdjustEnabled = true
 segmentedControl.isSwitchBehaviorEnabled = false
 segmentedControl.containerBackgroundColor = .white
-segmentedControl.cornerRadius = 15
+segmentedControl.cornerRadius = .constant(value: 15)
+segmentedControl.cornerCurve = .continous
 segmentedControl.padding = .init(width: 2, height: 2)
 
 //SwiftUI
-TTSwiftUISegmentedControl(
-    titles: titles,
-    titleDistribution: .equalSpacing,
-    padding: .init(width: 2, height: 2),
-    isDragEnabled: true,
-    containerBackgroundColor: .white,
-    selectionViewColor: .blue,
-    cornerRadius: 15,
-    isSwitchBehaviorEnabled: false
+TTSwiftUISegmentedControl(titles: titles)
+    .titleDistribution(.equalSpacing)
+    .padding(.init(width: 2, height: 2))
+    .isDragEnabled(true)
+    .containerBackgroundColor(.white)
+    .selectionViewColor(.blue)
+    .cornerRadius(.constant(value: 15))
+    .isSwitchBehaviorEnabled(false)
 )
 ```
 
@@ -108,10 +109,9 @@ segmentedControl.animationOptions = nil
 segmentedControl.bounceAnimationOptions = nil
 
 //SwiftUI
-TTSwiftUISegmentedControl(
-    titles: titles,
-    animationOptions: nil,
-    bounceAnimationOptions: nil
+TTSwiftUISegmentedControl(titles: titles)
+    .animationOptions(nil)
+    .bounceAnimationOptions(nil)
 )
 ```
 
@@ -127,10 +127,9 @@ segmentedControl.animationOptions = animationOptions
 segmentedControl.bounceAnimationOptions = bounceAnimationOptions
 
 //SwiftUI
-TTSwiftUISegmentedControl(
-    titles: titles,
-    animationOptions: animationOptions,
-    bounceAnimationOptions: bounceAnimationOptions
+TTSwiftUISegmentedControl(titles: titles)
+    .animationOptions(animationOptions)
+    .bounceAnimationOptions(bounceAnimationOptions)
 )
 ```
 

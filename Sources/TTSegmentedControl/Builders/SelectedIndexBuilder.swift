@@ -9,7 +9,6 @@ import UIKit
 
 struct SelectedIndexBuilder {
     private let viewBounds: CGRect
-    private let cornerRadius: CGFloat
     private let defaultTitleComponentsFrames: [TitleComponentFrame]
     private let selectedTitleComponentsFrames: [TitleComponentFrame]
     private let point: CGPoint
@@ -18,7 +17,6 @@ struct SelectedIndexBuilder {
     
     init(
         viewBounds: CGRect,
-        cornerRadius: CGFloat,
         defaultTitleComponentsFrames: [TitleComponentFrame],
         selectedTitleComponentsFrames: [TitleComponentFrame],
         point: CGPoint,
@@ -26,7 +24,6 @@ struct SelectedIndexBuilder {
         titleDistribution: TTSegmentedControl.TitleDistribution
     ) {
         self.viewBounds = viewBounds
-        self.cornerRadius = cornerRadius
         self.defaultTitleComponentsFrames = defaultTitleComponentsFrames
         self.selectedTitleComponentsFrames = selectedTitleComponentsFrames
         self.point = point

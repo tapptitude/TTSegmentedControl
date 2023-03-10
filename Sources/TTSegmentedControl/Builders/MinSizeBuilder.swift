@@ -14,7 +14,7 @@ struct MinSizeBuilder {
     private let spaceBetweenTitleItems: [CGFloat]
     private let imagePositions: [TTSegmentedControlTitle.ImagePosition]
     private let currentBounds: CGSize
-    private let cornerRadius: CGFloat
+    private let cornerRadius: TTSegmentedControl.CornerRadius
     private let padding: CGSize
     private let titleDistribution: TTSegmentedControl.TitleDistribution
     private let defaultSpaceBetweenTexts: CGFloat = 18
@@ -28,7 +28,7 @@ struct MinSizeBuilder {
         spaceBetweenTitleItems: [CGFloat],
         imagePositions: [TTSegmentedControlTitle.ImagePosition],
         currentBounds: CGSize,
-        cornerRadius: CGFloat,
+        cornerRadius: TTSegmentedControl.CornerRadius,
         padding: CGSize,
         titleDistribution: TTSegmentedControl.TitleDistribution
     ) {
@@ -111,7 +111,17 @@ extension MinSizeBuilder {
 
     private var selectionViewCornerRadius: CGFloat {
         let height = max(currentBounds.height, maxHeight)
-        let cornerRadius = self.cornerRadius < 0 ? 0.5 * height : self.cornerRadius
+        
+        var cornerRadius: CGFloat = 0
+        switch self.cornerRadius {
+        case .none:
+            cornerRadius = 0
+        case .maximum:
+            cornerRadius = 0.5 * height
+        case .constant(let value):
+            cornerRadius = max(0, min(value, 0.5 * height))
+        }
+
         let radiusRatio = cornerRadius / (0.5 * height)
         let selectionViewHeight = height - 2 * padding.height
         return 0.5 * (radiusRatio * selectionViewHeight)

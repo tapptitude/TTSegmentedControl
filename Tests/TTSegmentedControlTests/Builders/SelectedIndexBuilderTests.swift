@@ -31,7 +31,6 @@ final class SelectedIndexBuilderTests: XCTestCase {
         
         let builder = SelectedIndexBuilder(
             viewBounds: viewBounds,
-            cornerRadius: .zero,
             defaultTitleComponentsFrames: titleComponents,
             selectedTitleComponentsFrames: titleComponents,
             point: point,
@@ -52,7 +51,6 @@ final class SelectedIndexBuilderTests: XCTestCase {
         
         let builder = SelectedIndexBuilder(
             viewBounds: viewBounds,
-            cornerRadius: .zero,
             defaultTitleComponentsFrames: titleComponents,
             selectedTitleComponentsFrames: titleComponents,
             point: point,
@@ -73,7 +71,6 @@ final class SelectedIndexBuilderTests: XCTestCase {
         
         let builder = SelectedIndexBuilder(
             viewBounds: viewBounds,
-            cornerRadius: .zero,
             defaultTitleComponentsFrames: titleComponents,
             selectedTitleComponentsFrames: titleComponents,
             point: point,
@@ -94,7 +91,6 @@ final class SelectedIndexBuilderTests: XCTestCase {
         
         let builder = SelectedIndexBuilder(
             viewBounds: viewBounds,
-            cornerRadius: .zero,
             defaultTitleComponentsFrames: [],
             selectedTitleComponentsFrames: [],
             point: point,

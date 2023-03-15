@@ -16,7 +16,7 @@ final class CornerRadiusBuilderTests: XCTestCase {
 
         let builder = CornerRadiusBuilder(
             frame: viewBounds,
-            cornerRadius: -1
+            cornerRadius: .maximum
         )
         
         // When
@@ -32,7 +32,7 @@ final class CornerRadiusBuilderTests: XCTestCase {
 
         let builder = CornerRadiusBuilder(
             frame: viewBounds,
-            cornerRadius: 1000
+            cornerRadius: .constant(value: 1000)
         )
         
         // When
@@ -48,7 +48,7 @@ final class CornerRadiusBuilderTests: XCTestCase {
 
         let builder = CornerRadiusBuilder(
             frame: viewBounds,
-            cornerRadius: 5
+            cornerRadius: .constant(value: 5)
         )
         
         // When

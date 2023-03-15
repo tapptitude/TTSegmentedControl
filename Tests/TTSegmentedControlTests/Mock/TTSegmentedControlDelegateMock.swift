@@ -27,3 +27,11 @@ extension TTSegmentedControlDelegateMock: TTSegmentedControlDelegate {
         segmentedViewDidEndAtIndexCalled = true
     }
 }
+
+extension TTSegmentedControlDelegateMock {
+    func reset() {
+        segmentedViewDidBeginCalled = false
+        segmentedViewdidDragAtIndexCalled = false
+        segmentedViewDidEndAtIndexCalled = false
+    }
+}

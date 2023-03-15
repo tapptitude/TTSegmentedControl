@@ -1,5 +1,5 @@
 //
-//  PointAvailabilityCheckBuilder.swift
+//  PointInsideSegmentControlCheckBuilder.swift
 //  TTSegmentedControl
 //
 //  Created by Igor Dumitru on 01.03.2023.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PointAvailabilityCheckBuilder {
+struct PointInsideSegmentControlCheckBuilder {
     private let viewBounds: CGRect
     private let point: CGPoint
     
@@ -21,7 +21,7 @@ struct PointAvailabilityCheckBuilder {
     }
 }
 
-extension PointAvailabilityCheckBuilder {
+extension PointInsideSegmentControlCheckBuilder {
     func build() -> Bool {
         let frame = CGRect(
             x: viewBounds.origin.x - 2 * viewBounds.height,

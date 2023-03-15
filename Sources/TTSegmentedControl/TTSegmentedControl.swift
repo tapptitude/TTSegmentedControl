@@ -106,10 +106,6 @@ extension TTSegmentedControl {
         guard let point = touches.first?.location(in: self) else { return }
         endTouch(at: point)
     }
-
-    public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        touchesEnded(touches, with: event)
-    }
     
     private func prepareTouchPointOffset(for point: CGPoint) {
         if !touchPointOffset.equalTo(.zero) { return }
@@ -166,7 +162,7 @@ extension TTSegmentedControl {
     
     private func panAction(at point: CGPoint) {
         if !isDragEnabled || !isSelectionViewTouched {
-            isValidTouch = PointAvailabilityCheckBuilder(viewBounds: bounds, point: point).build()
+            isValidTouch = PointInsideSegmentControlCheckBuilder(viewBounds: bounds, point: point).build()
             return
         }
         touchState = .drag
@@ -317,8 +313,8 @@ extension TTSegmentedControl {
     }
     
     private func preparePanGestureRecognizer() {
-        if gestureRecognizers?.compactMap({$0 as? UIPanGestureRecognizer}).first != nil { return }
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panAction(_:)))
+        if gestureRecognizers?.compactMap({$0 as? TestablePanGestureRecognizer}).first != nil { return }
+        let panGestureRecognizer = TestablePanGestureRecognizer(target: self, action: #selector(panAction(_:)))
         addGestureRecognizer(panGestureRecognizer)
     }
 }

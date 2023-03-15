@@ -24,19 +24,17 @@ final class SelectionViewFrameForIndexBuilderTests: XCTestCase {
             total: CGRect(x: 139, y: 0, width: 20, height: 40)
         )
         let viewBounds = CGRect(x: 0, y: 0, width: 200, height: 40)
-        let cornerRadius: CGFloat = 0
         let titleComponents = [titleComponents1, titleComponents2]
         let padding: CGSize = .init(width: 2, height: 2)
-        let titleDistribution: TTSegmentedControl.TitleDistribution = .equalSpacing
+        let selectionViewFillType: TTSegmentedControl.SelectionViewFillType = .fillText
         
         let builder = SelectionViewFrameForIndexBuilder(
             viewBounds: viewBounds,
-            cornerRadius: cornerRadius,
             defaultTitleComponentsFrames: titleComponents,
             selectedTitleComponentsFrames: titleComponents,
             index: 1,
             padding: padding,
-            titleDistribution: titleDistribution
+            selectionViewFillType: selectionViewFillType
         )
         
         let checkSelectionViewFrame = CGRect(x: 100, y: 2, width: 98, height: 36)

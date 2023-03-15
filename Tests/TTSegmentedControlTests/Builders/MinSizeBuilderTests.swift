@@ -31,7 +31,7 @@ final class MinSizeBuilderTests: XCTestCase {
             spaceBetweenTitleItems: spaceBetweenTitleItems,
             imagePositions: imagePositions,
             currentBounds: viewBounds.size,
-            cornerRadius: 0,
+            cornerRadius: .none,
             padding: padding,
             titleDistribution: titleDistribution
         )
@@ -54,7 +54,7 @@ final class MinSizeBuilderTests: XCTestCase {
             spaceBetweenTitleItems: [],
             imagePositions: [],
             currentBounds: viewBounds.size,
-            cornerRadius: 0,
+            cornerRadius: .none,
             padding: padding,
             titleDistribution: .equalSpacing
         )
@@ -77,7 +77,7 @@ final class MinSizeBuilderTests: XCTestCase {
             spaceBetweenTitleItems: [],
             imagePositions: [],
             currentBounds: viewBounds.size,
-            cornerRadius: 0,
+            cornerRadius: .none,
             padding: padding,
             titleDistribution: .fillEqually
         )

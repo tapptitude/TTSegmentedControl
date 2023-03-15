@@ -12,7 +12,6 @@ final class TitleComponentFrameListBuilderTests: XCTestCase {
     func testBuilder() {
         // Given
         let viewBounds = CGRect(x: 0, y: 0, width: 200, height: 40)
-        let cornerRadius: CGFloat = 0
         let textSizes: [CGSize] = [.init(width: 20, height: 13)]
         let imageSizes: [CGSize] = [.zero]
         let spaceBetweenTitleItems: [CGFloat] = [.zero]
@@ -22,7 +21,7 @@ final class TitleComponentFrameListBuilderTests: XCTestCase {
         
         let builder = TitleComponentFrameListBuilder(
             viewBounds: viewBounds,
-            cornerRadius: cornerRadius,
+            cornerRadius: .none,
             textsSizes: textSizes,
             imagesSizes: imageSizes,
             spaceBetweenTitleItems: spaceBetweenTitleItems,

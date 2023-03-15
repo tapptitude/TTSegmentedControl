@@ -28,6 +28,7 @@ public struct TTSwiftUISegmentedControl: UIViewRepresentable {
     private var didBeginTouch: (() -> Void)? = nil
     private var didDragOverItemAtIndex: ((Int) -> Void)? = nil
     private var didEndTouchAtIndex: ((Int) -> Void)? = nil
+    private var segmentedView: TTSegmentedControl?
     
     public init(
         titles: [TTSegmentedControlTitle],
@@ -37,8 +38,18 @@ public struct TTSwiftUISegmentedControl: UIViewRepresentable {
         self._selectedIndex = selectedIndex ?? Binding.constant(nil)
     }
     
+    init(
+        titles: [TTSegmentedControlTitle],
+        selectedIndex: Binding<Int?>? = .constant(nil),
+        segmentedView: TTSegmentedControl
+    ) {
+        self.titles = titles
+        self._selectedIndex = selectedIndex ?? Binding.constant(nil)
+        self.segmentedView = segmentedView
+    }
+    
     public func makeUIView(context: Context) -> UIView {
-        let segmentedView = TTSegmentedControl()
+        let segmentedView = segmentedView ?? TTSegmentedControl()
         update(segmentedView, in: context)
         return segmentedView
     }
@@ -135,7 +146,7 @@ extension TTSwiftUISegmentedControl {
         return view
     }
     
-    public func animationOptions(_ options: TTSegmentedControlAnimationOption) -> TTSwiftUISegmentedControl {
+    public func animationOptions(_ options: TTSegmentedControlAnimationOption?) -> TTSwiftUISegmentedControl {
         var view = self
         view.animationOptions = options
         return view

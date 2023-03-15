@@ -22,6 +22,20 @@ final class TTSegmentedControlTests: XCTestCase {
         //        segmentedView.frame = CGRect(x: 0, y: 0, width: 1, height: 50)
     }
     
+    func testUpdateLayoutWithoutAnimation() {
+        // Given
+        segmentedView.titles = ["Men", "3", "Women"].map({TTSegmentedControlTitle(defaultAttributedText: NSAttributedString(string: $0), selectedAttributedText: NSAttributedString(string: $0))})
+        segmentedView.animationOptions = nil
+        segmentedView.selectItem(at: 1)
+        let selectionViewFrame = segmentedView.selectionView.frame
+        
+        // When
+        segmentedView.selectionViewFillType = .fillText
+        
+        // Then
+        XCTAssertTrue(segmentedView.selectionView.frame.width < selectionViewFrame.width)
+    }
+    
     func testTouchesBeganWithEventWithoutTouches() {
         // When
         segmentedView.touchesBegan(Set(), with: nil)
@@ -41,44 +55,14 @@ final class TTSegmentedControlTests: XCTestCase {
         XCTAssertTrue(delegate.segmentedViewDidBeginCalled)
     }
     
-    func testTouchesBeganWithEventForSwitches() {
-        // Given
-        let startTouch = TouchFake()
-        
-        // When
-        segmentedView.touchesBegan(Set([startTouch]), with: nil)
-        
-        // Then
-        XCTAssertEqual(segmentedView.selectedIndex, 1)
-        XCTAssertTrue(delegate.segmentedViewDidBeginCalled)
-    }
-    
-    func testTouchesMovedWithEvent() {
+    func testTouchesBeganWithEventWhenTouchStateIsTouch() {
         // Given
         let touch = TouchFake()
+        segmentedView.touchesBegan(Set([touch]), with: nil)
+        delegate.reset()
         
         // When
-        segmentedView.touchesMoved(Set([touch]), with: nil)
-        
-        // Then
-        XCTAssertTrue(delegate.segmentedViewdidDragAtIndexCalled)
-    }
-    
-    func testTouchesMovedWithEventWithoutTouches() {
-        // When
-        segmentedView.touchesMoved(Set(), with: nil)
-        
-        // Then
-        XCTAssertFalse(delegate.segmentedViewdidDragAtIndexCalled)
-    }
-    
-    func testTouchesMovedWithEventWhenDragIsDisabled() {
-        // Given
-        segmentedView.isDragEnabled = false
-        let touch = TouchFake()
-        
-        // When
-        segmentedView.touchesMoved(Set([touch]), with: nil)
+        segmentedView.touchesBegan(Set([touch]), with: nil)
         
         // Then
         XCTAssertFalse(delegate.segmentedViewDidBeginCalled)
@@ -105,41 +89,131 @@ final class TTSegmentedControlTests: XCTestCase {
         XCTAssertTrue(delegate.segmentedViewDidEndAtIndexCalled)
     }
     
-    func testTouchesEndedWithEventWithoutTouchesAndDragDisabled() {
+    func testTouchesEndedWithEventForSwitches() {
         // Given
-        let touch = TouchFake(touchLocation: CGPoint(x: 1000, y: 5))
-        segmentedView.touchesBegan(Set([touch]), with: nil)
         let selectionViewFrame = segmentedView.selectionView.frame
-        let selectedIndex = segmentedView.selectedIndex
         
+        let endTouch = TouchFake(touchLocation: CGPoint(x: 1000, y: 5))
+        segmentedView.isSwitchBehaviorEnabled = false
+        segmentedView.touchesEnded(Set([endTouch]), with: nil)
+
         // When
-        segmentedView.touchesEnded(Set(), with: nil)
+        segmentedView.touchesEnded(Set([endTouch]), with: nil)
         
         // Then
-        XCTAssertEqual(segmentedView.selectedIndex, selectedIndex)
-        XCTAssertEqual(segmentedView.selectionView.frame, selectionViewFrame)
+        XCTAssertNotEqual(segmentedView.selectedIndex, 0)
+        XCTAssertNotEqual(segmentedView.selectionView.frame, selectionViewFrame)
         XCTAssertTrue(delegate.segmentedViewDidEndAtIndexCalled)
     }
     
-    func testTouchesCancelledWithEvent() {
+    func testPanActionBeginAtPoint() {
         // Given
-        let startTouch = TouchFake()
-        let endTouch = TouchFake(touchLocation: CGPoint(x: 1000, y: 5))
-        segmentedView.isSwitchBehaviorEnabled = false
-        segmentedView.touchesBegan(Set([startTouch]), with: nil)
-        
-        let selectionViewFrame = segmentedView.selectionView.frame
-        let selectedIndex = segmentedView.selectedIndex
-        
-        segmentedView.touchesMoved(Set([endTouch]), with: nil)
+        segmentedView.layoutSubviews()
+        let panGestureRecognizer = segmentedView.gestureRecognizers?.compactMap({$0 as? TestablePanGestureRecognizer}).first
+        let startLocation = CGPoint(x: 58, y: 5)
         
         // When
-        segmentedView.touchesCancelled(Set([endTouch]), with: nil)
+        panGestureRecognizer?.perfomTouch(location: startLocation, state: .began)
         
         // Then
-        XCTAssertNotEqual(segmentedView.selectedIndex, selectedIndex)
-        XCTAssertNotEqual(segmentedView.selectionView.frame, selectionViewFrame)
+        XCTAssertTrue(delegate.segmentedViewDidBeginCalled)
+    }
+    
+    func testPanActionBeginAtPointWhenTouchStateIsTouch() {
+        // Given
+        segmentedView.layoutSubviews()
+        let panGestureRecognizer = segmentedView.gestureRecognizers?.compactMap({$0 as? TestablePanGestureRecognizer}).first
+        let startLocation = CGPoint(x: 58, y: 5)
+        panGestureRecognizer?.perfomTouch(location: startLocation, state: .began)
+        delegate.reset()
+        
+        // When
+        panGestureRecognizer?.perfomTouch(location: startLocation, state: .began)
+        
+        // Then
+        XCTAssertFalse(delegate.segmentedViewDidBeginCalled)
+    }
+    
+    func testPanActionChangedAtPoint() {
+        // Given
+        segmentedView.titles = ["Men", "3", "Women"].map({TTSegmentedControlTitle(text: $0)})
+        segmentedView.layoutSubviews()
+        segmentedView.isSwitchBehaviorEnabled = false
+        let selectionViewInitialFrame = segmentedView.selectionView.frame
+        let panGestureRecognizer = segmentedView.gestureRecognizers?.compactMap({$0 as? TestablePanGestureRecognizer}).first
+        let startLocation = CGPoint(x: 1, y: 5)
+        let changeLocation1 = CGPoint(x: 58, y: 5)
+        let changeLocation2 = CGPoint(x: 60, y: 5)
+        
+        // When
+        panGestureRecognizer?.perfomTouch(location: startLocation, state: .began)
+        panGestureRecognizer?.perfomTouch(location: changeLocation1, state: .changed)
+        panGestureRecognizer?.perfomTouch(location: changeLocation2, state: .changed)
+        
+        // Then
+        XCTAssertTrue(delegate.segmentedViewdidDragAtIndexCalled)
+        XCTAssertNotEqual(selectionViewInitialFrame, segmentedView.selectionView.frame)
+    }
+    
+    func testPanActionChangetAtPointWhenIsDragEnabledFalse() {
+        // Given
+        segmentedView.titles = ["Men", "3", "Women"].map({TTSegmentedControlTitle(text: $0)})
+        segmentedView.layoutSubviews()
+        segmentedView.isDragEnabled = false
+        let panGestureRecognizer = segmentedView.gestureRecognizers?.compactMap({$0 as? TestablePanGestureRecognizer}).first
+        let startLocation = CGPoint(x: 1, y: 5)
+        let changeLocation = CGPoint(x: 58, y: 5)
+        
+        // When
+        panGestureRecognizer?.perfomTouch(location: startLocation, state: .began)
+        panGestureRecognizer?.perfomTouch(location: changeLocation, state: .changed)
+        
+        // Then
+        XCTAssertFalse(delegate.segmentedViewdidDragAtIndexCalled)
+    }
+    
+    func testPanActionEndedAtPoint() {
+        // Given
+        segmentedView.titles = ["Men", "3", "Women"].map({TTSegmentedControlTitle(text: $0)})
+        segmentedView.layoutSubviews()
+        segmentedView.isSwitchBehaviorEnabled = false
+        let selectionViewInitialFrame = segmentedView.selectionView.frame
+        let panGestureRecognizer = segmentedView.gestureRecognizers?.compactMap({$0 as? TestablePanGestureRecognizer}).first
+        let startLocation = CGPoint(x: 1, y: 5)
+        let changeLocation1 = CGPoint(x: 58, y: 5)
+        let changeLocation2 = CGPoint(x: 60, y: 5)
+        
+        // When
+        panGestureRecognizer?.perfomTouch(location: startLocation, state: .began)
+        panGestureRecognizer?.perfomTouch(location: changeLocation1, state: .changed)
+        panGestureRecognizer?.perfomTouch(location: changeLocation2, state: .changed)
+        panGestureRecognizer?.perfomTouch(location: changeLocation2, state: .ended)
+        
+        // Then
         XCTAssertTrue(delegate.segmentedViewDidEndAtIndexCalled)
+        XCTAssertNotEqual(selectionViewInitialFrame, segmentedView.selectionView.frame)
+    }
+    
+    func testPanActionEndedAtPointWhenNoValidTouch() {
+        // Given
+        segmentedView.titles = ["Men", "3", "Women"].map({TTSegmentedControlTitle(text: $0)})
+        segmentedView.layoutSubviews()
+        segmentedView.isSwitchBehaviorEnabled = false
+        segmentedView.isDragEnabled = false
+        let selectionViewInitialFrame = segmentedView.selectionView.frame
+        let panGestureRecognizer = segmentedView.gestureRecognizers?.compactMap({$0 as? TestablePanGestureRecognizer}).first
+        let startLocation = CGPoint(x: 1, y: 5)
+        let changeLocation1 = CGPoint(x: -158, y: 5)
+        let changeLocation2 = CGPoint(x: 60, y: 5)
+        
+        // When
+        panGestureRecognizer?.perfomTouch(location: startLocation, state: .began)
+        panGestureRecognizer?.perfomTouch(location: changeLocation1, state: .changed)
+        panGestureRecognizer?.perfomTouch(location: changeLocation2, state: .ended)
+        
+        // Then
+        XCTAssertFalse(delegate.segmentedViewDidEndAtIndexCalled)
+        XCTAssertEqual(selectionViewInitialFrame, segmentedView.selectionView.frame)
     }
     
     func testView() {
@@ -323,6 +397,32 @@ final class TTSegmentedControlTests: XCTestCase {
         // Then
         XCTAssertEqual(segmentedView.selectedIndex, 0)
         XCTAssertEqual(segmentedView.selectionView.frame, initialSelectionViewFrame)
+    }
+    
+    func testSelectItemAtIndexWithoutAnimation() {
+        // Given
+        segmentedView.animationOptions = nil
+        let initialSelectionViewFrame = segmentedView.selectionView.frame
+        
+        // When
+        segmentedView.selectItem(at: 1)
+        
+        // Then
+        XCTAssertEqual(segmentedView.selectedIndex, 1)
+        XCTAssertNotEqual(segmentedView.selectionView.frame, initialSelectionViewFrame)
+    }
+    
+    func testSelectItemAtIndexWithBounceAnimation() {
+        // Given
+        segmentedView.bounceAnimationOptions = TTSegmentedControlBounceOptions()
+        let initialSelectionViewFrame = segmentedView.selectionView.frame
+        
+        // When
+        segmentedView.selectItem(at: 1)
+        
+        // Then
+        XCTAssertEqual(segmentedView.selectedIndex, 1)
+        XCTAssertNotEqual(segmentedView.selectionView.frame, initialSelectionViewFrame)
     }
     
     func testTitleForItemAtIndex() {

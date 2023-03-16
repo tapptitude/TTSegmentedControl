@@ -285,7 +285,7 @@ extension SwiftUIView {
                 Spacer(minLength: .zero)
                 switchView
             }
-            .frame(height: 48)
+            .frame(height: 60)
             .padding(.horizontal, 24)
             .background(Color.white)
         }

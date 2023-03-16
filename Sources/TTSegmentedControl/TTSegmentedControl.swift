@@ -152,6 +152,7 @@ extension TTSegmentedControl {
 
     private func touchBegin(at point: CGPoint) {
         if touchState == .touch { return }
+        isValidTouch = true
         touchState = .touch
         lastTouchPoint = point
         let index = switchIndexForSelected(layout.index(for: point))

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SwiftUI
 extension UIFont {
     struct SFProText {
         static func medium(size: CGFloat) -> UIFont {
@@ -29,6 +29,14 @@ extension UIFont {
     struct DeliusSwashCaps {
         static func regular(size: CGFloat) -> UIFont {
             UIFont.init(name: "DeliusSwashCaps-Regular", size: size)!
+        }
+    }
+}
+
+extension Font {
+    struct SFProText {
+        static func medium(size: CGFloat) -> Font {
+            Font.custom("SFProText-Medium", size: size)
         }
     }
 }

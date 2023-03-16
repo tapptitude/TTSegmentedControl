@@ -1,15 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "facebook_selected.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "settings_normal@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "settings_normal@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

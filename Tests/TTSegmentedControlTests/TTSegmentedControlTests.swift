@@ -47,6 +47,7 @@ final class TTSegmentedControlTests: XCTestCase {
     func testTouchesBeganWithEvent() {
         // Given
         let touch = TouchFake()
+        segmentedView.selectItem(at: 1)
         
         // When
         segmentedView.touchesBegan(Set([touch]), with: nil)
@@ -72,7 +73,6 @@ final class TTSegmentedControlTests: XCTestCase {
         // Given
         let startTouch = TouchFake()
         let endTouch = TouchFake(touchLocation: CGPoint(x: 1000, y: 5))
-        segmentedView.isSwitchBehaviorEnabled = false
         segmentedView.touchesBegan(Set([startTouch]), with: nil)
         
         let selectionViewFrame = segmentedView.selectionView.frame
@@ -94,7 +94,6 @@ final class TTSegmentedControlTests: XCTestCase {
         let selectionViewFrame = segmentedView.selectionView.frame
         
         let endTouch = TouchFake(touchLocation: CGPoint(x: 1000, y: 5))
-        segmentedView.isSwitchBehaviorEnabled = false
         segmentedView.touchesEnded(Set([endTouch]), with: nil)
 
         // When
@@ -138,7 +137,6 @@ final class TTSegmentedControlTests: XCTestCase {
         // Given
         segmentedView.titles = ["Men", "3", "Women"].map({TTSegmentedControlTitle(text: $0)})
         segmentedView.layoutSubviews()
-        segmentedView.isSwitchBehaviorEnabled = false
         let selectionViewInitialFrame = segmentedView.selectionView.frame
         let panGestureRecognizer = segmentedView.gestureRecognizers?.compactMap({$0 as? TestablePanGestureRecognizer}).first
         let startLocation = CGPoint(x: 1, y: 5)
@@ -176,7 +174,6 @@ final class TTSegmentedControlTests: XCTestCase {
         // Given
         segmentedView.titles = ["Men", "3", "Women"].map({TTSegmentedControlTitle(text: $0)})
         segmentedView.layoutSubviews()
-        segmentedView.isSwitchBehaviorEnabled = false
         let selectionViewInitialFrame = segmentedView.selectionView.frame
         let panGestureRecognizer = segmentedView.gestureRecognizers?.compactMap({$0 as? TestablePanGestureRecognizer}).first
         let startLocation = CGPoint(x: 1, y: 5)
@@ -198,7 +195,6 @@ final class TTSegmentedControlTests: XCTestCase {
         // Given
         segmentedView.titles = ["Men", "3", "Women"].map({TTSegmentedControlTitle(text: $0)})
         segmentedView.layoutSubviews()
-        segmentedView.isSwitchBehaviorEnabled = false
         segmentedView.isDragEnabled = false
         let selectionViewInitialFrame = segmentedView.selectionView.frame
         let panGestureRecognizer = segmentedView.gestureRecognizers?.compactMap({$0 as? TestablePanGestureRecognizer}).first
@@ -285,23 +281,115 @@ final class TTSegmentedControlTests: XCTestCase {
     }
     
     func testSelectionViewGradientLayer() {
-        // When
+        // Given
+        let startPoint = CGPoint.zero
+        let endPoint = CGPoint(x: 1, y: 1)
+        let colors = [UIColor.black, UIColor.white]
+        let gradient = TTSegmentedControlGradient(
+            locations: nil,
+            startPoint: startPoint,
+            endPoint: endPoint,
+            colors: colors
+        )
         segmentedView.layoutSubviews()
+        
+        // When
+        segmentedView.selectionViewColorType = .gradient(value: gradient)
         
         // Then
         XCTAssertTrue(((segmentedView.selectionView.layer.sublayers?.contains(segmentedView.selectionViewGradientLayer)) != nil))
-        XCTAssertTrue(segmentedView.selectionViewGradientLayer.isHidden)
+        XCTAssertFalse(segmentedView.selectionViewGradientLayer.isHidden)
         XCTAssertEqual(segmentedView.selectionViewGradientLayer.frame, segmentedView.selectionView.bounds)
+        XCTAssertNil(segmentedView.selectionViewGradientLayer.locations)
+        XCTAssertEqual(segmentedView.selectionViewGradientLayer.startPoint, gradient.startPoint)
+        XCTAssertEqual(segmentedView.selectionViewGradientLayer.endPoint, gradient.endPoint)
+        XCTAssertEqual(segmentedView.selectionViewGradientLayer.colors?.first as! CGColor, gradient.colors.first?.cgColor)
+        XCTAssertEqual(segmentedView.selectionViewGradientLayer.colors?.last as! CGColor, gradient.colors.last?.cgColor)
     }
     
     func testSelectionView() {
+        // Given
+        segmentedView.selectionViewColorType = .color(value: .red)
+        
         // When
         segmentedView.layoutSubviews()
         
         // Then
         XCTAssertFalse(segmentedView.selectionView.isUserInteractionEnabled)
-        XCTAssertEqual(segmentedView.selectionView.backgroundColor, segmentedView.selectionViewColor)
+        XCTAssertEqual(segmentedView.selectionView.backgroundColor, .red)
         XCTAssertEqual(segmentedView.selectionView.layer.cornerRadius, 0.5 * segmentedView.selectionView.frame.height)
+    }
+
+    func testSwitchSecondSelectionViewGradientLayer() {
+        // Given
+        let startPoint = CGPoint.zero
+        let endPoint = CGPoint(x: 1, y: 1)
+        let colors = [UIColor.black, UIColor.white]
+        let gradient = TTSegmentedControlGradient(
+            locations: nil,
+            startPoint: startPoint,
+            endPoint: endPoint,
+            colors: colors
+        )
+        segmentedView.layoutSubviews()
+        segmentedView.isSwitchBehaviorEnabled = true
+        segmentedView.switchSecondSelectionViewColorType = .gradient(value: gradient)
+        
+        // When
+        segmentedView.selectItem(at: 1)
+        
+        // Then
+        XCTAssertTrue(((segmentedView.selectionView.layer.sublayers?.contains(segmentedView.selectionViewGradientLayer)) != nil))
+        XCTAssertFalse(segmentedView.selectionViewGradientLayer.isHidden)
+        XCTAssertEqual(segmentedView.selectionViewGradientLayer.frame, segmentedView.selectionView.bounds)
+        XCTAssertNil(segmentedView.selectionViewGradientLayer.locations)
+        XCTAssertEqual(segmentedView.selectionViewGradientLayer.startPoint, gradient.startPoint)
+        XCTAssertEqual(segmentedView.selectionViewGradientLayer.endPoint, gradient.endPoint)
+        XCTAssertEqual(segmentedView.selectionViewGradientLayer.colors?.first as! CGColor, gradient.colors.first?.cgColor)
+        XCTAssertEqual(segmentedView.selectionViewGradientLayer.colors?.last as! CGColor, gradient.colors.last?.cgColor)
+    }
+    
+    func testSwitchSecondSelectionView() {
+        // given
+        segmentedView.layoutSubviews()
+        segmentedView.switchSecondSelectionViewColorType = .color(value: .blue)
+        segmentedView.isSwitchBehaviorEnabled = true
+        
+        // When
+        segmentedView.selectItem(at: 1)
+        
+        // Then
+        XCTAssertFalse(segmentedView.selectionView.isUserInteractionEnabled)
+        XCTAssertEqual(segmentedView.selectionView.backgroundColor, .blue)
+        XCTAssertEqual(segmentedView.selectionView.layer.cornerRadius, 0.5 * segmentedView.selectionView.frame.height)
+    }
+    
+    func testSelectionViewWithColorAndGradient() {
+        // Given
+        let startPoint = CGPoint.zero
+        let endPoint = CGPoint(x: 1, y: 1)
+        let colors = [UIColor.black, UIColor.white]
+        let gradient = TTSegmentedControlGradient(
+            locations: nil,
+            startPoint: startPoint,
+            endPoint: endPoint,
+            colors: colors
+        )
+        segmentedView.layoutSubviews()
+        
+        // When
+        segmentedView.selectionViewColorType = .colorWithGradient(color: .red, gradient: gradient)
+        
+        // Then
+        XCTAssertTrue(((segmentedView.selectionView.layer.sublayers?.contains(segmentedView.selectionViewGradientLayer)) != nil))
+        XCTAssertFalse(segmentedView.selectionViewGradientLayer.isHidden)
+        XCTAssertEqual(segmentedView.selectionViewGradientLayer.frame, segmentedView.selectionView.bounds)
+        XCTAssertEqual(segmentedView.selectionView.backgroundColor, .red)
+        XCTAssertNil(segmentedView.selectionViewGradientLayer.locations)
+        XCTAssertEqual(segmentedView.selectionViewGradientLayer.startPoint, gradient.startPoint)
+        XCTAssertEqual(segmentedView.selectionViewGradientLayer.endPoint, gradient.endPoint)
+        XCTAssertEqual(segmentedView.selectionViewGradientLayer.colors?.first as! CGColor, gradient.colors.first?.cgColor)
+        XCTAssertEqual(segmentedView.selectionViewGradientLayer.colors?.last as! CGColor, gradient.colors.last?.cgColor)
     }
     
     func testSelectionViewMask() {
@@ -461,5 +549,32 @@ final class TTSegmentedControlTests: XCTestCase {
         
         // Then
         XCTAssertNil(title)
+    }
+    
+    func testSwitchIndexWhenTouchOnTheSamePosition() {
+        // Given
+        let touch = TouchFake()
+        segmentedView.isSwitchBehaviorEnabled = true
+        segmentedView.touchesBegan(Set([touch]), with: nil)
+        
+        // When
+        segmentedView.touchesEnded(Set([touch]), with: nil)
+        
+        // Then
+        XCTAssertEqual(segmentedView.selectedIndex, 1)
+    }
+    
+    func testSwitchIndexWhenTouchOnTheDifferentPosition() {
+        // Given
+        segmentedView.layoutSubviews()
+        let touch = TouchFake(touchLocation: CGPoint(x: segmentedView.frame.width - 1, y: 0))
+        segmentedView.isSwitchBehaviorEnabled = true
+        segmentedView.touchesBegan(Set([touch]), with: nil)
+        
+        // When
+        segmentedView.touchesEnded(Set([touch]), with: nil)
+        
+        // Then
+        XCTAssertEqual(segmentedView.selectedIndex, 1)
     }
 }

@@ -15,10 +15,9 @@ public struct TTSwiftUISegmentedControl: UIViewRepresentable {
     private var isDragEnabled: Bool = true
     private var animationOptions: TTSegmentedControlAnimationOption? = .init()
     private var isSizeAdjustEnabled: Bool = false
-    private var containerBackgroundColor: UIColor = .white
-    private var containerGradient: TTSegmentedControlGradient? = nil
-    private var selectionViewColor: UIColor = .blue
-    private var selectionViewGradient: TTSegmentedControlGradient? = nil
+    private var containerColorType: TTSegmentedControl.ColorType = .color(value: .white)
+    private var selectionViewColorType: TTSegmentedControl.ColorType = .color(value: .blue)
+    private var switchSecondSelectionViewColorType: TTSegmentedControl.ColorType?
     private var selectionViewShadow: TTSegmentedControlShadow? = nil
     private var selectionViewFillType: TTSegmentedControl.SelectionViewFillType = .fillSegment
     private var bounceAnimationOptions: TTSegmentedControlBounceOptions? = nil
@@ -112,10 +111,9 @@ extension TTSwiftUISegmentedControl {
         segmentedView.isDragEnabled = isDragEnabled
         segmentedView.animationOptions = animationOptions
         segmentedView.isSizeAdjustEnabled = isSizeAdjustEnabled
-        segmentedView.containerBackgroundColor = containerBackgroundColor
-        segmentedView.containerGradient = containerGradient
-        segmentedView.selectionViewColor = selectionViewColor
-        segmentedView.selectionViewGradient = selectionViewGradient
+        segmentedView.containerColorType = containerColorType
+        segmentedView.selectionViewColorType = selectionViewColorType
+        segmentedView.switchSecondSelectionViewColorType = switchSecondSelectionViewColorType
         segmentedView.selectionViewFillType = selectionViewFillType
         segmentedView.cornerRadius = cornerRadius
         segmentedView.cornerCurve = cornerCurve
@@ -157,28 +155,22 @@ extension TTSwiftUISegmentedControl {
         view.isSizeAdjustEnabled = value
         return view
     }
-    
-    public func containerBackgroundColor(_ color: UIColor) -> TTSwiftUISegmentedControl {
+
+    public func containerColorType(_ colorType: TTSegmentedControl.ColorType) -> TTSwiftUISegmentedControl {
         var view = self
-        view.containerBackgroundColor = color
+        view.containerColorType = colorType
         return view
     }
     
-    public func containerGradient(_ gradient: TTSegmentedControlGradient?) -> TTSwiftUISegmentedControl {
+    public func selectionViewColorType(_ colorType: TTSegmentedControl.ColorType) -> TTSwiftUISegmentedControl {
         var view = self
-        view.containerGradient = gradient
+        view.selectionViewColorType = colorType
         return view
     }
     
-    public func selectionViewColor(_ color: UIColor) -> TTSwiftUISegmentedControl {
+    public func switchSecondSelectionViewColorType(_ colorType: TTSegmentedControl.ColorType?) -> TTSwiftUISegmentedControl {
         var view = self
-        view.selectionViewColor = color
-        return view
-    }
-    
-    public func selectionViewGradient(_ gradient: TTSegmentedControlGradient?) -> TTSwiftUISegmentedControl {
-        var view = self
-        view.selectionViewGradient = gradient
+        view.switchSecondSelectionViewColorType = colorType
         return view
     }
     

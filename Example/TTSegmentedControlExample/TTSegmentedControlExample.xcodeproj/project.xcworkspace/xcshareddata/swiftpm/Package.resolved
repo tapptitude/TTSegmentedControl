@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/dumitruigor/TTSegmentedControl",
       "state" : {
-        "revision" : "bcfdb596aa4fbf985dcdfdb033638c8e381e5ae4",
-        "version" : "2.0.0"
+        "branch" : "swiftPackage",
+        "revision" : "e22859b9ab5b2a9a4aef934eaedcbe76ed80dcf9"
       }
     }
   ],

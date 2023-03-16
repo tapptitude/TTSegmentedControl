@@ -88,4 +88,28 @@ final class MinSizeBuilderTests: XCTestCase {
         // Then
         XCTAssertEqual(minSize, checkSize)
     }
+    
+    func testWhenImagesAreOnLeftOrRideSide() {
+        // Given
+        let checkSize = CGSize(width: 80, height: 17)
+        let imagePositions: [TTSegmentedControlTitle.ImagePosition] = [.top, .bottom]
+        
+        let builder = MinSizeBuilder(
+            defaultTextsSizes: textSizes,
+            selectedTextsSizes: textSizes,
+            imagesSizes: imageSizes,
+            spaceBetweenTitleItems: spaceBetweenTitleItems,
+            imagePositions: imagePositions,
+            currentBounds: viewBounds.size,
+            cornerRadius: .none,
+            padding: padding,
+            titleDistribution: titleDistribution
+        )
+        
+        // When
+        let minSize = builder.build()
+        
+        // Then
+        XCTAssertEqual(minSize, checkSize)
+    }
 }

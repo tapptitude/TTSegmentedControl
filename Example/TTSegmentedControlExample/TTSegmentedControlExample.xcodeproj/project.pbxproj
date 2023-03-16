@@ -7,14 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		783A217029C1E8840031B5F5 /* TTSegmentedControl in Frameworks */ = {isa = PBXBuildFile; productRef = 783A216F29C1E8840031B5F5 /* TTSegmentedControl */; };
+		783A217429C1E8A80031B5F5 /* SFProText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 783A217329C1E8A80031B5F5 /* SFProText-Medium.ttf */; };
+		783A217729C1E9070031B5F5 /* UIFont+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783A217629C1E9070031B5F5 /* UIFont+Name.swift */; };
+		783A217929C1E9AC0031B5F5 /* PTSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 783A217829C1E9AC0031B5F5 /* PTSerif-Bold.ttf */; };
+		783A217B29C1EA010031B5F5 /* BeauRivage-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 783A217A29C1EA010031B5F5 /* BeauRivage-Regular.ttf */; };
+		783A217D29C1EA540031B5F5 /* DeliusSwashCaps-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 783A217C29C1EA540031B5F5 /* DeliusSwashCaps-Regular.ttf */; };
 		785CD72029967597001C5FDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CD71F29967597001C5FDB /* AppDelegate.swift */; };
 		785CD72C2996759B001C5FDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785CD72A2996759B001C5FDB /* LaunchScreen.storyboard */; };
 		785CD734299675FF001C5FDB /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CD733299675FF001C5FDB /* SwiftUIView.swift */; };
-		785CD73B299684E8001C5FDB /* TTSegmentedControl in Frameworks */ = {isa = PBXBuildFile; productRef = 785CD73A299684E8001C5FDB /* TTSegmentedControl */; };
 		785CD73F29968568001C5FDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 785CD73E29968568001C5FDB /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		783A217329C1E8A80031B5F5 /* SFProText-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Medium.ttf"; sourceTree = "<group>"; };
+		783A217629C1E9070031B5F5 /* UIFont+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Name.swift"; sourceTree = "<group>"; };
+		783A217829C1E9AC0031B5F5 /* PTSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSerif-Bold.ttf"; sourceTree = "<group>"; };
+		783A217A29C1EA010031B5F5 /* BeauRivage-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeauRivage-Regular.ttf"; sourceTree = "<group>"; };
+		783A217C29C1EA540031B5F5 /* DeliusSwashCaps-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DeliusSwashCaps-Regular.ttf"; sourceTree = "<group>"; };
 		785CD71C29967597001C5FDB /* TTSegmentedControlExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTSegmentedControlExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		785CD71F29967597001C5FDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		785CD72B2996759B001C5FDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -28,13 +38,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				785CD73B299684E8001C5FDB /* TTSegmentedControl in Frameworks */,
+				783A217029C1E8840031B5F5 /* TTSegmentedControl in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		783A217129C1E88A0031B5F5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				783A217229C1E8980031B5F5 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		783A217229C1E8980031B5F5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				783A217A29C1EA010031B5F5 /* BeauRivage-Regular.ttf */,
+				783A217829C1E9AC0031B5F5 /* PTSerif-Bold.ttf */,
+				783A217329C1E8A80031B5F5 /* SFProText-Medium.ttf */,
+				783A217C29C1EA540031B5F5 /* DeliusSwashCaps-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		783A217529C1E8FC0031B5F5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				783A217629C1E9070031B5F5 /* UIFont+Name.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		785CD71329967597001C5FDB = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +96,8 @@
 				785CD73E29968568001C5FDB /* Assets.xcassets */,
 				785CD72A2996759B001C5FDB /* LaunchScreen.storyboard */,
 				785CD72D2996759B001C5FDB /* Info.plist */,
+				783A217529C1E8FC0031B5F5 /* Extensions */,
+				783A217129C1E88A0031B5F5 /* Resources */,
 			);
 			path = TTSegmentedControlExample;
 			sourceTree = "<group>";
@@ -80,7 +119,7 @@
 			);
 			name = TTSegmentedControlExample;
 			packageProductDependencies = (
-				785CD73A299684E8001C5FDB /* TTSegmentedControl */,
+				783A216F29C1E8840031B5F5 /* TTSegmentedControl */,
 			);
 			productName = TTSegmentedControlExample;
 			productReference = 785CD71C29967597001C5FDB /* TTSegmentedControlExample.app */;
@@ -111,7 +150,7 @@
 			);
 			mainGroup = 785CD71329967597001C5FDB;
 			packageReferences = (
-				785CD739299684E8001C5FDB /* XCRemoteSwiftPackageReference "TTSegmentedControl" */,
+				783A216E29C1E8840031B5F5 /* XCRemoteSwiftPackageReference "TTSegmentedControl" */,
 			);
 			productRefGroup = 785CD71D29967597001C5FDB /* Products */;
 			projectDirPath = "";
@@ -127,8 +166,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				783A217B29C1EA010031B5F5 /* BeauRivage-Regular.ttf in Resources */,
 				785CD73F29968568001C5FDB /* Assets.xcassets in Resources */,
 				785CD72C2996759B001C5FDB /* LaunchScreen.storyboard in Resources */,
+				783A217429C1E8A80031B5F5 /* SFProText-Medium.ttf in Resources */,
+				783A217929C1E9AC0031B5F5 /* PTSerif-Bold.ttf in Resources */,
+				783A217D29C1EA540031B5F5 /* DeliusSwashCaps-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +184,7 @@
 			files = (
 				785CD734299675FF001C5FDB /* SwiftUIView.swift in Sources */,
 				785CD72029967597001C5FDB /* AppDelegate.swift in Sources */,
+				783A217729C1E9070031B5F5 /* UIFont+Name.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,20 +398,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		785CD739299684E8001C5FDB /* XCRemoteSwiftPackageReference "TTSegmentedControl" */ = {
+		783A216E29C1E8840031B5F5 /* XCRemoteSwiftPackageReference "TTSegmentedControl" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dumitruigor/TTSegmentedControl";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				branch = swiftPackage;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		785CD73A299684E8001C5FDB /* TTSegmentedControl */ = {
+		783A216F29C1E8840031B5F5 /* TTSegmentedControl */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 785CD739299684E8001C5FDB /* XCRemoteSwiftPackageReference "TTSegmentedControl" */;
+			package = 783A216E29C1E8840031B5F5 /* XCRemoteSwiftPackageReference "TTSegmentedControl" */;
 			productName = TTSegmentedControl;
 		};
 /* End XCSwiftPackageProductDependency section */

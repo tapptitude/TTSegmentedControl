@@ -87,47 +87,114 @@ final class TTSwiftUISegmentedControlTests: XCTestCase {
         }
     }
     
-    func testContainerBackgroundColor() {
+    func testContainerColorTypeWithColor() {
         // When
-        view = view.containerBackgroundColor(.black)
+        view = view.containerColorType(.color(value: .black))
         
         // Then
         verifyAfterDelay { [weak self] in
             guard let `self` = self else { return }
-            XCTAssertEqual(self.uiKitSegmentView.containerBackgroundColor, .black)
+            XCTAssertEqual(self.uiKitSegmentView.containerColorType.color, .black)
         }
     }
     
-    func testContainerGradient() {
+    func testContainerColorTypeWithGradient() {
+        // Given
+        let startPoint = CGPoint.zero
+        let endPoint = CGPoint(x: 1, y: 1)
+        let colors = [UIColor.black, UIColor.white]
+        let gradient = TTSegmentedControlGradient(
+            locations: nil,
+            startPoint: startPoint,
+            endPoint: endPoint,
+            colors: colors
+        )
+        
         // When
-        view = view.containerGradient(nil)
+        view = view.containerColorType(.gradient(value: gradient))
         
         // Then
         verifyAfterDelay { [weak self] in
             guard let `self` = self else { return }
-            XCTAssertNil(self.uiKitSegmentView.containerGradient)
+            XCTAssertNil(self.uiKitSegmentView.containerColorType.gradient?.locations)
+            XCTAssertEqual(self.uiKitSegmentView.containerColorType.gradient?.startPoint, gradient.startPoint)
+            XCTAssertEqual(self.uiKitSegmentView.containerColorType.gradient?.endPoint, gradient.endPoint)
+            XCTAssertEqual(self.uiKitSegmentView.containerColorType.gradient!.colors.first, gradient.colors.first)
+            XCTAssertEqual(self.uiKitSegmentView.containerColorType.gradient!.colors.last, gradient.colors.last)
         }
     }
     
-    func testSelectionViewColor() {
+    func testSelectionViewColorTypeWithColor() {
         // When
-        view = view.selectionViewColor(.black)
+        view = view.selectionViewColorType(.color(value: .black))
         
         // Then
         verifyAfterDelay { [weak self] in
             guard let `self` = self else { return }
-            XCTAssertEqual(self.uiKitSegmentView.selectionViewColor, .black)
+            XCTAssertEqual(self.uiKitSegmentView.selectionViewColorType.color, .black)
         }
     }
     
-    func testSelectionViewGradient() {
+    func testSelectionViewColorTypeWithGradient() {
+        // Given
+        let startPoint = CGPoint.zero
+        let endPoint = CGPoint(x: 1, y: 1)
+        let colors = [UIColor.black, UIColor.white]
+        let gradient = TTSegmentedControlGradient(
+            locations: nil,
+            startPoint: startPoint,
+            endPoint: endPoint,
+            colors: colors
+        )
+        
         // When
-        view = view.selectionViewGradient(nil)
+        view = view.selectionViewColorType(.gradient(value: gradient))
         
         // Then
         verifyAfterDelay { [weak self] in
             guard let `self` = self else { return }
-            XCTAssertNil(self.uiKitSegmentView.selectionViewGradient)
+            XCTAssertNil(self.uiKitSegmentView.selectionViewColorType.gradient?.locations)
+            XCTAssertEqual(self.uiKitSegmentView.selectionViewColorType.gradient?.startPoint, gradient.startPoint)
+            XCTAssertEqual(self.uiKitSegmentView.selectionViewColorType.gradient?.endPoint, gradient.endPoint)
+            XCTAssertEqual(self.uiKitSegmentView.selectionViewColorType.gradient?.colors.first, gradient.colors.first)
+            XCTAssertEqual(self.uiKitSegmentView.selectionViewColorType.gradient?.colors.last, gradient.colors.last)
+        }
+    }
+    
+    func testSwitchSecondSelectionViewColorTypeWithColor() {
+        // When
+        view = view.isSwitchBehaviorEnabled(true).switchSecondSelectionViewColorType(.color(value: .white))
+        
+        // Then
+        verifyAfterDelay { [weak self] in
+            guard let `self` = self else { return }
+            XCTAssertEqual(self.uiKitSegmentView.switchSecondSelectionViewColorType?.color, .white)
+        }
+    }
+    
+    func testSwitchSelectionViewColorTypeWithGradient() {
+        // Given
+        let startPoint = CGPoint.zero
+        let endPoint = CGPoint(x: 1, y: 1)
+        let colors = [UIColor.black, UIColor.white]
+        let gradient = TTSegmentedControlGradient(
+            locations: nil,
+            startPoint: startPoint,
+            endPoint: endPoint,
+            colors: colors
+        )
+        
+        // When
+        view = view.isSwitchBehaviorEnabled(true).switchSecondSelectionViewColorType(.gradient(value: gradient))
+        
+        // Then
+        verifyAfterDelay { [weak self] in
+            guard let `self` = self else { return }
+            XCTAssertNil(self.uiKitSegmentView.switchSecondSelectionViewColorType?.gradient?.locations)
+            XCTAssertEqual(self.uiKitSegmentView.switchSecondSelectionViewColorType?.gradient?.startPoint, gradient.startPoint)
+            XCTAssertEqual(self.uiKitSegmentView.switchSecondSelectionViewColorType?.gradient?.endPoint, gradient.endPoint)
+            XCTAssertEqual(self.uiKitSegmentView.switchSecondSelectionViewColorType?.gradient?.colors.first, gradient.colors.first)
+            XCTAssertEqual(self.uiKitSegmentView.switchSecondSelectionViewColorType?.gradient?.colors.last, gradient.colors.last)
         }
     }
     

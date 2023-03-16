@@ -28,16 +28,15 @@ public final class TTSegmentedControl: UIView {
     public var isDragEnabled: Bool = true
     public var animationOptions: TTSegmentedControlAnimationOption? = .init()
     public var isSizeAdjustEnabled: Bool = true
-    public var containerBackgroundColor: UIColor = .white { didSet { configure() } }
-    public var containerGradient: TTSegmentedControlGradient? { didSet { configure() } }
-    public var selectionViewColor: UIColor = .blue { didSet { configure() } }
-    public var selectionViewGradient: TTSegmentedControlGradient? { didSet { configure() } }
+    public var containerColorType: ColorType = .color(value: .white) { didSet { configure() } }
+    public var selectionViewColorType: ColorType = .color(value: .blue) { didSet { configure() } }
     public var selectionViewFillType: SelectionViewFillType = .fillSegment { didSet { updateLayout() } }
+    public var switchSecondSelectionViewColorType: ColorType? { didSet { configure() } }
     public var padding: CGSize = .init(width: 2, height: 2) { didSet { reloadView() } }
     public var cornerRadius: CornerRadius = .maximum { didSet { reloadView() } }
     public var cornerCurve: CALayerCornerCurve = .circular { didSet { reloadView() } }
     public var titles: [TTSegmentedControlTitle] = [] { didSet { reloadView() } }
-    public var isSwitchBehaviorEnabled: Bool = true
+    public var isSwitchBehaviorEnabled: Bool = false
     
     private(set) var defaultStateView = UIView()
     private(set) var defaultStateViewGradientLayer = CAGradientLayer()
@@ -182,6 +181,7 @@ extension TTSegmentedControl {
         if !isValidTouch { return }
         selectedIndex = switchIndexForSelected(layout.index(for: point))
         updateSelectionViewFrame(at: selectedIndex)
+        configureSelectionView(at: selectedIndex)
         notifyEndTouch()
     }
 }
@@ -192,6 +192,7 @@ extension TTSegmentedControl {
         let index = max(min(index, titles.count - 1),  0)
         selectedIndex = index
         updateSelectionViewFrame(at: index)
+        configureSelectionView(at: selectedIndex)
     }
     
     public func titleForItem(at index: Int) -> TTSegmentedControlTitle? {
@@ -328,18 +329,19 @@ extension TTSegmentedControl {
         configureDefaultStateImageViews()
         configureSelectionViewGradientLayer()
         configureSelectionView()
+        configureSelectionView(at: selectedIndex)
         configureSelectedStateLabels()
         configureSelectedStateImageViews()
     }
     
     private func configureContainerView() {
-        defaultStateView.backgroundColor = containerGradient == nil ? containerBackgroundColor : nil
+        defaultStateView.backgroundColor = containerColorType.color
     }
     
     private func configureContainerGradientLayer() {
-        defaultStateViewGradientLayer.isHidden = containerGradient == nil
+        defaultStateViewGradientLayer.isHidden = containerColorType.gradient == nil
         defaultStateViewGradientLayer.backgroundColor = UIColor.clear.cgColor
-        if let containerGradient = containerGradient {
+        if let containerGradient = containerColorType.gradient {
             defaultStateViewGradientLayer.apply(containerGradient)
         }
     }
@@ -361,17 +363,41 @@ extension TTSegmentedControl {
     }
     
     private func configureSelectionViewGradientLayer() {
-        selectionViewGradientLayer.isHidden = selectionViewGradient == nil
+        selectionViewGradientLayer.isHidden = selectionViewColorType.gradient == nil
         selectionViewGradientLayer.backgroundColor = UIColor.black.cgColor
-        if let selectionViewGradient = selectionViewGradient {
+        if let selectionViewGradient = selectionViewColorType.gradient {
             selectionViewGradientLayer.apply(selectionViewGradient)
         }
     }
     
     private func configureSelectionView() {
-        selectionView.backgroundColor = selectionViewGradient == nil ? selectionViewColor : nil
+        selectionView.backgroundColor = selectionViewColorType.color
         if let shadow = selectionViewShadow {
             selectionView.apply(shadow)
+        }
+    }
+    
+    private func configureSwitchSecondSelectionViewGradientLayer() {
+        let gradient = switchSecondSelectionViewColorType?.gradient ?? selectionViewColorType.gradient
+        selectionViewGradientLayer.isHidden = gradient == nil
+        selectionViewGradientLayer.backgroundColor = UIColor.black.cgColor
+        if let gradient = gradient {
+            selectionViewGradientLayer.apply(gradient)
+        }
+    }
+    
+    private func configureSwitchSecondSelectionView() {
+        selectionView.backgroundColor = switchSecondSelectionViewColorType?.color ?? selectionViewColorType.color
+    }
+    
+    private func configureSelectionView(at index: Int) {
+        if !isSwitch { return }
+        if index == 0 {
+            configureSelectionViewGradientLayer()
+            configureSelectionView()
+        } else {
+            configureSwitchSecondSelectionViewGradientLayer()
+            configureSwitchSecondSelectionView()
         }
     }
     
@@ -431,5 +457,35 @@ extension TTSegmentedControl {
         case none
         case maximum
         case constant(value: CGFloat)
+    }
+    
+    public enum ColorType {
+        case color(value: UIColor)
+        case gradient(value: TTSegmentedControlGradient)
+        case colorWithGradient(color: UIColor, gradient: TTSegmentedControlGradient)
+    }
+}
+
+extension TTSegmentedControl.ColorType {
+    var color: UIColor? {
+        switch self {
+        case .color(let value):
+            return value
+        case .colorWithGradient(let color, _):
+            return color
+        default:
+            return nil
+        }
+    }
+    
+    var gradient: TTSegmentedControlGradient? {
+        switch self {
+        case .gradient(let value):
+            return value
+        case .colorWithGradient(_, let gradient):
+            return gradient
+        default:
+            return nil
+        }
     }
 }

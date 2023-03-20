@@ -103,7 +103,7 @@ extension SwiftUIView {
     private var thirdSegmentedControlTitles: [TTSegmentedControlTitle] {
         let title1 = TTSegmentedControlTitle(
             text: "Men",
-            defaultColor: "2563EB".color,
+            defaultColor: "FCD34D".color,
             defaultFont: .PTSerif.bold(size: 18),
             selectedColor: "FCD34D".color,
             selectedFont: .PTSerif.bold(size: 18)
@@ -113,7 +113,7 @@ extension SwiftUIView {
             text: "Women",
             defaultColor: "7C3AED".color,
             defaultFont: .BeauRivage.regular(size: 24),
-            selectedColor: "FCD34D".color,
+            selectedColor: .white,
             selectedFont: .BeauRivage.regular(size: 24)
         )
         
@@ -121,7 +121,7 @@ extension SwiftUIView {
             text: "Kids",
             defaultColor: "2563EB".color,
             defaultFont: .DeliusSwashCaps.regular(size: 17),
-            selectedColor: "FCD34D".color,
+            selectedColor: "99F6E4".color,
             selectedFont: .DeliusSwashCaps.regular(size: 17)
         )
         
@@ -163,10 +163,10 @@ extension SwiftUIView {
             text: "Account",
             defaultColor: "1F2937".color,
             defaultFont: .SFProText.medium(size: 14),
-            defaultImage: UIImage(named: "account-2"),
+            defaultImage: UIImage(named: "account_normal"),
             selectedColor: .white,
             selectedFont: .SFProText.medium(size: 14),
-            selectedImage: UIImage(named: "account-2"),
+            selectedImage: UIImage(named: "account_selected"),
             imagePosition: .left,
             spaceBetweenTextAndImage: 6
             
@@ -179,7 +179,7 @@ extension SwiftUIView {
             defaultImage: UIImage(named: "settings_normal"),
             selectedColor: .white,
             selectedFont: .SFProText.medium(size: 14),
-            selectedImage: UIImage(named: "settings-2"),
+            selectedImage: UIImage(named: "settings_selected"),
             imagePosition: .left,
             spaceBetweenTextAndImage: 6
         )
@@ -191,7 +191,7 @@ extension SwiftUIView {
             defaultImage: UIImage(named: "billling_normal"),
             selectedColor: .white,
             selectedFont: .SFProText.medium(size: 14),
-            selectedImage: UIImage(named: "billing-2"),
+            selectedImage: UIImage(named: "billling_selected"),
             imagePosition: .left,
             spaceBetweenTextAndImage: 6
         )

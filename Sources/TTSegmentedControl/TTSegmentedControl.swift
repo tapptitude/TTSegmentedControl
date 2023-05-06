@@ -10,12 +10,14 @@ import UIKit
 public protocol TTSegmentedControlDelegate: AnyObject {
     func segmentedViewDidBegin(_ view: TTSegmentedControl)
     func segmentedView(_ view: TTSegmentedControl, didDragAt index: Int)
+    func segmentedView(_ view: TTSegmentedControl, shouldMoveAt index: Int) -> Bool
     func segmentedView(_ view: TTSegmentedControl, didEndAt index: Int)
 }
 
-extension TTSegmentedControlDelegate {
+public extension TTSegmentedControlDelegate {
     func segmentedViewDidBegin(_ view: TTSegmentedControl) {}
     func segmentedView(_ view: TTSegmentedControl, didDragAt index: Int) {}
+    func segmentedView(_ view: TTSegmentedControl, shouldMoveAt index: Int) -> Bool { true }
     func segmentedView(_ view: TTSegmentedControl, didEndAt index: Int) {}
 }
 
@@ -180,10 +182,14 @@ extension TTSegmentedControl {
         touchPointOffset = .zero
         
         if !isValidTouch { return }
-        selectedIndex = switchIndexForSelected(layout.index(for: point))
+        let newIndex = switchIndexForSelected(layout.index(for: point))
+        let allowToMoveToNewIndex = delegate?.segmentedView(self, shouldMoveAt: newIndex) ?? true
+        if allowToMoveToNewIndex {
+            selectedIndex = newIndex
+            notifyEndTouch()
+        }
         updateSelectionViewFrame(at: selectedIndex)
         configureSelectionView(at: selectedIndex)
-        notifyEndTouch()
     }
 }
 

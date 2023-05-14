@@ -25,6 +25,7 @@ extension TTSegmentedControlLayout {
         adjustSizeIfNeeded()
         layoutDefaultStateView()
         layoutContainerGradientLayer()
+        layoutContainerViewInnerShadowLayer()
         prepareTitleComponentsFrames()
         prepareSelectionViewFrames()
         layoutDefaultStateLabels()
@@ -147,6 +148,33 @@ extension TTSegmentedControlLayout {
         view.defaultStateViewGradientLayer.frame = view.defaultStateView.bounds
         view.defaultStateViewGradientLayer.cornerCurve = params.cornerCurve
         view.defaultStateViewGradientLayer.cornerRadius = view.defaultStateView.layer.cornerRadius
+        CATransaction.commit()
+    }
+    
+    private func layoutContainerViewInnerShadowLayer() {
+        guard let containerViewInnerShadow = params.containerViewInnerShadow else { return }
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(0.0)
+        view.containerViewInnerShadowLayer.frame = view.defaultStateView.bounds
+        
+        let path = UIBezierPath(
+            roundedRect: view.defaultStateView.bounds.insetBy(
+                dx: containerViewInnerShadow.innerOffset.width,
+                dy: containerViewInnerShadow.innerOffset.height
+            ),
+            cornerRadius: view.defaultStateView.layer.cornerRadius
+        )
+
+        var cutOutPath = UIBezierPath(
+            roundedRect: view.defaultStateView.bounds,
+            cornerRadius: view.defaultStateView.layer.cornerRadius
+        )
+        cutOutPath = cutOutPath.reversing()
+        path.append(cutOutPath)
+
+        view.containerViewInnerShadowLayer.shadowPath = path.cgPath
+        view.containerViewInnerShadowLayer.cornerCurve = params.cornerCurve
+
         CATransaction.commit()
     }
     

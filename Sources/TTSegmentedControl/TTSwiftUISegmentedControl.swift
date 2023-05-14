@@ -16,6 +16,7 @@ public struct TTSwiftUISegmentedControl: UIViewRepresentable {
     private var animationOptions: TTSegmentedControlAnimationOption? = .init()
     private var isSizeAdjustEnabled: Bool = false
     private var containerColorType: TTSegmentedControl.ColorType = .color(value: .white)
+    private var containerViewInnerShadow: TTSegmentedControlShadow? = nil
     private var selectionViewColorType: TTSegmentedControl.ColorType = .color(value: .blue)
     private var switchSecondSelectionViewColorType: TTSegmentedControl.ColorType?
     private var selectionViewShadow: TTSegmentedControlShadow? = nil
@@ -112,6 +113,7 @@ extension TTSwiftUISegmentedControl {
         segmentedView.animationOptions = animationOptions
         segmentedView.isSizeAdjustEnabled = isSizeAdjustEnabled
         segmentedView.containerColorType = containerColorType
+        segmentedView.containerViewInnerShadow = containerViewInnerShadow
         segmentedView.selectionViewColorType = selectionViewColorType
         segmentedView.switchSecondSelectionViewColorType = switchSecondSelectionViewColorType
         segmentedView.selectionViewFillType = selectionViewFillType
@@ -225,6 +227,12 @@ extension TTSwiftUISegmentedControl {
     public func didEndTouchAtIndex(_ body: ((Int) -> Void)?) -> TTSwiftUISegmentedControl {
         var view = self
         view.didEndTouchAtIndex = body
+        return view
+    }
+    
+    public func containerViewInnerShadow(_ shadow: TTSegmentedControlShadow?) -> TTSwiftUISegmentedControl {
+        var view = self
+        view.containerViewInnerShadow = shadow
         return view
     }
 }

@@ -253,8 +253,9 @@ extension TitleComponentFrameListBuilder {
     ) -> CGSize {
         var width = textSize.width
         var height = textSize.height
+        let isTextMissing = textSize.width == 0 || textSize.height == 0
         
-        let spacing = imageSize == .zero || textSize == .zero ? 0 : spacing
+        let spacing = imageSize == .zero || isTextMissing ? 0 : spacing
         
         switch position {
         case .top, .bottom:

@@ -20,11 +20,10 @@ struct SwiftUIView: View {
        
             VStack(spacing: 24) {
                 VStack(spacing: 24) {
-                    firstSegmentedControlSection
-                    secondSegmentedControlSection
-                    thirdSegmentedControlSection
-                    fourthSegmentedControlSection
-                    fifthSegmentedControlSection
+//                    firstSegmentedControlSection
+//                    secondSegmentedControlSection
+//                    thirdSegmentedControlSection
+//                    fourthSegmentedControlSection
                 }
                 .padding(.horizontal, 24)
                 switchViewSection
@@ -42,7 +41,7 @@ extension SwiftUIView {
     }
     
     private var firstSegmentControlTitles: [TTSegmentedControlTitle] {
-        ["Men", "Women", "Kids"].map { title in
+        ["Cats", "Dogs", "Rodents"].map { title in
             TTSegmentedControlTitle(
                 text: title,
                 defaultColor: "1F2937".color,
@@ -54,11 +53,20 @@ extension SwiftUIView {
     }
     
     private var firstSegemntedControl: some View {
-        TTSwiftUISegmentedControl(titles: firstSegmentControlTitles)
-            .selectionViewColorType(.color(value:"2563EB".color))
+//        let innerShadow = TTSegmentedControlShadow(
+//            color: "D1D5DB".color,
+//            offset: CGSize(width: 0, height: 3),
+//            innerOffset: .init(width: 0, height: -100),
+//            opacity: 1,
+//            radius: 4
+//        )
+        
+        return TTSwiftUISegmentedControl(titles: firstSegmentControlTitles)
+            .selectionViewColorType(.color(value:"F59E0B".color))
             .bounceAnimationOptions( .init())
             .cornerRadius( .constant(value: 8))
             .selectionViewPadding(.init(width: 4, height: 4))
+//            .containerViewInnerShadow(innerShadow)
             .frame(height: 48)
     }
 }
@@ -71,19 +79,31 @@ extension SwiftUIView {
         }
     }
     
+    private var secondSegmentControlTitles: [TTSegmentedControlTitle] {
+        ["Breakfast", "Lunch", "Dinner"].map { title in
+            TTSegmentedControlTitle(
+                text: title,
+                defaultColor: "1F2937".color,
+                defaultFont: .SFProText.medium(size: 14),
+                selectedColor: .white,
+                selectedFont: .SFProText.medium(size: 14)
+            )
+        }
+    }
+    
     private var secondSegmentedControl: some View {
         let shadow = TTSegmentedControlShadow(
-            color: .black.withAlphaComponent(0.4),
-            offset: CGSize(width: 0, height: 4),
+            color: .black.withAlphaComponent(0.2),
+            offset: CGSize(width: 0, height: 2),
             opacity: 1,
             radius: 4
         )
         return HStack(spacing: .zero) {
-            TTSwiftUISegmentedControl(titles: firstSegmentControlTitles)
+            TTSwiftUISegmentedControl(titles: secondSegmentControlTitles)
                 .titleDistribution(.fillEqually)
                 .selectionViewFillType(.fillText)
                 .bounceAnimationOptions(nil)
-                .selectionViewColorType(.color(value: "2563EB".color))
+                .selectionViewColorType(.color(value: "14B8A6".color))
                 .selectionViewShadow(shadow)
                 .cornerRadius(.none)
                 .selectionViewPadding(.zero)
@@ -103,26 +123,26 @@ extension SwiftUIView {
     private var thirdSegmentedControlTitles: [TTSegmentedControlTitle] {
         let title1 = TTSegmentedControlTitle(
             text: "Men",
-            defaultColor: "FCD34D".color,
+            defaultColor: "111827".color,
             defaultFont: .PTSerif.bold(size: 18),
-            selectedColor: "FCD34D".color,
+            selectedColor: .white,
             selectedFont: .PTSerif.bold(size: 18)
         )
         
         let title2 = TTSegmentedControlTitle(
             text: "Women",
             defaultColor: "7C3AED".color,
-            defaultFont: .BeauRivage.regular(size: 24),
-            selectedColor: .white,
-            selectedFont: .BeauRivage.regular(size: 24)
+            defaultFont: .Pacifico.regular(size: 20),
+            selectedColor: "FF95E8".color,
+            selectedFont: .Pacifico.regular(size: 20)
         )
         
         let title3 = TTSegmentedControlTitle(
             text: "Kids",
             defaultColor: "2563EB".color,
-            defaultFont: .DeliusSwashCaps.regular(size: 17),
+            defaultFont: .SigmarOne.regular(size: 18),
             selectedColor: "99F6E4".color,
-            selectedFont: .DeliusSwashCaps.regular(size: 17)
+            selectedFont: .SigmarOne.regular(size: 18)
         )
         
         return [title1, title2, title3]
@@ -132,7 +152,7 @@ extension SwiftUIView {
         let gradient = TTSegmentedControlGradient(
             startPoint: .init(x: 0.5, y: 0),
             endPoint: .init(x: 0.5, y: 1),
-            colors: ["A114B8".color, "7C3AED".color, "3B82F6".color]
+            colors: ["3B82F6".color, "6514EF".color]
         )
         let shadow = TTSegmentedControlShadow(
             color: .black.withAlphaComponent(0.4),
@@ -153,7 +173,7 @@ extension SwiftUIView {
 extension SwiftUIView {
     private var fourthSegmentedControlSection: some View {
         VStack(spacing: 10) {
-            header(title: "TEXT & IMAGE", description: "Images on the left")
+            header(title: "TEXT & IMAGE", description: "Images on top")
             fourthSegmentedControl
         }
     }
@@ -167,8 +187,8 @@ extension SwiftUIView {
             selectedColor: .white,
             selectedFont: .SFProText.medium(size: 14),
             selectedImage: UIImage(named: "account_selected"),
-            imagePosition: .left,
-            spaceBetweenTextAndImage: 6
+            imagePosition: .top,
+            spaceBetweenTextAndImage: 4
             
         )
         
@@ -180,8 +200,8 @@ extension SwiftUIView {
             selectedColor: .white,
             selectedFont: .SFProText.medium(size: 14),
             selectedImage: UIImage(named: "settings_selected"),
-            imagePosition: .left,
-            spaceBetweenTextAndImage: 6
+            imagePosition: .top,
+            spaceBetweenTextAndImage: 4
         )
         
         let title3 = TTSegmentedControlTitle(
@@ -192,8 +212,8 @@ extension SwiftUIView {
             selectedColor: .white,
             selectedFont: .SFProText.medium(size: 14),
             selectedImage: UIImage(named: "billling_selected"),
-            imagePosition: .left,
-            spaceBetweenTextAndImage: 6
+            imagePosition: .top,
+            spaceBetweenTextAndImage: 4
         )
         
         return [title1, title2, title3]
@@ -203,70 +223,9 @@ extension SwiftUIView {
         HStack(spacing: .zero) {
             TTSwiftUISegmentedControl(titles: fourthSegmentedControlTitles)
                 .selectionViewColorType(.color(value: "7C3AED".color))
+                .bounceAnimationOptions( .init())
                 .cornerRadius(.constant(value: 8))
                 .selectionViewPadding(.zero)
-                .frame(height: 48)
-        }
-    }
-}
-
-extension SwiftUIView {
-    private var fifthSegmentedControlSection: some View {
-        VStack(spacing: 10) {
-            header(title: "TEXT & IMAGE", description: "Images on right, top, bottom")
-            fifthSegmentedControl
-        }
-    }
-    
-    private var fifthSegmentedControlTitles: [TTSegmentedControlTitle] {
-        let title1 = TTSegmentedControlTitle(
-            text: "Account",
-            defaultColor: "1F2937".color,
-            defaultFont: .SFProText.medium(size: 14),
-            defaultImage: UIImage(named: "account-2"),
-            selectedColor: .white,
-            selectedFont: .SFProText.medium(size: 14),
-            selectedImage: UIImage(named: "account-2"),
-            imagePosition: .right,
-            spaceBetweenTextAndImage: 7
-            
-        )
-        
-        let title2 = TTSegmentedControlTitle(
-            text: "Settings",
-            defaultColor: "1F2937".color,
-            defaultFont: .SFProText.medium(size: 14),
-            defaultImage: UIImage(named: "settings-2"),
-            selectedColor: .white,
-            selectedFont: .SFProText.medium(size: 14),
-            selectedImage: UIImage(named: "settings-2"),
-            imagePosition: .top,
-            spaceBetweenTextAndImage: 6
-        )
-        
-        let title3 = TTSegmentedControlTitle(
-            text: "Billing",
-            defaultColor: "1F2937".color,
-            defaultFont: .SFProText.medium(size: 14),
-            defaultImage: UIImage(named: "billing-2"),
-            selectedColor: .white,
-            selectedFont: .SFProText.medium(size: 14),
-            selectedImage: UIImage(named: "billing-2"),
-            imagePosition: .bottom,
-            spaceBetweenTextAndImage: 6
-        )
-        
-        return [title1, title2, title3]
-    }
-    
-    private var fifthSegmentedControl: some View {
-        HStack(spacing: .zero) {
-            TTSwiftUISegmentedControl(titles: fifthSegmentedControlTitles)
-                .selectionViewColorType(.color(value: "0D9488".color))
-                .bounceAnimationOptions(.init())
-                .cornerRadius(.constant(value: 8))
-                .selectionViewPadding(.zero)
-                .selectionViewFillType(.fillText)
                 .frame(height: 48)
         }
     }
@@ -279,7 +238,7 @@ extension SwiftUIView {
                 .padding(.horizontal, 20)
             
             HStack(spacing: .zero) {
-                Text("Notifications")
+                Text("Appearance")
                     .font(.SFProText.medium(size: 14))
                     .foregroundColor(Color("1F2937".color))
                 Spacer(minLength: .zero)
@@ -293,19 +252,15 @@ extension SwiftUIView {
     
     private var switchTitles: [TTSegmentedControlTitle] {
         let title1 = TTSegmentedControlTitle(
-            text: "OFF",
-            defaultColor: "9CA3AF".color,
-            defaultFont: .SFProText.medium(size: 12),
-            selectedColor: "9CA3AF".color,
-            selectedFont: .SFProText.medium(size: 12)
+            text: "",
+            defaultImage: UIImage(named: "switch_option_1_default"),
+            selectedImage: UIImage(named: "switch_option_1_selected")
         )
         
         let title2 = TTSegmentedControlTitle(
-            text: "ON",
-            defaultColor: "9CA3AF".color,
-            defaultFont: .SFProText.medium(size: 12),
-            selectedColor: .white,
-            selectedFont: .SFProText.medium(size: 12)
+            text: "",
+            defaultImage: UIImage(named: "switch_option_2_default"),
+            selectedImage: UIImage(named: "switch_option_2_selected")
         )
         return [title1, title2]
     }
@@ -319,13 +274,12 @@ extension SwiftUIView {
         )
         
         return TTSwiftUISegmentedControl(titles: switchTitles)
-            .containerColorType(.color(value: "E5E7EB".color))
+            .containerColorType(.color(value: "F3F4F6".color))
             .selectionViewColorType(.color(value: .white))
-            .switchSecondSelectionViewColorType(.color(value: "0D9488".color))
             .selectionViewShadow(shadow)
             .bounceAnimationOptions(.init())
             .selectionViewPadding(.init(width: 2, height: 2))
-            .frame(width: 84, height: 32)
+            .frame(width: 92, height: 36)
     }
 }
 

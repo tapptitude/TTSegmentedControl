@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+
 extension UIFont {
     struct SFProText {
         static func medium(size: CGFloat) -> UIFont {
@@ -14,21 +15,21 @@ extension UIFont {
         }
     }
     
+    struct Pacifico {
+        static func regular(size: CGFloat) -> UIFont {
+            UIFont.init(name: "Pacifico-Regular", size: size)!
+        }
+    }
+    
+    struct SigmarOne {
+        static func regular(size: CGFloat) -> UIFont {
+            UIFont.init(name: "SigmarOne-Regular", size: size)!
+        }
+    }
+    
     struct PTSerif {
         static func bold(size: CGFloat) -> UIFont {
             UIFont.init(name: "PTSerif-Bold", size: size)!
-        }
-    }
-    
-    struct BeauRivage {
-        static func regular(size: CGFloat) -> UIFont {
-            UIFont.init(name: "BeauRivage-Regular", size: size)!
-        }
-    }
-    
-    struct DeliusSwashCaps {
-        static func regular(size: CGFloat) -> UIFont {
-            UIFont.init(name: "DeliusSwashCaps-Regular", size: size)!
         }
     }
 }

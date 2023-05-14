@@ -11,8 +11,8 @@
 		783A217429C1E8A80031B5F5 /* SFProText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 783A217329C1E8A80031B5F5 /* SFProText-Medium.ttf */; };
 		783A217729C1E9070031B5F5 /* UIFont+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783A217629C1E9070031B5F5 /* UIFont+Name.swift */; };
 		783A217929C1E9AC0031B5F5 /* PTSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 783A217829C1E9AC0031B5F5 /* PTSerif-Bold.ttf */; };
-		783A217B29C1EA010031B5F5 /* BeauRivage-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 783A217A29C1EA010031B5F5 /* BeauRivage-Regular.ttf */; };
-		783A217D29C1EA540031B5F5 /* DeliusSwashCaps-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 783A217C29C1EA540031B5F5 /* DeliusSwashCaps-Regular.ttf */; };
+		783D0EC92A11518A00F606AE /* SigmarOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 783D0EC72A11518A00F606AE /* SigmarOne-Regular.ttf */; };
+		783D0ECB2A1152CD00F606AE /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 783D0ECA2A1152CD00F606AE /* Pacifico-Regular.ttf */; };
 		785CD72029967597001C5FDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CD71F29967597001C5FDB /* AppDelegate.swift */; };
 		785CD72C2996759B001C5FDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785CD72A2996759B001C5FDB /* LaunchScreen.storyboard */; };
 		785CD734299675FF001C5FDB /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CD733299675FF001C5FDB /* SwiftUIView.swift */; };
@@ -23,8 +23,8 @@
 		783A217329C1E8A80031B5F5 /* SFProText-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Medium.ttf"; sourceTree = "<group>"; };
 		783A217629C1E9070031B5F5 /* UIFont+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Name.swift"; sourceTree = "<group>"; };
 		783A217829C1E9AC0031B5F5 /* PTSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSerif-Bold.ttf"; sourceTree = "<group>"; };
-		783A217A29C1EA010031B5F5 /* BeauRivage-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeauRivage-Regular.ttf"; sourceTree = "<group>"; };
-		783A217C29C1EA540031B5F5 /* DeliusSwashCaps-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DeliusSwashCaps-Regular.ttf"; sourceTree = "<group>"; };
+		783D0EC72A11518A00F606AE /* SigmarOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SigmarOne-Regular.ttf"; sourceTree = "<group>"; };
+		783D0ECA2A1152CD00F606AE /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 		785CD71C29967597001C5FDB /* TTSegmentedControlExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTSegmentedControlExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		785CD71F29967597001C5FDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		785CD72B2996759B001C5FDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,10 +56,10 @@
 		783A217229C1E8980031B5F5 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				783A217A29C1EA010031B5F5 /* BeauRivage-Regular.ttf */,
+				783D0ECA2A1152CD00F606AE /* Pacifico-Regular.ttf */,
+				783D0EC72A11518A00F606AE /* SigmarOne-Regular.ttf */,
 				783A217829C1E9AC0031B5F5 /* PTSerif-Bold.ttf */,
 				783A217329C1E8A80031B5F5 /* SFProText-Medium.ttf */,
-				783A217C29C1EA540031B5F5 /* DeliusSwashCaps-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -166,12 +166,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				783A217B29C1EA010031B5F5 /* BeauRivage-Regular.ttf in Resources */,
 				785CD73F29968568001C5FDB /* Assets.xcassets in Resources */,
 				785CD72C2996759B001C5FDB /* LaunchScreen.storyboard in Resources */,
 				783A217429C1E8A80031B5F5 /* SFProText-Medium.ttf in Resources */,
+				783D0ECB2A1152CD00F606AE /* Pacifico-Regular.ttf in Resources */,
 				783A217929C1E9AC0031B5F5 /* PTSerif-Bold.ttf in Resources */,
-				783A217D29C1EA540031B5F5 /* DeliusSwashCaps-Regular.ttf in Resources */,
+				783D0EC92A11518A00F606AE /* SigmarOne-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

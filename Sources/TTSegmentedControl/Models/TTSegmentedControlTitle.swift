@@ -25,7 +25,7 @@ public struct TTSegmentedControlTitle {
     public let spaceBetweenTextAndImage: CGFloat
     
     public init(
-        text: String,
+        text: String? = nil,
         defaultColor: UIColor = .black,
         defaultFont: UIFont = .systemFont(ofSize: 12),
         defaultImage: UIImage? = nil,

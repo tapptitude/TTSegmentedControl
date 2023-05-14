@@ -21,6 +21,7 @@ struct LayoutParameter {
     let titleDistribution: TTSegmentedControl.TitleDistribution
     let selectionViewFillType: TTSegmentedControl.SelectionViewFillType
     let animationDuration: TimeInterval
+    let containerViewInnerShadow: TTSegmentedControlShadow?
     
     init(
         defaultTitlesSizes: [CGSize],
@@ -35,7 +36,8 @@ struct LayoutParameter {
         isSizeAdjustEnabled: Bool,
         titleDistribution: TTSegmentedControl.TitleDistribution,
         selectionViewFillType: TTSegmentedControl.SelectionViewFillType,
-        animationDuration: TimeInterval
+        animationDuration: TimeInterval,
+        containerViewInnerShadow: TTSegmentedControlShadow?
     ) {
         self.defaultTextsSizes = defaultTitlesSizes
         self.selectedTextsSizes = selectedTitlesSizes
@@ -50,5 +52,6 @@ struct LayoutParameter {
         self.titleDistribution = titleDistribution
         self.selectionViewFillType = selectionViewFillType
         self.animationDuration = animationDuration
+        self.containerViewInnerShadow = containerViewInnerShadow
     }
 }

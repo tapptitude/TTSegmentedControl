@@ -20,10 +20,10 @@ struct SwiftUIView: View {
        
             VStack(spacing: 24) {
                 VStack(spacing: 24) {
-//                    firstSegmentedControlSection
-//                    secondSegmentedControlSection
-//                    thirdSegmentedControlSection
-//                    fourthSegmentedControlSection
+                    firstSegmentedControlSection
+                    secondSegmentedControlSection
+                    thirdSegmentedControlSection
+                    fourthSegmentedControlSection
                 }
                 .padding(.horizontal, 24)
                 switchViewSection
@@ -53,20 +53,20 @@ extension SwiftUIView {
     }
     
     private var firstSegemntedControl: some View {
-//        let innerShadow = TTSegmentedControlShadow(
-//            color: "D1D5DB".color,
-//            offset: CGSize(width: 0, height: 3),
-//            innerOffset: .init(width: 0, height: -100),
-//            opacity: 1,
-//            radius: 4
-//        )
+        let innerShadow = TTSegmentedControlShadow(
+            color: "D1D5DB".color,
+            offset: CGSize(width: 0, height: 3),
+            innerOffset: .init(width: 0, height: -100),
+            opacity: 1,
+            radius: 4
+        )
         
         return TTSwiftUISegmentedControl(titles: firstSegmentControlTitles)
             .selectionViewColorType(.color(value:"F59E0B".color))
             .bounceAnimationOptions( .init())
             .cornerRadius( .constant(value: 8))
             .selectionViewPadding(.init(width: 4, height: 4))
-//            .containerViewInnerShadow(innerShadow)
+            .containerViewInnerShadow(innerShadow)
             .frame(height: 48)
     }
 }
@@ -252,13 +252,11 @@ extension SwiftUIView {
     
     private var switchTitles: [TTSegmentedControlTitle] {
         let title1 = TTSegmentedControlTitle(
-            text: "",
             defaultImage: UIImage(named: "switch_option_1_default"),
             selectedImage: UIImage(named: "switch_option_1_selected")
         )
         
         let title2 = TTSegmentedControlTitle(
-            text: "",
             defaultImage: UIImage(named: "switch_option_2_default"),
             selectedImage: UIImage(named: "switch_option_2_selected")
         )

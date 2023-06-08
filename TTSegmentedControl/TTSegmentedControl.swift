@@ -371,7 +371,7 @@ extension TTSegmentedControl {
         for label in allLabels {
             
             label.frame.origin.y = 0
-            label.frame.size.width = min(label.frame.size.width, itemWidth)
+            label.frame.size.width = itemWidth
             label.frame.size.height = self.frame.size.height
             label.frame.origin.x = (sectionWidth - label.frame.size.width)/2 + i * itemWidth
             i += 1

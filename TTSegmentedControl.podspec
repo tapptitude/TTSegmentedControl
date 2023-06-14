@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
 # 1
 s.platform = :ios
-s.ios.deployment_target = '8.0'
+s.ios.deployment_target = '15.0'
 s.license = 'MIT'
 s.name = "TTSegmentedControl"
 s.summary = "An elegant, animated and customizable segmented control for iOS."

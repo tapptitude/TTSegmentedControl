@@ -18,7 +18,21 @@ open class TTSegmentedControl: UIView {
     @IBInspectable open var selectedTextFont: UIFont = UIFont.helveticaNeueLight(12)
     @IBInspectable open var defaultTextColor: UIColor = UIColor.black
     @IBInspectable open var selectedTextColor: UIColor = UIColor.white
-    @IBInspectable open var useGradient: Bool = true
+    @IBInspectable open var useHorizontalGradient: Bool = false {
+        didSet {
+            if useHorizontalGradient {
+                useVerticalGradient = false
+            }
+        }
+    }
+    
+    @IBInspectable open var useVerticalGradient: Bool = true {
+        didSet {
+            if useVerticalGradient {
+                useHorizontalGradient = false
+            }
+        }
+    }
     
     @IBInspectable open var containerBackgroundColor: UIColor = TTSegmentedControl.UIColorFromRGB(0xF4F4F4)
     @IBInspectable open var thumbColor: UIColor = UIColor.clear
@@ -245,9 +259,9 @@ extension TTSegmentedControl {
             thumbContainerView.layer.insertSublayer(shadowLayer, at: 0)
         }
         
-        if thumbGradientColors != nil && self.useGradient {
-            gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-            gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        if thumbGradientColors != nil && (useHorizontalGradient || useVerticalGradient) {
+            gradientLayer.startPoint = useVerticalGradient ? CGPoint(x: 0.5, y: 0.0) : CGPoint(x: 0.0, y: 0.5)
+            gradientLayer.endPoint = useVerticalGradient ? CGPoint(x: 0.5, y: 1.0) : CGPoint(x: 1.0, y: 0.5)
             gradientLayer.backgroundColor = thumbColor.cgColor
             gradientLayer.colors = thumbGradientColors!.map({$0.cgColor})
             thumbView.backgroundColor = UIColor.clear
@@ -357,7 +371,7 @@ extension TTSegmentedControl {
         for label in allLabels {
             
             label.frame.origin.y = 0
-            label.frame.size.width = min(label.frame.size.width, itemWidth)
+            label.frame.size.width = itemWidth
             label.frame.size.height = self.frame.size.height
             label.frame.origin.x = (sectionWidth - label.frame.size.width)/2 + i * itemWidth
             i += 1

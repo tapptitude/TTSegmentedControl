@@ -124,6 +124,21 @@ final class TTSwiftUISegmentedControlTests: XCTestCase {
         }
     }
     
+    func testContainerViewBorder() {
+        // Given
+        let border = TTSegmentedControlBorder(color: .red, lineWidth: 3)
+        
+        // When
+        view = view.containerViewBorder(border)
+        
+        // Then
+        verifyAfterDelay { [weak self] in
+            guard let self else { return }
+            XCTAssertEqual(self.uiKitSegmentView.containerViewBorder?.color, border.color)
+            XCTAssertEqual(self.uiKitSegmentView.containerViewBorder?.lineWidth, border.lineWidth)
+        }
+    }
+    
     func testSelectionViewColorTypeWithColor() {
         // When
         view = view.selectionViewColorType(.color(value: .black))
@@ -212,6 +227,21 @@ final class TTSwiftUISegmentedControlTests: XCTestCase {
             XCTAssertEqual(self.uiKitSegmentView.selectionViewShadow?.offset, shadow.offset)
             XCTAssertEqual(self.uiKitSegmentView.selectionViewShadow?.opacity, shadow.opacity)
             XCTAssertEqual(self.uiKitSegmentView.selectionViewShadow?.radius, shadow.radius)
+        }
+    }
+    
+    func testSelectionViewBorder() {
+        // Given
+        let border = TTSegmentedControlBorder(color: .red, lineWidth: 3)
+        
+        // When
+        view = view.selectionViewBorder(border)
+        
+        // Then
+        verifyAfterDelay { [weak self] in
+            guard let self else { return }
+            XCTAssertEqual(self.uiKitSegmentView.selectionViewBorder?.color, border.color)
+            XCTAssertEqual(self.uiKitSegmentView.selectionViewBorder?.lineWidth, border.lineWidth)
         }
     }
     

@@ -17,10 +17,12 @@ public struct TTSwiftUISegmentedControl: UIViewRepresentable {
     private var isSizeAdjustEnabled: Bool = false
     private var containerColorType: TTSegmentedControl.ColorType = .color(value: .white)
     private var containerViewInnerShadow: TTSegmentedControlShadow? = nil
+    private var containerViewBorder: TTSegmentedControlBorder? = nil
     private var selectionViewColorType: TTSegmentedControl.ColorType = .color(value: .blue)
     private var switchSecondSelectionViewColorType: TTSegmentedControl.ColorType?
     private var selectionViewShadow: TTSegmentedControlShadow? = nil
     private var selectionViewInnerShadow: TTSegmentedControlShadow? = nil
+    private var selectionViewBorder: TTSegmentedControlBorder? = nil
     private var selectionViewFillType: TTSegmentedControl.SelectionViewFillType = .fillSegment
     private var bounceAnimationOptions: TTSegmentedControlBounceOptions? = nil
     private var cornerRadius: TTSegmentedControl.CornerRadius = .maximum
@@ -110,12 +112,14 @@ extension TTSwiftUISegmentedControl {
         segmentedView.padding = selectionViewPadding
         segmentedView.bounceAnimationOptions = bounceAnimationOptions
         segmentedView.selectionViewShadow = selectionViewShadow
+        segmentedView.selectionViewBorder = selectionViewBorder
         segmentedView.selectionViewInnerShadow = selectionViewInnerShadow
         segmentedView.isDragEnabled = isDragEnabled
         segmentedView.animationOptions = animationOptions
         segmentedView.isSizeAdjustEnabled = isSizeAdjustEnabled
         segmentedView.containerColorType = containerColorType
         segmentedView.containerViewInnerShadow = containerViewInnerShadow
+        segmentedView.containerViewBorder = containerViewBorder
         segmentedView.selectionViewColorType = selectionViewColorType
         segmentedView.switchSecondSelectionViewColorType = switchSecondSelectionViewColorType
         segmentedView.selectionViewFillType = selectionViewFillType
@@ -189,6 +193,12 @@ extension TTSwiftUISegmentedControl {
         view.selectionViewInnerShadow = shadow
         return view
     }
+
+	public func selectionViewBorder(_ border: TTSegmentedControlBorder?) -> TTSwiftUISegmentedControl {
+        var view = self
+        view.selectionViewBorder = border
+        return view
+    }
     
     public func selectionViewFillType(_ type: TTSegmentedControl.SelectionViewFillType) -> TTSwiftUISegmentedControl {
         var view = self
@@ -241,6 +251,12 @@ extension TTSwiftUISegmentedControl {
     public func containerViewInnerShadow(_ shadow: TTSegmentedControlShadow?) -> TTSwiftUISegmentedControl {
         var view = self
         view.containerViewInnerShadow = shadow
+        return view
+    }
+    
+    public func containerViewBorder(_ border: TTSegmentedControlBorder?) -> TTSwiftUISegmentedControl {
+        var view = self
+        view.containerViewBorder = border
         return view
     }
 }

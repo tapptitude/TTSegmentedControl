@@ -60,7 +60,6 @@ extension SwiftUIView {
             opacity: 1,
             radius: 4
         )
-        
         let selectionViewInnerShadow = TTSegmentedControlShadow(
             color: "000000".color,
             offset: .init(width: 0, height: 6),
@@ -68,12 +67,15 @@ extension SwiftUIView {
             opacity: 0.3,
             radius: 4
         )
+        let border = TTSegmentedControlBorder(color: .black, lineWidth: 1)
         
         return TTSwiftUISegmentedControl(titles: firstSegmentControlTitles)
             .selectionViewColorType(.color(value:"F59E0B".color))
             .bounceAnimationOptions( .init())
             .cornerRadius(.constant(value: 8))
             .selectionViewPadding(.init(width: 4, height: 4))
+            .selectionViewBorder(border)
+            .containerViewBorder(border)
             .selectionViewInnerShadow(selectionViewInnerShadow)
             .containerViewInnerShadow(containerInnerShadow)
             .frame(height: 48)
@@ -169,6 +171,7 @@ extension SwiftUIView {
             opacity: 1,
             radius: 4
         )
+                
         return HStack(spacing: .zero) {
             TTSwiftUISegmentedControl(titles: thirdSegmentedControlTitles)
                 .selectionViewColorType(.colorWithGradient(color: "FFCC00".color, gradient: gradient))

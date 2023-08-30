@@ -19,7 +19,7 @@ This project is maintained by Tapptitude, a mobile app development agency specia
 - Variable number of items 
 - Animated transition
 - Bounce animation
-- Fully configurable (color, gradient, shadow, corner radius)
+- Fully configurable (color, gradient, shadow, border, corner radius)
 - Designable into Interface Builder
 
 ## Requirements

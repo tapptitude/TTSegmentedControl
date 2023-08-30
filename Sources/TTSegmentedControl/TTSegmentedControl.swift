@@ -27,11 +27,13 @@ public final class TTSegmentedControl: UIView {
     public var bounceAnimationOptions: TTSegmentedControlBounceOptions?
     public var selectionViewShadow: TTSegmentedControlShadow? { didSet { configure() } }
     public var selectionViewInnerShadow: TTSegmentedControlShadow? { didSet { reloadView() } }
+    public var selectionViewBorder: TTSegmentedControlBorder? { didSet { configure() } }
     public var titleDistribution: TitleDistribution = .equalSpacing { didSet { reloadView() } }
     public var isDragEnabled: Bool = true
     public var animationOptions: TTSegmentedControlAnimationOption? = .init()
     public var isSizeAdjustEnabled: Bool = true
     public var containerViewInnerShadow: TTSegmentedControlShadow? { didSet { reloadView() } }
+    public var containerViewBorder: TTSegmentedControlBorder? { didSet { reloadView() } }
     public var containerColorType: ColorType = .color(value: .white) { didSet { configure() } }
     public var selectionViewColorType: ColorType = .color(value: .blue) { didSet { configure() } }
     public var selectionViewFillType: SelectionViewFillType = .fillSegment { didSet { updateLayout() } }
@@ -349,6 +351,7 @@ extension TTSegmentedControl {
 extension TTSegmentedControl {
     private func configure() {
         configureContainerView()
+        configureContainerViewBorder()
         configureContainerGradientLayer()
         configureContainerViewInnerShadowLayer()
         configureDefaultStateLabels()
@@ -380,6 +383,12 @@ extension TTSegmentedControl {
         containerViewInnerShadowLayer.shadowOpacity = containerInnerShadow.opacity
         containerViewInnerShadowLayer.shadowRadius = containerInnerShadow.radius
         containerViewInnerShadowLayer.masksToBounds = true
+    }
+    
+    private func configureContainerViewBorder() {
+        guard let containerBorder = containerViewBorder else { return }
+        defaultStateView.layer.borderWidth = containerBorder.lineWidth
+        defaultStateView.layer.borderColor = containerBorder.color.cgColor
     }
     
     private func configureDefaultStateLabels() {
@@ -419,6 +428,9 @@ extension TTSegmentedControl {
         selectionView.backgroundColor = selectionViewColorType.color
         if let shadow = selectionViewShadow {
             selectionView.apply(shadow)
+        }
+        if let border = selectionViewBorder {
+            selectionView.apply(border)
         }
     }
     

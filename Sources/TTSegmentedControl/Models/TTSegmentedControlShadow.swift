@@ -14,7 +14,6 @@ public struct TTSegmentedControlShadow {
     public let opacity: Float
     public let radius: CGFloat
     
-    
     public init(
         color: UIColor = .black,
         offset: CGSize = .init(width: 0, height: 1),

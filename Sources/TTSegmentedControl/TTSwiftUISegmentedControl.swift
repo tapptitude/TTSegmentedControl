@@ -20,6 +20,7 @@ public struct TTSwiftUISegmentedControl: UIViewRepresentable {
     private var selectionViewColorType: TTSegmentedControl.ColorType = .color(value: .blue)
     private var switchSecondSelectionViewColorType: TTSegmentedControl.ColorType?
     private var selectionViewShadow: TTSegmentedControlShadow? = nil
+    private var selectionViewInnerShadow: TTSegmentedControlShadow? = nil
     private var selectionViewFillType: TTSegmentedControl.SelectionViewFillType = .fillSegment
     private var bounceAnimationOptions: TTSegmentedControlBounceOptions? = nil
     private var cornerRadius: TTSegmentedControl.CornerRadius = .maximum
@@ -109,6 +110,7 @@ extension TTSwiftUISegmentedControl {
         segmentedView.padding = selectionViewPadding
         segmentedView.bounceAnimationOptions = bounceAnimationOptions
         segmentedView.selectionViewShadow = selectionViewShadow
+        segmentedView.selectionViewInnerShadow = selectionViewInnerShadow
         segmentedView.isDragEnabled = isDragEnabled
         segmentedView.animationOptions = animationOptions
         segmentedView.isSizeAdjustEnabled = isSizeAdjustEnabled
@@ -179,6 +181,12 @@ extension TTSwiftUISegmentedControl {
     public func selectionViewShadow(_ shadow: TTSegmentedControlShadow?) -> TTSwiftUISegmentedControl {
         var view = self
         view.selectionViewShadow = shadow
+        return view
+    }
+    
+    public func selectionViewInnerShadow(_ shadow: TTSegmentedControlShadow?) -> TTSwiftUISegmentedControl {
+        var view = self
+        view.selectionViewInnerShadow = shadow
         return view
     }
     

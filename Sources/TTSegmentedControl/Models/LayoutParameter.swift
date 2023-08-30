@@ -20,6 +20,7 @@ struct LayoutParameter {
     let isSizeAdjustEnabled: Bool
     let titleDistribution: TTSegmentedControl.TitleDistribution
     let selectionViewFillType: TTSegmentedControl.SelectionViewFillType
+    let selectionViewInnerShadow: TTSegmentedControlShadow?
     let animationDuration: TimeInterval
     let containerViewInnerShadow: TTSegmentedControlShadow?
     
@@ -36,6 +37,7 @@ struct LayoutParameter {
         isSizeAdjustEnabled: Bool,
         titleDistribution: TTSegmentedControl.TitleDistribution,
         selectionViewFillType: TTSegmentedControl.SelectionViewFillType,
+        selectionViewInnerShadow: TTSegmentedControlShadow?,
         animationDuration: TimeInterval,
         containerViewInnerShadow: TTSegmentedControlShadow?
     ) {
@@ -51,6 +53,7 @@ struct LayoutParameter {
         self.isSizeAdjustEnabled = isSizeAdjustEnabled
         self.titleDistribution = titleDistribution
         self.selectionViewFillType = selectionViewFillType
+        self.selectionViewInnerShadow = selectionViewInnerShadow
         self.animationDuration = animationDuration
         self.containerViewInnerShadow = containerViewInnerShadow
     }

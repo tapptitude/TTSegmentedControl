@@ -35,18 +35,21 @@ extension TTSegmentedControlLayout {
         layoutSelectionView(for: params.selectedIndex)
         layoutSelectionViewMask()
         layoutSelectionViewGradientLayer()
+        layoutSelectionViewInnerShadowLayer()
     }
     
     func layoutSelectionViewAndMaskView(for point: CGPoint) {
         layoutSelectionView(for: point)
         layoutSelectionViewMask()
         layoutSelectionViewGradientLayer(animated: true)
+        layoutSelectionViewInnerShadowLayer(animated: true)
     }
     
     func layoutSelectionViewAndMaskView(at index: Int) {
         layoutSelectionView(for: index)
         layoutSelectionViewMask()
         layoutSelectionViewGradientLayer(animated: true)
+        layoutSelectionViewInnerShadowLayer(animated: true)
     }
     
     func layoutSelectionViewAndMaskView(for point: CGPoint, whenUserMoveFingerToLeft isMovingToLeft: Bool) {
@@ -61,11 +64,13 @@ extension TTSegmentedControlLayout {
             layoutSelectionView(for: point)
             layoutSelectionViewMask()
             layoutSelectionViewGradientLayer()
+            layoutSelectionViewInnerShadowLayer()
             return
         }
         layoutSelectionView(with: frame)
         layoutSelectionViewMask()
         layoutSelectionViewGradientLayer()
+        layoutSelectionViewInnerShadowLayer()
     }
 }
 
@@ -252,6 +257,31 @@ extension TTSegmentedControlLayout {
         view.selectionViewGradientLayer.frame = view.selectionView.bounds
         view.selectionViewGradientLayer.cornerCurve = params.cornerCurve
         view.selectionViewGradientLayer.cornerRadius = view.selectionView.layer.cornerRadius
+        CATransaction.commit()
+    }
+    
+    private func layoutSelectionViewInnerShadowLayer(animated: Bool = false) {
+        if selectionViewFrames.isEmpty { return }
+        guard let selectionViewInnerShadow = params.selectionViewInnerShadow else { return }
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(animated ? params.animationDuration : 0.0)
+        let path = UIBezierPath(
+            roundedRect: view.selectionView.bounds.insetBy(
+                dx: selectionViewInnerShadow.innerOffset.width,
+                dy: selectionViewInnerShadow.innerOffset.height
+            ),
+            cornerRadius: view.selectionView.layer.cornerRadius
+        )
+        var cutOutPath = UIBezierPath(
+            roundedRect: view.selectionView.bounds,
+            cornerRadius: view.selectionView.layer.cornerRadius
+        )
+        cutOutPath = cutOutPath.reversing()
+        path.append(cutOutPath)
+        view.selectionViewInnerShadowLayer.frame = view.selectionView.bounds
+        view.selectionViewInnerShadowLayer.shadowPath = path.cgPath
+        view.selectionViewInnerShadowLayer.cornerCurve = params.cornerCurve
+        view.selectionViewInnerShadowLayer.cornerRadius = view.selectionView.layer.cornerRadius
         CATransaction.commit()
     }
     

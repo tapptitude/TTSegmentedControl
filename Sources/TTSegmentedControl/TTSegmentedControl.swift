@@ -26,6 +26,7 @@ public final class TTSegmentedControl: UIView {
     public private(set) var selectedIndex: Int = 0
     public var bounceAnimationOptions: TTSegmentedControlBounceOptions?
     public var selectionViewShadow: TTSegmentedControlShadow? { didSet { configure() } }
+    public var selectionViewInnerShadow: TTSegmentedControlShadow? { didSet { reloadView() } }
     public var titleDistribution: TitleDistribution = .equalSpacing { didSet { reloadView() } }
     public var isDragEnabled: Bool = true
     public var animationOptions: TTSegmentedControlAnimationOption? = .init()
@@ -46,6 +47,7 @@ public final class TTSegmentedControl: UIView {
     private(set) var defaultStateViewGradientLayer = CAGradientLayer()
     private(set) var selectionView = UIView()
     private(set) var selectionViewGradientLayer = CAGradientLayer()
+    private(set) var selectionViewInnerShadowLayer = CALayer()
     private(set) var selectionViewMask = UIView()
     private(set) var selectedStateView = UIView()
     
@@ -86,6 +88,7 @@ public final class TTSegmentedControl: UIView {
             isSizeAdjustEnabled: isSizeAdjustEnabled,
             titleDistribution: titleDistribution,
             selectionViewFillType: selectionViewFillType,
+            selectionViewInnerShadow: selectionViewInnerShadow,
             animationDuration: animationOptions?.duration ?? 0,
             containerViewInnerShadow: containerViewInnerShadow
         )
@@ -224,6 +227,7 @@ extension TTSegmentedControl {
         prepareDefaultStateImagesViews()
         prepareSelectionView()
         prepareSelectionViewGradientLayer()
+        prepareSelectionViewInnerShadowLayer()
         prepareSelectionViewMask()
         prepareSelectedLabelsView()
         prepareSelectedStateLabels()
@@ -276,6 +280,11 @@ extension TTSegmentedControl {
     private func prepareSelectionViewGradientLayer() {
         selectionViewGradientLayer = CAGradientLayer()
         selectionView.layer.addSublayer(selectionViewGradientLayer)
+    }
+    
+    private func prepareSelectionViewInnerShadowLayer() {
+        selectionViewInnerShadowLayer = CALayer()
+        selectionView.layer.addSublayer(selectionViewInnerShadowLayer)
     }
     
     private func prepareSelectionView() {
@@ -345,6 +354,7 @@ extension TTSegmentedControl {
         configureDefaultStateLabels()
         configureDefaultStateImageViews()
         configureSelectionViewGradientLayer()
+        configureSelectionViewInnerShadowLayer()
         configureSelectionView()
         configureSelectionView(at: selectedIndex)
         configureSelectedStateLabels()
@@ -394,6 +404,15 @@ extension TTSegmentedControl {
         if let selectionViewGradient = selectionViewColorType.gradient {
             selectionViewGradientLayer.apply(selectionViewGradient)
         }
+    }
+    
+    private func configureSelectionViewInnerShadowLayer() {
+        guard let selectionViewInnerShadow = selectionViewInnerShadow else { return }
+        selectionViewInnerShadowLayer.shadowColor = selectionViewInnerShadow.color.cgColor
+        selectionViewInnerShadowLayer.shadowOffset = selectionViewInnerShadow.offset
+        selectionViewInnerShadowLayer.shadowOpacity = selectionViewInnerShadow.opacity
+        selectionViewInnerShadowLayer.shadowRadius = selectionViewInnerShadow.radius
+        selectionViewInnerShadowLayer.masksToBounds = true
     }
     
     private func configureSelectionView() {

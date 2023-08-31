@@ -409,7 +409,6 @@ extension TTSegmentedControl {
     
     private func configureSelectionViewGradientLayer() {
         selectionViewGradientLayer.isHidden = selectionViewColorType.gradient == nil
-        selectionViewGradientLayer.backgroundColor = UIColor.black.cgColor
         if let selectionViewGradient = selectionViewColorType.gradient {
             selectionViewGradientLayer.apply(selectionViewGradient)
         }
@@ -437,7 +436,6 @@ extension TTSegmentedControl {
     private func configureSwitchSecondSelectionViewGradientLayer() {
         let gradient = switchSecondSelectionViewColorType?.gradient ?? selectionViewColorType.gradient
         selectionViewGradientLayer.isHidden = gradient == nil
-        selectionViewGradientLayer.backgroundColor = UIColor.black.cgColor
         if let gradient = gradient {
             selectionViewGradientLayer.apply(gradient)
         }

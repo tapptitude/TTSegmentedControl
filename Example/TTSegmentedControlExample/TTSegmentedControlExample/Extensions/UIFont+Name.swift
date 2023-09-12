@@ -9,12 +9,6 @@ import UIKit
 import SwiftUI
 
 extension UIFont {
-    struct SFProText {
-        static func medium(size: CGFloat) -> UIFont {
-            UIFont.init(name: "SFProText-Medium", size: size)!
-        }
-    }
-    
     struct Pacifico {
         static func regular(size: CGFloat) -> UIFont {
             UIFont.init(name: "Pacifico-Regular", size: size)!
@@ -32,12 +26,30 @@ extension UIFont {
             UIFont.init(name: "PTSerif-Bold", size: size)!
         }
     }
-}
-
-extension Font {
-    struct SFProText {
-        static func medium(size: CGFloat) -> Font {
-            Font.custom("SFProText-Medium", size: size)
+    
+    struct Outfit {
+        static func medium(size: CGFloat) -> UIFont {
+            UIFont.init(name: "Outfit-Medium", size: size)!
+        }
+        
+        static func semiBold(size: CGFloat) -> UIFont {
+            UIFont.init(name: "Outfit-SemiBold", size: size)!
+        }
+    }
+    
+    struct Koulen {
+        static func regular(size: CGFloat) -> UIFont {
+            UIFont.init(name: "Koulen-Regular", size: size)!
+        }
+    }
+    
+    struct Rubik {
+        static func regular(size: CGFloat) -> UIFont {
+            UIFont.init(name: "Rubik-Regular", size: size)!
+        }
+        
+        static func semiBold(size: CGFloat) -> UIFont {
+            UIFont.init(name: "Rubik-SemiBold", size: size)!
         }
     }
 }

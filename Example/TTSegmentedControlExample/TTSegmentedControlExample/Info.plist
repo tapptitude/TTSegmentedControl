@@ -43,9 +43,13 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SFProText-Medium.ttf</string>
 		<string>PTSerif-Bold.ttf</string>
+		<string>Outfit-Medium.ttf</string>
+		<string>Outfit-SemiBold.ttf</string>
 		<string>Pacifico-Regular.ttf</string>
+		<string>Rubik-Regular.ttf</string>
+		<string>Rubik-SemiBold.ttf</string>
+		<string>Koulen-Regular.ttf</string>
 		<string>SigmarOne-Regular.ttf</string>
 	</array>
 </dict>

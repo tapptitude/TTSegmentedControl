@@ -17,7 +17,8 @@ struct ContentView: View {
             example4Section
             switchViewSection
         }
-        .padding(.horizontal, 24)
+        .padding(.all, 24)
+        .frame(maxHeight: .infinity, alignment: .top)
     }
 }
 
@@ -54,7 +55,6 @@ extension ContentView {
         VStack(spacing: 10) {
             header(title: "Switch")
             SwitchView()
-                .frame(height: 60)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
